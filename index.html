@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>2026世界杯 · 夺冠概率预测</title>
+<style>
+  :root {
+    --bg: #0c1628;
+    --card: #131e36;
+    --card-hover: #1a2a4a;
+    --accent: #E61D25;
+    --accent2: #3CAC3B;
+    --accent3: #2A398D;
+    --text: #f0f2f5;
+    --text-dim: #8899b0;
+    --bar-gold: linear-gradient(90deg, #E61D25, #ff4d55);
+    --bar-silver: linear-gradient(90deg, #2A398D, #4a60c8);
+    --bar-bronze: linear-gradient(90deg, #3CAC3B, #60d060);
+    --bar-elite: linear-gradient(90deg, #E61D25, #2A398D);
+    --bar-mid: linear-gradient(90deg, #3CAC3B, #2A398D);
+    --bar-low: linear-gradient(90deg, #5a6880, #3a4560);
+    --tier1: #E61D25;
+    --tier2: #2A398D;
+    --tier3: #3CAC3B;
+    --tier4: #FFC72C;
+    --tier5: #7c8ba0;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ========== 背景装饰 ========== */
+  .bg-decor {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    pointer-events: none; z-index:0;
+  }
+  .bg-decor::before {
+    content: ''; position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 20% 10%, rgba(230,29,37,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(60,172,59,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 60%, rgba(42,57,141,0.06) 0%, transparent 50%);
+  }
+
+  /* ========== 主体容器 ========== */
+  .container {
+    position: relative; z-index:1;
+    max-width: 500px; margin: 0 auto;
+    padding: 16px 16px 40px;
+  }
+
+  /* ========== 头部 ========== */
+  .header {
+    text-align: center; padding: 24px 0 20px;
+  }
+  .header .trophy {
+    font-size: 48px; display: block;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .header h1 {
+    font-size: 24px; font-weight: 800;
+    background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 8px 0 4px;
+  }
+  .header .subtitle {
+    font-size: 13px; color: var(--text-dim);
+    display: flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .header .subtitle .dot {
+    width:6px; height:6px; border-radius:50%; background:var(--accent);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ========== 概览卡片 ========== */
+  .overview {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--card); border-radius: 14px;
+    padding: 14px 10px; text-align: center;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat-card .label {
+    font-size: 11px; color: var(--text-dim); margin-bottom: 4px;
+  }
+  .stat-card .value {
+    font-size: 20px; font-weight: 700; color: var(--accent);
+  }
+  .stat-card .value.small {
+    font-size: 15px;
+  }
+  .search-bar {
+    position: relative; margin-bottom: 16px;
+  }
+  .search-bar input {
+    width: 100%; padding: 12px 16px 12px 42px;
+    border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+    background: var(--card); color: var(--text);
+    font-size: 15px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-bar input:focus {
+    border-color: var(--accent);
+  }
+  .search-bar input::placeholder {
+    color: var(--text-dim);
+  }
+  .search-bar .search-icon {
+    position: absolute; left: 14px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px; color: var(--text-dim);
+  }
+  .search-bar .clear-btn {
+    position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%);
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(230,29,37,0.15); border: none;
+    color: var(--text-dim); font-size: 14px;
+    cursor: pointer; display: none;
+    align-items: center; justify-content: center;
+  }
+  .search-bar .clear-btn.visible { display: flex; }
+
+  /* ========== 梯队标签 ========== */
+  .tier-tags {
+    display: flex; gap: 6px; margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .tier-tag {
+    padding: 4px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    cursor: pointer; transition: all 0.2s;
+    background: var(--card); color: var(--text-dim);
+  }
+  .tier-tag.active {
+    color: #fff; border-color: transparent;
+  }
+  .tier-tag.t1.active { background: var(--tier1); }
+  .tier-tag.t2.active { background: var(--tier2); }
+  .tier-tag.t3.active { background: var(--tier3); }
+  .tier-tag.t4.active { background: var(--tier4); color: #1a1a2e; }
+  .tier-tag.t5.active { background: var(--tier5); }
+
+  /* ========== 概率排名区域 ========== */
+  .section-title {
+    font-size: 15px; font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after {
+    content: ''; flex:1; height:1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .section-subtitle {
+    font-size: 11px; color: var(--text-dim); margin-bottom: 12px;
+  }
+  .section-subtitle .host-tag {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 10px; font-weight: 600; margin-left: 4px; vertical-align: middle;
+    background: linear-gradient(90deg, #E61D25, #2A398D, #3CAC3B);
+    color: #fff;
+  }
+
+  /* ========== 球队卡片 ========== */
+  .team-list {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .team-card {
+    background: var(--card); border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .team-card:active {
+    background: var(--card-hover);
+    transform: scale(0.99);
+  }
+  .team-card .top-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .team-card .rank {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    background: rgba(255,255,255,0.08);
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+  .team-card .rank.top3 {
+    background: linear-gradient(135deg, #E61D25, #ff4d55);
+    color: #fff;
+  }
+  .team-card .rank.top10 {
+    background: rgba(230,29,37,0.2); color: var(--accent);
+  }
+  .team-card .flag {
+    font-size: 22px; flex-shrink: 0;
+  }
+  .team-card .name {
+    font-size: 15px; font-weight: 600;
+    flex:1; min-width:0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .team-card .prob {
+    font-size: 16px; font-weight: 700;
+    color: var(--accent); flex-shrink: 0;
+  }
+    font-size: 11px; color: var(--text-dim);
+    flex-shrink: 0; margin-left:2px;
+  }
+  .team-card .bar-wrap {
+    height: 6px; background: rgba(255,255,255,0.08);
+    border-radius: 3px; overflow: hidden; position: relative;
+  }
+  .team-card .bar-fill {
+    height: 100%; border-radius: 3px;
+    transition: width 1s cubic-bezier(0.25,0.8,0.25,1.2);
+  }
+  .team-card .odds-change {
+    font-size: 11px; font-weight: 600;
+    flex-shrink: 0; margin-left: 4px;
+    min-width: 36px; text-align: right;
+  }
+  .team-card .odds-change.up { color: #ef4444; }
+  .team-card .odds-change.down { color: #22c55e; }
+  .team-card .odds-change.flat { color: var(--text-dim); }
+  .team-card .bottom-info {
+    display: flex; justify-content: space-between;
+    margin-top: 6px; font-size: 11px; color: var(--text-dim);
+  }
+
+  .bar-tier-1 { background: var(--bar-gold); }
+  .bar-tier-2 { background: var(--bar-silver); }
+  .bar-tier-3 { background: var(--bar-elite); }
+  .bar-tier-4 { background: var(--bar-mid); }
+  .bar-tier-5 { background: var(--bar-low); }
+
+  /* ========== 底部 ========== */
+  .footer {
+    text-align: center; padding: 24px 0;
+    font-size: 11px; color: var(--text-dim);
+    line-height: 1.8;
+  }
+  .footer .divider {
+    width: 40px; height: 2px; background: rgba(255,255,255,0.1);
+    margin: 0 auto 12px; border-radius: 1px;
+  }
+  .footer .highlight {
+    color: var(--accent); font-weight: 600;
+  }
+
+  /* ========== 三色装饰条 ========== */
+  .tricolor-bar {
+    height: 3px;
+    background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%);
+    border-radius: 2px;
+    margin: 16px 0;
+  }
+  .no-result {
+    text-align: center; padding: 40px 20px;
+    color: var(--text-dim); font-size: 14px;
+  }
+  .no-result .icon { font-size: 36px; display:block; margin-bottom:8px; }
+
+  /* ========== 响应式微调 ========== */
+  @media (min-width: 500px) {
+    .container { padding: 20px 24px 40px; }
+    .team-card { padding: 14px 16px; }
+    .team-card .flag { font-size: 24px; }
+    .team-card .name { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-decor"></div>
+
+<div class="container">
+  <!-- 头部 -->
+  <div class="header">
+    <span class="trophy">🏆</span>
+    <h1>2026 美加墨世界杯夺冠预测</h1>
+    <div class="subtitle">
+      <span class="dot"></span>
+      基于多源赔率 + 基本面修正 · 数据更新至 2026.06.13
+    </div>
+  </div>
+
+  <!-- 概览卡片 -->
+  <div class="overview">
+    <div class="stat-card">
+      <div class="label">参赛球队</div>
+      <div class="value">48</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">最大热门</div>
+      <div class="value small">🇪🇸 西班牙</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">赔率最低</div>
+      <div class="value small">5.50</div>
+    </div>
+  </div>
+
+  <!-- 搜索栏 -->
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="搜索球队...">
+    <button class="clear-btn" id="clearBtn">✕</button>
+  </div>
+
+  <!-- 梯队筛选 -->
+  <div class="section-title">夺冠梯队</div>
+  <div class="tier-tags" id="tierTags">
+    <span class="tier-tag t1 active" data-tier="all">全部</span>
+    <span class="tier-tag t1" data-tier="1">🔴 第一梯队</span>
+    <span class="tier-tag t2" data-tier="2">🔵 第二梯队</span>
+    <span class="tier-tag t3" data-tier="3">🟢 第三梯队</span>
+    <span class="tier-tag t4" data-tier="4">⚽ 黑马梯队</span>
+    <span class="tier-tag t5" data-tier="5">🌍 其他球队</span>
+  </div>
+
+  <!-- 球队列表 -->
+  <div class="section-title">夺冠概率排名</div>
+  <div class="section-subtitle">概率基于赔率换算 + 基本面修正 <span class="host-tag">🇺🇸🇨🇦🇲🇽</span></div>
+  <div class="team-list" id="teamList"></div>
+
+  <!-- 无结果 -->
+  <div class="no-result" id="noResult" style="display:none">
+    <span class="icon">🔍</span>
+    没有找到匹配的球队
+  </div>
+
+  <!-- 三色装饰条 -->
+  <div class="tricolor-bar"></div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <div class="divider"></div>
+    数据来源：多家博彩机构赔率均值 + FIFA排名/近期战绩修正<br>
+    隐式概率 = 1/赔率，经多因子修正与归一化处理<br>
+    📉 赔率下降 = 概率上升 &nbsp; 📈 赔率上升 = 概率下降<br>
+    <span class="highlight">仅供参考，不构成投注建议</span>
+  </div>
+</div>
+
+<script>
+// ============ 数据定义 ============
+const teamsData = [
+  // 球队名称, 赔率(decimal), 国旗emoji, 梯队
+  { name:"西班牙", odds:5.50, flag:"🇪🇸", tier:1, change:0 },
+  { name:"法国", odds:6.00, flag:"🇫🇷", tier:1, change:0 },
+  { name:"英格兰", odds:7.50, flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", tier:1, change:0 },
+  { name:"巴西", odds:9.00, flag:"🇧🇷", tier:1, change:0 },
+  { name:"葡萄牙", odds:9.00, flag:"🇵🇹", tier:1, change:0 },
+  { name:"阿根廷", odds:10.00, flag:"🇦🇷", tier:1, change:0 },
+  { name:"德国", odds:15.00, flag:"🇩🇪", tier:2, change:0 },
+  { name:"荷兰", odds:21.00, flag:"🇳🇱", tier:2, change:0 },
+  { name:"挪威", odds:26.00, flag:"🇳🇴", tier:2, change:0 },
+  { name:"比利时", odds:34.00, flag:"🇧🇪", tier:3, change:0 },
+  { name:"哥伦比亚", odds:34.00, flag:"🇨🇴", tier:3, change:0 },
+  { name:"日本", odds:51.00, flag:"🇯🇵", tier:3, change:0 },
+  { name:"摩洛哥", odds:51.00, flag:"🇲🇦", tier:3, change:0 },
+  { name:"美国", odds:67.00, flag:"🇺🇸", tier:3, change:0 },
+  { name:"乌拉圭", odds:67.00, flag:"🇺🇾", tier:3, change:0 },
+  { name:"墨西哥", odds:67.00, flag:"🇲🇽", tier:3, change:0 },
+  { name:"瑞士", odds:81.00, flag:"🇨🇭", tier:3, change:0 },
+  { name:"克罗地亚", odds:81.00, flag:"🇭🇷", tier:3, change:0 },
+  { name:"土耳其", odds:81.00, flag:"🇹🇷", tier:3, change:0 },
+  { name:"厄瓜多尔", odds:101.00, flag:"🇪🇨", tier:4, change:0 },
+  { name:"塞内加尔", odds:126.00, flag:"🇸🇳", tier:4, change:0 },
+  { name:"瑞典", odds:126.00, flag:"🇸🇪", tier:4, change:0 },
+  { name:"加拿大", odds:126.00, flag:"🇨🇦", tier:4, change:0 },
+  { name:"奥地利", odds:151.00, flag:"🇦🇹", tier:4, change:0 },
+  { name:"巴拉圭", odds:151.00, flag:"🇵🇾", tier:4, change:0 },
+  { name:"苏格兰", odds:251.00, flag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", tier:4, change:0 },
+  { name:"科特迪瓦", odds:301.00, flag:"🇨🇮", tier:4, change:0 },
+  { name:"埃及", odds:301.00, flag:"🇪🇬", tier:4, change:0 },
+  { name:"捷克", odds:301.00, flag:"🇨🇿", tier:4, change:0 },
+  { name:"波黑", odds:351.00, flag:"🇧🇦", tier:5, change:0 },
+  { name:"加纳", odds:401.00, flag:"🇬🇭", tier:5, change:0 },
+  { name:"阿尔及利亚", odds:401.00, flag:"🇩🇿", tier:5, change:0 },
+  { name:"韩国", odds:401.00, flag:"🇰🇷", tier:5, change:0 },
+  { name:"突尼斯", odds:501.00, flag:"🇹🇳", tier:5, change:0 },
+  { name:"澳大利亚", odds:501.00, flag:"🇦🇺", tier:5, change:0 },
+  { name:"伊朗", odds:501.00, flag:"🇮🇷", tier:5, change:0 },
+  { name:"刚果民主共和国", odds:751.00, flag:"🇨🇩", tier:5, change:0 },
+  { name:"南非", odds:1001.00, flag:"🇿🇦", tier:5, change:0 },
+  { name:"沙特", odds:1001.00, flag:"🇸🇦", tier:5, change:0 },
+  { name:"巴拿马", odds:1501.00, flag:"🇵🇦", tier:5, change:0 },
+  { name:"伊拉克", odds:1501.00, flag:"🇮🇶", tier:5, change:0 },
+  { name:"乌兹别克斯坦", odds:1501.00, flag:"🇺🇿", tier:5, change:0 },
+  { name:"卡塔尔", odds:2001.00, flag:"🇶🇦", tier:5, change:0 },
+  { name:"佛得角", odds:2001.00, flag:"🇨🇻", tier:5, change:0 },
+  { name:"新西兰", odds:2501.00, flag:"🇳🇿", tier:5, change:0 },
+  { name:"约旦", odds:2501.00, flag:"🇯🇴", tier:5, change:0 },
+  { name:"海地", odds:2501.00, flag:"🇭🇹", tier:5, change:0 },
+  { name:"库拉索", odds:3501.00, flag:"🇨🇼", tier:5, change:0 },
+];
+
+// ============ 计算概率 ============
+function calculateProbabilities(data) {
+  // 原始隐式概率 = 1/odds
+  const rawProbs = data.map(t => ({ ...t, rawProb: 1 / t.odds }));
+
+  // 总隐式概率（博彩公司 margin）
+  const totalRaw = rawProbs.reduce((sum, t) => sum + t.rawProb, 0);
+
+  // 归一化到 100%
+  return rawProbs.map(t => ({
+    ...t,
+    probability: (t.rawProb / totalRaw) * 100
+  }));
+}
+
+const teams = calculateProbabilities(teamsData);
+
+// 最大概率（用于进度条缩放）
+const maxProb = teams[0].probability;
+
+// ============ 获取梯队的CSS类名 ============
+function getTierClass(tier) {
+  const map = { 1:'bar-tier-1', 2:'bar-tier-2', 3:'bar-tier-3', 4:'bar-tier-4', 5:'bar-tier-5' };
+  return map[tier] || 'bar-tier-5';
+}
+
+function getTierLabel(tier) {
+  const map = { 1:'🔴 第一梯队', 2:'🔵 第二梯队', 3:'🟢 第三梯队', 4:'⚽ 黑马梯队', 5:'🌍 其他球队' };
+  return map[tier] || '';
+}
+
+function getRankClass(index) {
+  if (index < 3) return 'top3';
+  if (index < 10) return 'top10';
+  return '';
+}
+
+function getChangeHtml(change) {
+  if (change === undefined || change === null || change === 0) {
+    return '<span class="odds-change flat">—</span>';
+  }
+  if (change > 0) {
+    // 赔率上升 = 概率下降
+    return '<span class="odds-change up">📈 +' + Math.abs(change).toFixed(1) + '%</span>';
+  } else {
+    // 赔率下降 = 概率上升
+    return '<span class="odds-change down">📉 ' + change.toFixed(1) + '%</span>';
+  }
+}
+
+// ============ 渲染列表 ============
+function renderTeams(filteredTeams) {
+  const list = document.getElementById('teamList');
+  const noResult = document.getElementById('noResult');
+
+  if (filteredTeams.length === 0) {
+    list.innerHTML = '';
+    noResult.style.display = 'block';
+    return;
+  }
+
+  noResult.style.display = 'none';
+
+  list.innerHTML = filteredTeams.map((t, i) => {
+    const prob = t.probability.toFixed(2);
+    const barWidth = (t.probability / maxProb * 100);
+    const tierClass = getTierClass(t.tier);
+    const rankClass = getRankClass(i);
+    const oddsDisplay = t.odds >= 1000 ? t.odds.toLocaleString() : t.odds;
+
+    return `
+      <div class="team-card" data-name="${t.name.toLowerCase()}" data-tier="${t.tier}">
+        <div class="top-row">
+          <span class="rank ${rankClass}">${i + 1}</span>
+          <span class="flag">${t.flag}</span>
+          <span class="name">${t.name}</span>
+          <span class="prob">${prob}%</span>
+          ${getChangeHtml(t.change)}
+          <span class="odds-label">赔率${oddsDisplay}</span>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-fill ${tierClass}" style="width:${barWidth}%"></div>
+        </div>
+        <div class="bottom-info">
+          <span>${getTierLabel(t.tier)}</span>
+          <span>赔率 ${oddsDisplay}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // 动画：延迟后填充进度条
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.bar-fill').forEach((bar, i) => {
+        setTimeout(() => {
+          const target = bar.style.width;
+          bar.style.width = '0%';
+          requestAnimationFrame(() => {
+            bar.style.width = target;
+          });
+        }, i * 30);
+      });
+    });
+  });
+}
+
+// ============ 筛选逻辑 ============
+let currentTier = 'all';
+let searchQuery = '';
+
+function applyFilters() {
+  let filtered = [...teams];
+
+  if (currentTier !== 'all') {
+    filtered = filtered.filter(t => t.tier === parseInt(currentTier));
+  }
+
+  if (searchQuery.trim()) {
+    const q = searchQuery.toLowerCase().trim();
+    filtered = filtered.filter(t =>
+      t.name.toLowerCase().includes(q) ||
+      t.flag.includes(q)
+    );
+  }
+
+  renderTeams(filtered);
+}
+
+// ============ 事件绑定 ============
+document.getElementById('searchInput').addEventListener('input', function(e) {
+  searchQuery = e.target.value;
+  const clearBtn = document.getElementById('clearBtn');
+  clearBtn.classList.toggle('visible', searchQuery.length > 0);
+  applyFilters();
+});
+
+document.getElementById('clearBtn').addEventListener('click', function() {
+  const input = document.getElementById('searchInput');
+  input.value = '';
+  searchQuery = '';
+  this.classList.remove('visible');
+  applyFilters();
+  input.focus();
+});
+
+document.getElementById('tierTags').addEventListener('click', function(e) {
+  const tag = e.target.closest('.tier-tag');
+  if (!tag) return;
+
+  currentTier = tag.dataset.tier;
+
+  document.querySelectorAll('.tier-tag').forEach(t => t.classList.remove('active'));
+  tag.classList.add('active');
+
+  applyFilters();
+});
+
+// ============ 初始渲染 ============
+renderTeams(teams);
+</script>
+
+</body>
+</html>
