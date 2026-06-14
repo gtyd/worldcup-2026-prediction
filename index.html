@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>2026世界杯 · 夺冠概率预测</title>
+<title>2026美加墨世界杯 · 夺冠概率预测</title>
 <style>
   :root {
     --bg: #0c1628;
@@ -105,6 +105,7 @@
   .stat-card .value.small {
     font-size: 15px;
   }
+
   .search-bar {
     position: relative; margin-bottom: 16px;
   }
@@ -179,6 +180,14 @@
     color: #fff;
   }
 
+  /* ========== 三色装饰条 ========== */
+  .tricolor-bar {
+    height: 3px;
+    background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%);
+    border-radius: 2px;
+    margin: 16px 0;
+  }
+
   /* ========== 球队卡片 ========== */
   .team-list {
     display: flex; flex-direction: column; gap: 6px;
@@ -225,6 +234,7 @@
     font-size: 16px; font-weight: 700;
     color: var(--accent); flex-shrink: 0;
   }
+  .team-card .odds-label {
     font-size: 11px; color: var(--text-dim);
     flex-shrink: 0; margin-left:2px;
   }
@@ -269,13 +279,6 @@
     color: var(--accent); font-weight: 600;
   }
 
-  /* ========== 三色装饰条 ========== */
-  .tricolor-bar {
-    height: 3px;
-    background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%);
-    border-radius: 2px;
-    margin: 16px 0;
-  }
   .no-result {
     text-align: center; padding: 40px 20px;
     color: var(--text-dim); font-size: 14px;
@@ -302,7 +305,7 @@
     <h1>2026 美加墨世界杯夺冠预测</h1>
     <div class="subtitle">
       <span class="dot"></span>
-      基于多源赔率 + 基本面修正 · 数据更新至 2026.06.13
+      基于多源赔率 + 基本面修正 · 数据更新至 2026.06.14
     </div>
   </div>
 
@@ -366,67 +369,64 @@
 
 <script>
 // ============ 数据定义 ============
+// 赔率来源：compare.bet (UK, 06-08) + soccergraph.com/FanDuel (06-02) + online-betting.org
+// FIFA排名：whereig.com/FIFA官方 (2026-06-11)
+// 近期战绩修正：数据暂缺，已跳过此项修正
 const teamsData = [
-  // 球队名称, 赔率(decimal), 国旗emoji, 梯队
-  { name:"西班牙", odds:5.50, flag:"🇪🇸", tier:1, change:0 },
-  { name:"法国", odds:6.00, flag:"🇫🇷", tier:1, change:0 },
-  { name:"英格兰", odds:7.50, flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", tier:1, change:0 },
-  { name:"巴西", odds:9.00, flag:"🇧🇷", tier:1, change:0 },
-  { name:"葡萄牙", odds:9.00, flag:"🇵🇹", tier:1, change:0 },
-  { name:"阿根廷", odds:10.00, flag:"🇦🇷", tier:1, change:0 },
-  { name:"德国", odds:15.00, flag:"🇩🇪", tier:2, change:0 },
-  { name:"荷兰", odds:21.00, flag:"🇳🇱", tier:2, change:0 },
-  { name:"挪威", odds:26.00, flag:"🇳🇴", tier:2, change:0 },
-  { name:"比利时", odds:34.00, flag:"🇧🇪", tier:3, change:0 },
-  { name:"哥伦比亚", odds:34.00, flag:"🇨🇴", tier:3, change:0 },
-  { name:"日本", odds:51.00, flag:"🇯🇵", tier:3, change:0 },
-  { name:"摩洛哥", odds:51.00, flag:"🇲🇦", tier:3, change:0 },
-  { name:"美国", odds:67.00, flag:"🇺🇸", tier:3, change:0 },
-  { name:"乌拉圭", odds:67.00, flag:"🇺🇾", tier:3, change:0 },
-  { name:"墨西哥", odds:67.00, flag:"🇲🇽", tier:3, change:0 },
-  { name:"瑞士", odds:81.00, flag:"🇨🇭", tier:3, change:0 },
-  { name:"克罗地亚", odds:81.00, flag:"🇭🇷", tier:3, change:0 },
-  { name:"土耳其", odds:81.00, flag:"🇹🇷", tier:3, change:0 },
-  { name:"厄瓜多尔", odds:101.00, flag:"🇪🇨", tier:4, change:0 },
-  { name:"塞内加尔", odds:126.00, flag:"🇸🇳", tier:4, change:0 },
-  { name:"瑞典", odds:126.00, flag:"🇸🇪", tier:4, change:0 },
-  { name:"加拿大", odds:126.00, flag:"🇨🇦", tier:4, change:0 },
-  { name:"奥地利", odds:151.00, flag:"🇦🇹", tier:4, change:0 },
-  { name:"巴拉圭", odds:151.00, flag:"🇵🇾", tier:4, change:0 },
-  { name:"苏格兰", odds:251.00, flag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", tier:4, change:0 },
-  { name:"科特迪瓦", odds:301.00, flag:"🇨🇮", tier:4, change:0 },
-  { name:"埃及", odds:301.00, flag:"🇪🇬", tier:4, change:0 },
-  { name:"捷克", odds:301.00, flag:"🇨🇿", tier:4, change:0 },
-  { name:"波黑", odds:351.00, flag:"🇧🇦", tier:5, change:0 },
-  { name:"加纳", odds:401.00, flag:"🇬🇭", tier:5, change:0 },
-  { name:"阿尔及利亚", odds:401.00, flag:"🇩🇿", tier:5, change:0 },
-  { name:"韩国", odds:401.00, flag:"🇰🇷", tier:5, change:0 },
-  { name:"突尼斯", odds:501.00, flag:"🇹🇳", tier:5, change:0 },
-  { name:"澳大利亚", odds:501.00, flag:"🇦🇺", tier:5, change:0 },
-  { name:"伊朗", odds:501.00, flag:"🇮🇷", tier:5, change:0 },
-  { name:"刚果民主共和国", odds:751.00, flag:"🇨🇩", tier:5, change:0 },
-  { name:"南非", odds:1001.00, flag:"🇿🇦", tier:5, change:0 },
-  { name:"沙特", odds:1001.00, flag:"🇸🇦", tier:5, change:0 },
-  { name:"巴拿马", odds:1501.00, flag:"🇵🇦", tier:5, change:0 },
-  { name:"伊拉克", odds:1501.00, flag:"🇮🇶", tier:5, change:0 },
-  { name:"乌兹别克斯坦", odds:1501.00, flag:"🇺🇿", tier:5, change:0 },
-  { name:"卡塔尔", odds:2001.00, flag:"🇶🇦", tier:5, change:0 },
-  { name:"佛得角", odds:2001.00, flag:"🇨🇻", tier:5, change:0 },
-  { name:"新西兰", odds:2501.00, flag:"🇳🇿", tier:5, change:0 },
-  { name:"约旦", odds:2501.00, flag:"🇯🇴", tier:5, change:0 },
-  { name:"海地", odds:2501.00, flag:"🇭🇹", tier:5, change:0 },
-  { name:"库拉索", odds:3501.00, flag:"🇨🇼", tier:5, change:0 },
+  { name:"西班牙", odds:5.50, flag:"🇪🇸", tier:1, change:-0.0 },
+  { name:"法国", odds:6.43, flag:"🇫🇷", tier:1, change:7.2 },
+  { name:"英格兰", odds:7.17, flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", tier:1, change:-4.4 },
+  { name:"巴西", odds:8.83, flag:"🇧🇷", tier:1, change:-1.9 },
+  { name:"阿根廷", odds:9.33, flag:"🇦🇷", tier:1, change:-6.7 },
+  { name:"葡萄牙", odds:11.50, flag:"🇵🇹", tier:2, change:27.8 },
+  { name:"德国", odds:14.00, flag:"🇩🇪", tier:2, change:-6.7 },
+  { name:"荷兰", odds:20.00, flag:"🇳🇱", tier:2, change:-4.8 },
+  { name:"比利时", odds:28.00, flag:"🇧🇪", tier:3, change:-17.6 },
+  { name:"挪威", odds:28.67, flag:"🇳🇴", tier:3, change:10.3 },
+  { name:"哥伦比亚", odds:37.50, flag:"🇨🇴", tier:3, change:10.3 },
+  { name:"摩洛哥", odds:63.50, flag:"🇲🇦", tier:4, change:24.5 },
+  { name:"乌拉圭", odds:64.00, flag:"🇺🇾", tier:4, change:-4.5 },
+  { name:"美国", odds:66.50, flag:"🇺🇸", tier:4, change:-0.7 },
+  { name:"瑞士", odds:73.50, flag:"🇨🇭", tier:4, change:-9.3 },
+  { name:"克罗地亚", odds:76.00, flag:"🇭🇷", tier:4, change:-6.2 },
+  { name:"墨西哥", odds:76.00, flag:"🇲🇽", tier:4, change:13.4 },
+  { name:"日本", odds:76.00, flag:"🇯🇵", tier:4, change:49.0 },
+  { name:"土耳其", odds:91.00, flag:"🇹🇷", tier:4, change:12.3 },
+  { name:"厄瓜多尔", odds:101.00, flag:"🇪🇨", tier:5, change:0.0 },
+  { name:"奥地利", odds:101.00, flag:"🇦🇹", tier:5, change:-33.1 },
+  { name:"塞内加尔", odds:126.00, flag:"🇸🇳", tier:5, change:0.0 },
+  { name:"瑞典", odds:151.00, flag:"🇸🇪", tier:5, change:19.8 },
+  { name:"苏格兰", odds:176.00, flag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", tier:5, change:-29.9 },
+  { name:"科特迪瓦", odds:201.00, flag:"🇨🇮", tier:5, change:-33.2 },
+  { name:"加拿大", odds:251.00, flag:"🇨🇦", tier:5, change:99.2 },
+  { name:"巴拉圭", odds:251.00, flag:"🇵🇾", tier:5, change:66.2 },
+  { name:"加纳", odds:251.00, flag:"🇬🇭", tier:5, change:-37.4 },
+  { name:"阿尔及利亚", odds:301.00, flag:"🇩🇿", tier:5, change:-24.9 },
+  { name:"埃及", odds:301.00, flag:"🇪🇬", tier:5, change:0.0 },
+  { name:"波黑", odds:351.00, flag:"🇧🇦", tier:5, change:0.0 },
+  { name:"韩国", odds:501.00, flag:"🇰🇷", tier:5, change:24.9 },
+  { name:"捷克", odds:501.00, flag:"🇨🇿", tier:5, change:66.4 },
+  { name:"伊朗", odds:751.00, flag:"🇮🇷", tier:5, change:49.9 },
+  { name:"刚果民主共和国", odds:1001.00, flag:"🇨🇩", tier:5, change:33.3 },
+  { name:"突尼斯", odds:1501.00, flag:"🇹🇳", tier:5, change:199.6 },
+  { name:"澳大利亚", odds:2001.00, flag:"🇦🇺", tier:5, change:299.4 },
+  { name:"乌兹别克斯坦", odds:2501.00, flag:"🇺🇿", tier:5, change:66.6 },
+  { name:"巴拿马", odds:2501.00, flag:"🇵🇦", tier:5, change:66.6 },
+  { name:"约旦", odds:2501.00, flag:"🇯🇴", tier:5, change:0.0 },
+  { name:"新西兰", odds:2501.00, flag:"🇳🇿", tier:5, change:0.0 },
+  { name:"伊拉克", odds:2501.00, flag:"🇮🇶", tier:5, change:66.6 },
+  { name:"佛得角", odds:2501.00, flag:"🇨🇻", tier:5, change:25.0 },
+  { name:"沙特", odds:2501.00, flag:"🇸🇦", tier:5, change:149.9 },
+  { name:"海地", odds:2501.00, flag:"🇭🇹", tier:5, change:0.0 },
+  { name:"南非", odds:2501.00, flag:"🇿🇦", tier:5, change:149.9 },
+  { name:"库拉索", odds:2501.00, flag:"🇨🇼", tier:5, change:-28.6 },
+  { name:"卡塔尔", odds:2501.00, flag:"🇶🇦", tier:5, change:25.0 },
 ];
 
 // ============ 计算概率 ============
 function calculateProbabilities(data) {
-  // 原始隐式概率 = 1/odds
   const rawProbs = data.map(t => ({ ...t, rawProb: 1 / t.odds }));
-
-  // 总隐式概率（博彩公司 margin）
   const totalRaw = rawProbs.reduce((sum, t) => sum + t.rawProb, 0);
-
-  // 归一化到 100%
   return rawProbs.map(t => ({
     ...t,
     probability: (t.rawProb / totalRaw) * 100
@@ -460,10 +460,8 @@ function getChangeHtml(change) {
     return '<span class="odds-change flat">—</span>';
   }
   if (change > 0) {
-    // 赔率上升 = 概率下降
     return '<span class="odds-change up">📈 +' + Math.abs(change).toFixed(1) + '%</span>';
   } else {
-    // 赔率下降 = 概率上升
     return '<span class="odds-change down">📉 ' + change.toFixed(1) + '%</span>';
   }
 }
@@ -486,7 +484,8 @@ function renderTeams(filteredTeams) {
     const barWidth = (t.probability / maxProb * 100);
     const tierClass = getTierClass(t.tier);
     const rankClass = getRankClass(i);
-    const oddsDisplay = t.odds >= 1000 ? t.odds.toLocaleString() : t.odds;
+    // 赔率显示：整数的不带小数点，非整数的保留2位
+    const oddsDisplay = Number.isInteger(t.odds) ? t.odds.toLocaleString() : t.odds.toFixed(2);
 
     return `
       <div class="team-card" data-name="${t.name.toLowerCase()}" data-tier="${t.tier}">
