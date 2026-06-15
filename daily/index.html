@@ -41,6 +41,8 @@
   .notice { background: var(--card); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 18px; line-height: 1.8; }
   .notice h2 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
   .notice p { color: var(--text-dim); font-size: 13px; margin-bottom: 10px; }
+  .process { margin: 14px 0 4px; padding-left: 18px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+  .process li { margin: 4px 0; }
   .status { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 16px; }
   .stat { background: rgba(255,255,255,0.05); border-radius: 14px; padding: 12px; }
   .stat .label { color: var(--text-dim); font-size: 11px; margin-bottom: 4px; }
@@ -56,18 +58,24 @@
   <header class="header">
     <span class="ball">⚽</span>
     <h1>2026 世界杯每日胜负预测</h1>
-    <div class="subtitle">每日赛前自动更新 · 胜平负概率 / 晋级预测 / 风险提示</div>
+    <div class="subtitle">按 FIFA 官方比赛日抓取 · 转换北京时间 · 开赛前完成预测</div>
   </header>
   <div class="tricolor-bar"></div>
   <section class="notice">
     <h2>页面已就绪，等待每日预测自动写入</h2>
-    <p>该页面将作为“每日比赛胜负预测”的固定展示地址。自动化任务运行后，可在此更新当天比赛列表、胜平负概率、推荐结果、关键依据和冷门风险。</p>
-    <p>如果当天无 2026 世界杯比赛，将展示“今日无世界杯比赛”以及可核验的下一比赛日信息。</p>
+    <p>该页面将作为“每日比赛胜负预测”的固定展示地址。自动化任务不会简单按北京时间当天筛选比赛，而是先获取 FIFA 官网/官方赛事页定义的比赛日赛程。</p>
+    <p>由于美加墨世界杯存在时差，北美当地比赛日的部分比赛会落在北京时间次日凌晨或上午；页面会统一展示官方比赛日，并把每场开赛时间转换为北京时间。</p>
+    <ol class="process">
+      <li>先核验 FIFA 官方比赛日与当天比赛列表。</li>
+      <li>再把赛地当地开赛时间转换为北京时间。</li>
+      <li>过滤已开赛/已结束比赛，只在开赛前输出预测。</li>
+      <li>若临近开赛不足 60 分钟，会标注数据快速变化风险。</li>
+    </ol>
     <div class="status">
-      <div class="stat"><div class="label">更新频率</div><div class="value">每日 09:00</div></div>
-      <div class="stat"><div class="label">页面路径</div><div class="value">/daily/</div></div>
-      <div class="stat"><div class="label">数据原则</div><div class="value">不编造</div></div>
-      <div class="stat"><div class="label">置信度</div><div class="value">随数据源动态</div></div>
+      <div class="stat"><div class="label">更新频率</div><div class="value">每日 20:30</div></div>
+      <div class="stat"><div class="label">赛程口径</div><div class="value">官方比赛日</div></div>
+      <div class="stat"><div class="label">时间展示</div><div class="value">北京时间</div></div>
+      <div class="stat"><div class="label">预测窗口</div><div class="value">开赛前</div></div>
     </div>
   </section>
   <footer class="footer">
