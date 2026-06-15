@@ -5,83 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>2026美加墨世界杯 · 每日比赛胜负预测</title>
 <style>
-  :root {
-    --bg: #0c1628;
-    --card: #131e36;
-    --card-hover: #1a2a4a;
-    --accent: #E61D25;
-    --accent2: #3CAC3B;
-    --accent3: #2A398D;
-    --text: #f0f2f5;
-    --text-dim: #8899b0;
-    --bar-gold: linear-gradient(90deg, #E61D25, #ff4d55);
-    --bar-silver: linear-gradient(90deg, #2A398D, #4a60c8);
-    --bar-bronze: linear-gradient(90deg, #3CAC3B, #60d060);
-    --bar-elite: linear-gradient(90deg, #E61D25, #2A398D);
-    --bar-mid: linear-gradient(90deg, #3CAC3B, #2A398D);
-    --bar-low: linear-gradient(90deg, #5a6880, #3a4560);
-    --tier1: #E61D25;
-    --tier2: #2A398D;
-    --tier3: #3CAC3B;
-    --tier4: #FFC72C;
-    --tier5: #7c8ba0;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; overflow-x: hidden; }
-  .bg-decor { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-  .bg-decor::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 10%, rgba(230,29,37,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(60,172,59,0.06) 0%, transparent 50%), radial-gradient(circle at 50% 60%, rgba(42,57,141,0.06) 0%, transparent 50%); }
-  .container { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; padding: 18px 16px 40px; }
-  .back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 13px; padding: 8px 0; }
-  .header { text-align: center; padding: 24px 0 20px; }
-  .ball { font-size: 50px; display: block; animation: float 3s ease-in-out infinite; }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  h1 { font-size: 25px; font-weight: 850; margin: 10px 0 6px; background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .subtitle { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
-  .tricolor-bar { height: 3px; background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%); border-radius: 2px; margin: 16px 0; }
-  .notice { background: var(--card); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 18px; line-height: 1.8; }
-  .notice h2 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
-  .notice p { color: var(--text-dim); font-size: 13px; margin-bottom: 10px; }
-  .process { margin: 14px 0 4px; padding-left: 18px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
-  .process li { margin: 4px 0; }
-  .status { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 16px; }
-  .stat { background: rgba(255,255,255,0.05); border-radius: 14px; padding: 12px; }
-  .stat .label { color: var(--text-dim); font-size: 11px; margin-bottom: 4px; }
-  .stat .value { color: var(--accent); font-size: 15px; font-weight: 750; }
-  .footer { text-align: center; color: var(--text-dim); font-size: 11px; line-height: 1.8; padding: 24px 0 0; }
-  .highlight { color: var(--accent); font-weight: 700; }
+  :root { --bg:#0c1628; --card:#131e36; --card2:#182644; --accent:#E61D25; --accent2:#3CAC3B; --accent3:#2A398D; --text:#f0f2f5; --text-dim:#8899b0; --warn:#FFC72C; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { min-height:100vh; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif; overflow-x:hidden; }
+  .bg-decor { position:fixed; inset:0; pointer-events:none; z-index:0; }
+  .bg-decor::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 20% 10%, rgba(230,29,37,.08) 0%, transparent 50%),radial-gradient(circle at 80% 30%, rgba(60,172,59,.06) 0%, transparent 50%),radial-gradient(circle at 50% 60%, rgba(42,57,141,.06) 0%, transparent 50%); }
+  .container { position:relative; z-index:1; max-width:620px; margin:0 auto; padding:18px 16px 40px; }
+  .back { display:inline-flex; align-items:center; gap:6px; color:var(--text-dim); text-decoration:none; font-size:13px; padding:8px 0; }
+  .header { text-align:center; padding:24px 0 20px; }
+  .ball { font-size:50px; display:block; animation:float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  h1 { font-size:25px; font-weight:850; margin:10px 0 6px; background:linear-gradient(135deg,#E61D25,#2A398D,#3CAC3B); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .subtitle { font-size:13px; color:var(--text-dim); line-height:1.7; }
+  .tricolor-bar { height:3px; background:linear-gradient(90deg,#E61D25 33%,#2A398D 33% 66%,#3CAC3B 66%); border-radius:2px; margin:16px 0; }
+  .notice,.summary,.match-card { background:var(--card); border:1px solid rgba(255,255,255,.07); border-radius:18px; padding:16px; margin-bottom:12px; }
+  .notice { color:var(--text-dim); font-size:13px; line-height:1.8; }
+  .notice strong { color:var(--text); }
+  .summary { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .stat { background:rgba(255,255,255,.05); border-radius:14px; padding:12px; }
+  .stat .label { color:var(--text-dim); font-size:11px; margin-bottom:4px; }
+  .stat .value { color:var(--accent); font-size:15px; font-weight:750; }
+  .section-title { font-size:15px; font-weight:800; margin:18px 0 10px; display:flex; align-items:center; gap:8px; }
+  .section-title::after { content:''; height:1px; background:rgba(255,255,255,.1); flex:1; }
+  .match-card { background:linear-gradient(180deg,var(--card),var(--card2)); }
+  .match-top { display:flex; justify-content:space-between; gap:10px; color:var(--text-dim); font-size:11px; margin-bottom:12px; }
+  .teams { display:grid; grid-template-columns:1fr 38px 1fr; gap:10px; align-items:center; text-align:center; margin-bottom:14px; }
+  .teams b { display:block; font-size:20px; } .teams small { display:block; color:var(--text-dim); font-size:11px; margin-top:3px; } .teams > span { color:var(--warn); font-weight:800; }
+  .time-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:14px; }
+  .time-grid div { background:rgba(255,255,255,.05); border-radius:10px; padding:8px 6px; text-align:center; } .time-grid span { color:var(--text-dim); font-size:10px; display:block; } .time-grid b { font-size:11px; display:block; margin-top:3px; }
+  .prob-row { display:grid; grid-template-columns:72px 1fr; align-items:center; gap:10px; margin:8px 0; font-size:12px; color:var(--text-dim); }
+  .prob-row div { height:9px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden; } .prob-row span { display:block; height:100%; border-radius:99px; background:linear-gradient(90deg,#E61D25,#ff5960); } .prob-row.draw span { background:linear-gradient(90deg,#2A398D,#6070d8); } .prob-row.away span { background:linear-gradient(90deg,#3CAC3B,#60d060); }
+  .pick { margin:12px 0 8px; font-weight:800; color:var(--accent); display:flex; justify-content:space-between; gap:10px; } .pick em { font-style:normal; color:var(--warn); font-size:12px; }
+  p { color:var(--text-dim); font-size:12px; line-height:1.7; } .data-note { margin-top:6px; color:#aab5c5; }
+  .footer { text-align:center; color:var(--text-dim); font-size:11px; line-height:1.8; padding:24px 0 0; } .highlight { color:var(--accent); font-weight:700; }
+  @media (max-width:520px) { .summary,.time-grid { grid-template-columns:repeat(2,1fr); } .teams b { font-size:18px; } }
 </style>
 </head>
 <body>
 <div class="bg-decor"></div>
 <main class="container">
   <a class="back" href="../">← 返回预测中心</a>
-  <header class="header">
-    <span class="ball">⚽</span>
-    <h1>2026 世界杯每日胜负预测</h1>
-    <div class="subtitle">按 FIFA 官方比赛日抓取 · 转换北京时间 · 开赛前完成预测</div>
-  </header>
+  <header class="header"><span class="ball">⚽</span><h1>2026 世界杯每日胜负预测</h1><div class="subtitle">官方比赛日 2026.06.15 · 北京时间更新 2026.06.15 21:02</div></header>
   <div class="tricolor-bar"></div>
-  <section class="notice">
-    <h2>页面已就绪，等待每日预测自动写入</h2>
-    <p>该页面将作为“每日比赛胜负预测”的固定展示地址。自动化任务不会简单按北京时间当天筛选比赛，而是先获取 FIFA 官网/官方赛事页定义的比赛日赛程。</p>
-    <p>由于美加墨世界杯存在时差，北美当地比赛日的部分比赛会落在北京时间次日凌晨或上午；页面会统一展示官方比赛日，并把每场开赛时间转换为北京时间。</p>
-    <ol class="process">
-      <li>先核验 FIFA 官方比赛日与当天比赛列表。</li>
-      <li>再把赛地当地开赛时间转换为北京时间。</li>
-      <li>过滤已开赛/已结束比赛，只在开赛前输出预测。</li>
-      <li>若临近开赛不足 60 分钟，会标注数据快速变化风险。</li>
-    </ol>
-    <div class="status">
-      <div class="stat"><div class="label">更新频率</div><div class="value">每日 20:30</div></div>
-      <div class="stat"><div class="label">赛程口径</div><div class="value">官方比赛日</div></div>
-      <div class="stat"><div class="label">时间展示</div><div class="value">北京时间</div></div>
-      <div class="stat"><div class="label">预测窗口</div><div class="value">开赛前</div></div>
-    </div>
-  </section>
-  <footer class="footer">
-    数据来源：FIFA 官方赛程 / 公开赔率 / FIFA 排名 / 可核验比赛数据。<br>
-    <span class="highlight">仅供参考，不构成投注建议</span>
-  </footer>
+  <section class="notice"><strong>赛程口径：</strong>先按 FIFA 官方/公开可核验赛程页的举办地当地日期确认官方比赛日，再转换为北京时间展示；不按北京时间当天简单筛选。FIFA 官方动态页本次无法直接读取具体条目，已用 Goal 与 fifawc-2026 公开赛程交叉核验。若官方页面数据暂缺，已跳过此项修正。</section>
+  <section class="summary"><div class="stat"><div class="label">官方比赛日</div><div class="value">2026.06.15</div></div><div class="stat"><div class="label">可预测比赛</div><div class="value">4 场</div></div><div class="stat"><div class="label">时间展示</div><div class="value">北京时间</div></div></section>
+  <div class="section-title">今日赛前预测</div>
+  
+    <article class="match-card risk-low">
+      <div class="match-top"><span>Group H</span><span>Mercedes-Benz Stadium, Atlanta</span></div>
+      <div class="teams"><div><b>西班牙</b><small>Spain</small></div><span>vs</span><div><b>佛得角</b><small>Cape Verde</small></div></div>
+      <div class="time-grid"><div><span>官方比赛日</span><b>2026.06.15</b></div><div><span>当地开赛</span><b>2026-06-15 12:00</b></div><div><span>北京时间</span><b>2026-06-16 00:00</b></div><div><span>置信度</span><b>中</b></div></div>
+      <div class="prob-row"><label>主胜 78%</label><div><span style="width:78%"></span></div></div>
+      <div class="prob-row draw"><label>平局 15%</label><div><span style="width:15%"></span></div></div>
+      <div class="prob-row away"><label>客胜 7%</label><div><span style="width:7%"></span></div></div>
+      <div class="pick">推荐：主胜：西班牙 <em>冷门风险：低</em></div>
+      <p>西班牙 FIFA 排名第2且小组冠军赔率 -450；佛得角冠军赔率 +250000，小组冠军赔率 +6500。</p>
+      <p class="data-note">无可核验 1X2 赔率；使用 FanDuel 小组冠军赔率与冠军赔率作市场强弱参考。 近期战绩、伤停、历史交锋数据暂缺，已跳过此项修正。</p>
+    </article>
+    
+    <article class="match-card risk-mid">
+      <div class="match-top"><span>Group G</span><span>Lumen Field, Seattle</span></div>
+      <div class="teams"><div><b>比利时</b><small>Belgium</small></div><span>vs</span><div><b>埃及</b><small>Egypt</small></div></div>
+      <div class="time-grid"><div><span>官方比赛日</span><b>2026.06.15</b></div><div><span>当地开赛</span><b>2026-06-15 15:00</b></div><div><span>北京时间</span><b>2026-06-16 06:00</b></div><div><span>置信度</span><b>中</b></div></div>
+      <div class="prob-row"><label>主胜 58%</label><div><span style="width:58%"></span></div></div>
+      <div class="prob-row draw"><label>平局 25%</label><div><span style="width:25%"></span></div></div>
+      <div class="prob-row away"><label>客胜 17%</label><div><span style="width:17%"></span></div></div>
+      <div class="pick">推荐：主胜：比利时 <em>冷门风险：中</em></div>
+      <p>比利时 FIFA 排名第9、小组冠军赔率 -240；埃及 FIFA 排名第29、小组冠军赔率 +400。</p>
+      <p class="data-note">无可核验 1X2 赔率；使用 FanDuel 小组冠军赔率与冠军赔率作市场强弱参考。 近期战绩、伤停、历史交锋数据暂缺，已跳过此项修正。</p>
+    </article>
+    
+    <article class="match-card risk-mid">
+      <div class="match-top"><span>Group H</span><span>Hard Rock Stadium, Miami</span></div>
+      <div class="teams"><div><b>沙特</b><small>Saudi Arabia</small></div><span>vs</span><div><b>乌拉圭</b><small>Uruguay</small></div></div>
+      <div class="time-grid"><div><span>官方比赛日</span><b>2026.06.15</b></div><div><span>当地开赛</span><b>2026-06-15 18:00</b></div><div><span>北京时间</span><b>2026-06-16 06:00</b></div><div><span>置信度</span><b>中</b></div></div>
+      <div class="prob-row"><label>主胜 12%</label><div><span style="width:12%"></span></div></div>
+      <div class="prob-row draw"><label>平局 22%</label><div><span style="width:22%"></span></div></div>
+      <div class="prob-row away"><label>客胜 66%</label><div><span style="width:66%"></span></div></div>
+      <div class="pick">推荐：客胜：乌拉圭 <em>冷门风险：中</em></div>
+      <p>乌拉圭 FIFA 排名第16且为世界杯历史冠军；沙特 FIFA 排名第61，小组冠军赔率 +4000。</p>
+      <p class="data-note">无可核验 1X2 赔率；使用 FanDuel 小组冠军赔率与冠军赔率作市场强弱参考。 近期战绩、伤停、历史交锋数据暂缺，已跳过此项修正。</p>
+    </article>
+    
+    <article class="match-card risk-high">
+      <div class="match-top"><span>Group G</span><span>SoFi Stadium, Los Angeles</span></div>
+      <div class="teams"><div><b>伊朗</b><small>IR Iran</small></div><span>vs</span><div><b>新西兰</b><small>New Zealand</small></div></div>
+      <div class="time-grid"><div><span>官方比赛日</span><b>2026.06.15</b></div><div><span>当地开赛</span><b>2026-06-15 21:00</b></div><div><span>北京时间</span><b>2026-06-16 12:00</b></div><div><span>置信度</span><b>低</b></div></div>
+      <div class="prob-row"><label>主胜 55%</label><div><span style="width:55%"></span></div></div>
+      <div class="prob-row draw"><label>平局 27%</label><div><span style="width:27%"></span></div></div>
+      <div class="prob-row away"><label>客胜 18%</label><div><span style="width:18%"></span></div></div>
+      <div class="pick">推荐：主胜：伊朗 <em>冷门风险：中高</em></div>
+      <p>伊朗 FIFA 排名第20，新西兰排名第85；但两队冠军市场均非热门且缺少 1X2 赔率/阵容信息。</p>
+      <p class="data-note">无可核验 1X2 赔率；使用 FanDuel 小组冠军赔率与冠军赔率作市场强弱参考。 近期战绩、伤停、历史交锋数据暂缺，已跳过此项修正。</p>
+    </article>
+    
+  <footer class="footer">数据来源：FIFA 官方页面检索入口、Goal 赛程、fifawc-2026 赛程、Sports Illustrated/FanDuel 小组冠军与冠军赔率、FIFA 排名。<br>缺失的 1X2 赔率、近期战绩、伤停与历史交锋不补造；概率为归一化模型估计。<br><span class="highlight">仅供参考，不构成投注建议</span></footer>
 </main>
 </body>
 </html>
