@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>2026美加墨世界杯 · 每日比赛胜负预测</title>
+<style>
+  :root {
+    --bg: #0c1628;
+    --card: #131e36;
+    --card-hover: #1a2a4a;
+    --accent: #E61D25;
+    --accent2: #3CAC3B;
+    --accent3: #2A398D;
+    --text: #f0f2f5;
+    --text-dim: #8899b0;
+    --bar-gold: linear-gradient(90deg, #E61D25, #ff4d55);
+    --bar-silver: linear-gradient(90deg, #2A398D, #4a60c8);
+    --bar-bronze: linear-gradient(90deg, #3CAC3B, #60d060);
+    --bar-elite: linear-gradient(90deg, #E61D25, #2A398D);
+    --bar-mid: linear-gradient(90deg, #3CAC3B, #2A398D);
+    --bar-low: linear-gradient(90deg, #5a6880, #3a4560);
+    --tier1: #E61D25;
+    --tier2: #2A398D;
+    --tier3: #3CAC3B;
+    --tier4: #FFC72C;
+    --tier5: #7c8ba0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; overflow-x: hidden; }
+  .bg-decor { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .bg-decor::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 10%, rgba(230,29,37,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(60,172,59,0.06) 0%, transparent 50%), radial-gradient(circle at 50% 60%, rgba(42,57,141,0.06) 0%, transparent 50%); }
+  .container { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; padding: 18px 16px 40px; }
+  .back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 13px; padding: 8px 0; }
+  .header { text-align: center; padding: 24px 0 20px; }
+  .ball { font-size: 50px; display: block; animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  h1 { font-size: 25px; font-weight: 850; margin: 10px 0 6px; background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .subtitle { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+  .tricolor-bar { height: 3px; background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%); border-radius: 2px; margin: 16px 0; }
+  .notice { background: var(--card); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 18px; line-height: 1.8; }
+  .notice h2 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
+  .notice p { color: var(--text-dim); font-size: 13px; margin-bottom: 10px; }
+  .status { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 16px; }
+  .stat { background: rgba(255,255,255,0.05); border-radius: 14px; padding: 12px; }
+  .stat .label { color: var(--text-dim); font-size: 11px; margin-bottom: 4px; }
+  .stat .value { color: var(--accent); font-size: 15px; font-weight: 750; }
+  .footer { text-align: center; color: var(--text-dim); font-size: 11px; line-height: 1.8; padding: 24px 0 0; }
+  .highlight { color: var(--accent); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="bg-decor"></div>
+<main class="container">
+  <a class="back" href="../">← 返回预测中心</a>
+  <header class="header">
+    <span class="ball">⚽</span>
+    <h1>2026 世界杯每日胜负预测</h1>
+    <div class="subtitle">每日赛前自动更新 · 胜平负概率 / 晋级预测 / 风险提示</div>
+  </header>
+  <div class="tricolor-bar"></div>
+  <section class="notice">
+    <h2>页面已就绪，等待每日预测自动写入</h2>
+    <p>该页面将作为“每日比赛胜负预测”的固定展示地址。自动化任务运行后，可在此更新当天比赛列表、胜平负概率、推荐结果、关键依据和冷门风险。</p>
+    <p>如果当天无 2026 世界杯比赛，将展示“今日无世界杯比赛”以及可核验的下一比赛日信息。</p>
+    <div class="status">
+      <div class="stat"><div class="label">更新频率</div><div class="value">每日 09:00</div></div>
+      <div class="stat"><div class="label">页面路径</div><div class="value">/daily/</div></div>
+      <div class="stat"><div class="label">数据原则</div><div class="value">不编造</div></div>
+      <div class="stat"><div class="label">置信度</div><div class="value">随数据源动态</div></div>
+    </div>
+  </section>
+  <footer class="footer">
+    数据来源：FIFA 官方赛程 / 公开赔率 / FIFA 排名 / 可核验比赛数据。<br>
+    <span class="highlight">仅供参考，不构成投注建议</span>
+  </footer>
+</main>
+</body>
+</html>
