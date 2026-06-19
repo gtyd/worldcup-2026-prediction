@@ -93,15 +93,15 @@
   <div class="header">
     <span class="trophy">🏆</span>
     <h1>2026 美加墨世界杯夺冠预测</h1>
-    <div class="subtitle"><span class="dot"></span>基于多源赔率 + 基本面修正 · 数据更新至 2026.06.17</div>
+    <div class="subtitle"><span class="dot"></span>基于多源赔率 + 基本面修正 · 数据更新至 2026.06.19</div>
   </div>
   <div class="overview">
     <div class="stat-card"><div class="label">参赛球队</div><div class="value">48</div></div>
     <div class="stat-card"><div class="label">最大热门</div><div class="value small">🇫🇷 法国</div></div>
-    <div class="stat-card"><div class="label">赔率最低</div><div class="value small">6.00</div></div>
+    <div class="stat-card"><div class="label">赔率最低</div><div class="value small">4.62</div></div>
   </div>
   <div class="tricolor-bar"></div>
-  <div class="note">本页不补造缺失数据：赔率来源为懂球帝/英国机构 48 队完整赔率（2026-06-10）+ CupIndex 最佳赔率（Bet365/Pinnacle/William Hill/Betfair/Ladbrokes, 2026-06-17），取可用来源均值；近期10场胜率数据暂缺，已跳过此项修正。赔率变动基于本次 vs 2026-06-16 champion 页 teamsData 缓存。</div>
+  <div class="note">本页不补造缺失数据：赔率来源为 Bet365（2026-06-18 小组赛首轮后即时盘）+ BetMGM（2026-06-18 美式赔率，已换算为十进制），对每队取可用来源均值（2 源或 1 源），未编造缺失博彩公司报价；近期10场胜率数据暂缺，已跳过此项修正。赔率变动基于本次 vs 2026-06-17 champion 页 teamsData 缓存。</div>
   <div class="search-bar"><span class="search-icon">🔍</span><input type="text" id="searchInput" placeholder="搜索球队..."><button class="clear-btn" id="clearBtn">✕</button></div>
   <div class="section-title">夺冠梯队</div>
   <div class="tier-tags" id="tierTags"><span class="tier-tag t1 active" data-tier="all">全部</span><span class="tier-tag t1" data-tier="1">🔴 第一梯队</span><span class="tier-tag t2" data-tier="2">🔵 第二梯队</span><span class="tier-tag t3" data-tier="3">🟢 第三梯队</span><span class="tier-tag t4" data-tier="4">⚽ 黑马梯队</span><span class="tier-tag t5" data-tier="5">🌍 其他球队</span></div>
@@ -109,65 +109,65 @@
   <div class="section-subtitle">概率基于赔率换算 + FIFA 排名/历史冠军修正 <span class="host-tag">🇺🇸🇨🇦🇲🇽</span></div>
   <div class="team-list" id="teamList"></div>
   <div class="no-result" id="noResult" style="display:none"><span class="icon">🔍</span>没有找到匹配的球队</div>
-  <div class="footer"><div class="divider"></div>数据来源：懂球帝/英国机构 48 队冠军赔率（2026-06-10）、CupIndex 最佳赔率（Bet365/Pinnacle/William Hill/Betfair/Ladbrokes, 2026-06-17）。<br>隐式概率 = 1/赔率，经多因子修正与归一化处理；FIFA 排名来源 whereig.com（2026-06-11）。<br>📉 赔率下降 = 概率上升 &nbsp; | &nbsp; 📈 赔率上升 = 概率下降<br><span class="highlight">仅供参考，不构成投注建议</span></div>
+  <div class="footer"><div class="divider"></div>数据来源：Bet365 冠军赔率（2026-06-18 小组赛首轮后即时盘）、BetMGM 冠军赔率（2026-06-18 美式赔率换算）。<br>隐式概率 = 1/赔率，经多因子修正与归一化处理；FIFA 排名来源 whereig.com（2026-06-11）。<br>📉 赔率下降 = 概率上升 &nbsp; | &nbsp; 📈 赔率上升 = 概率下降<br><span class="highlight">仅供参考，不构成投注建议</span></div>
 </div>
 <script>
 // ============ 数据定义 ============
 // 参赛队名单来源：FIFA/Wikipedia/公开赛程页核验的 2026 世界杯 48 队名单；本次自查 teamsData 正好 48 条。
-// 赔率来源：懂球帝/英国机构 48 队完整赔率（2026-06-10）、CupIndex 最佳赔率（Bet365/Pinnacle/William Hill/Betfair/Ladbrokes, 2026-06-17）。
-// 对每队仅取可核验来源均值；来源未披露逐家分项时仅纳入公开综合/最佳赔率，未编造缺失博彩公司报价。
+// 赔率来源：Bet365（2026-06-18 小组赛首轮后即时盘，15 队公开数据）+ BetMGM（2026-06-18 美式赔率换算，覆盖 48 队）。
+// 对每队仅取可核验来源均值；未编造缺失博彩公司报价。
 // FIFA排名来源：whereig.com / FIFA 男子世界排名（2026-06-11）；未列出球队不使用排名修正。
 // 近期10场胜率：数据暂缺，已跳过此项修正。
-// 赔率变动：本次 vs 2026-06-16 champion 页 teamsData 缓存。
+// 赔率变动：本次 vs 2026-06-17 champion 页 teamsData 缓存。
 const teamsData = [
-  {name:"法国",odds:6.0,flag:"🇫🇷",tier:1,change:7.0,sources:2},
-  {name:"西班牙",odds:7.0,flag:"🇪🇸",tier:1,change:2.8,sources:2},
-  {name:"巴西",odds:7.0,flag:"🇧🇷",tier:1,change:-27.8,sources:2},
-  {name:"阿根廷",odds:7.25,flag:"🇦🇷",tier:1,change:-9.6,sources:2},
-  {name:"英格兰",odds:8.25,flag:"🏴",tier:1,change:9.3,sources:2},
-  {name:"葡萄牙",odds:9.0,flag:"🇵🇹",tier:1,change:-17.1,sources:1},
-  {name:"德国",odds:13.5,flag:"🇩🇪",tier:2,change:11.0,sources:2},
-  {name:"荷兰",odds:21.0,flag:"🇳🇱",tier:3,change:26.6,sources:1},
-  {name:"挪威",odds:26.0,flag:"🇳🇴",tier:3,change:-32.3,sources:1},
-  {name:"比利时",odds:34.0,flag:"🇧🇪",tier:3,change:17.5,sources:1},
-  {name:"哥伦比亚",odds:34.0,flag:"🇨🇴",tier:3,change:-35.4,sources:1},
-  {name:"摩洛哥",odds:51.0,flag:"🇲🇦",tier:4,change:-5.1,sources:1},
-  {name:"日本",odds:51.0,flag:"🇯🇵",tier:4,change:1.7,sources:1},
-  {name:"乌拉圭",odds:67.0,flag:"🇺🇾",tier:4,change:-17.7,sources:1},
-  {name:"美国",odds:67.0,flag:"🇺🇸",tier:4,change:94.1,sources:1},
-  {name:"墨西哥",odds:67.0,flag:"🇲🇽",tier:4,change:18.7,sources:1},
-  {name:"瑞士",odds:81.0,flag:"🇨🇭",tier:4,change:-12.0,sources:1},
-  {name:"克罗地亚",odds:81.0,flag:"🇭🇷",tier:4,change:-14.5,sources:1},
-  {name:"土耳其",odds:81.0,flag:"🇹🇷",tier:4,change:-46.6,sources:1},
-  {name:"厄瓜多尔",odds:101.0,flag:"🇪🇨",tier:5,change:-37.8,sources:1},
-  {name:"塞内加尔",odds:126.0,flag:"🇸🇳",tier:5,change:-10.3,sources:1},
-  {name:"瑞典",odds:126.0,flag:"🇸🇪",tier:5,change:-33.0,sources:1},
-  {name:"加拿大",odds:126.0,flag:"🇨🇦",tier:5,change:-44.1,sources:1},
-  {name:"奥地利",odds:151.0,flag:"🇦🇹",tier:5,change:-13.8,sources:1},
-  {name:"巴拉圭",odds:151.0,flag:"🇵🇾",tier:5,change:-65.2,sources:1},
-  {name:"苏格兰",odds:251.0,flag:"🏴",tier:5,change:-29.9,sources:1},
-  {name:"科特迪瓦",odds:301.0,flag:"🇨🇮",tier:5,change:68.2,sources:1},
-  {name:"埃及",odds:301.0,flag:"🇪🇬",tier:5,change:-7.5,sources:1},
-  {name:"捷克",odds:301.0,flag:"🇨🇿",tier:5,change:-62.4,sources:1},
-  {name:"波黑",odds:351.0,flag:"🇧🇦",tier:5,change:-4.5,sources:1},
-  {name:"加纳",odds:401.0,flag:"🇬🇭",tier:5,change:-36.8,sources:1},
-  {name:"阿尔及利亚",odds:401.0,flag:"🇩🇿",tier:5,change:-39.9,sources:1},
-  {name:"韩国",odds:401.0,flag:"🇰🇷",tier:5,change:-18.7,sources:1},
-  {name:"伊朗",odds:501.0,flag:"🇮🇷",tier:5,change:-66.6,sources:1},
-  {name:"突尼斯",odds:501.0,flag:"🇹🇳",tier:5,change:-75.0,sources:1},
-  {name:"澳大利亚",odds:501.0,flag:"🇦🇺",tier:5,change:-64.1,sources:1},
-  {name:"刚果民主共和国",odds:751.0,flag:"🇨🇩",tier:5,change:-50.0,sources:1},
-  {name:"南非",odds:1001.0,flag:"🇿🇦",tier:5,change:-55.5,sources:1},
-  {name:"沙特",odds:1001.0,flag:"🇸🇦",tier:5,change:-55.5,sources:1},
-  {name:"巴拿马",odds:1501.0,flag:"🇵🇦",tier:5,change:-33.3,sources:1},
-  {name:"伊拉克",odds:1501.0,flag:"🇮🇶",tier:5,change:-14.3,sources:1},
-  {name:"乌兹别克斯坦",odds:1501.0,flag:"🇺🇿",tier:5,change:-33.3,sources:1},
-  {name:"卡塔尔",odds:2001.0,flag:"🇶🇦",tier:5,change:-11.1,sources:1},
-  {name:"佛得角",odds:2001.0,flag:"🇨🇻",tier:5,change:-11.1,sources:1},
-  {name:"新西兰",odds:2501.0,flag:"🇳🇿",tier:5,change:11.1,sources:1},
-  {name:"约旦",odds:2501.0,flag:"🇯🇴",tier:5,change:11.1,sources:1},
-  {name:"海地",odds:2501.0,flag:"🇭🇹",tier:5,change:11.1,sources:1},
-  {name:"库拉索",odds:3501.0,flag:"🇨🇼",tier:5,change:55.6,sources:1}
+  {name:"乌兹别克斯坦",odds:1001.00,flag:"🇺🇿",tier:1,change:-33.3,sources:1},
+  {name:"乌拉圭",odds:67.00,flag:"🇺🇾",tier:1,change:+0.0,sources:1},
+  {name:"伊拉克",odds:1001.00,flag:"🇮🇶",tier:1,change:-33.3,sources:1},
+  {name:"伊朗",odds:501.00,flag:"🇮🇷",tier:1,change:+0.0,sources:1},
+  {name:"佛得角",odds:1001.00,flag:"🇨🇻",tier:1,change:-50.0,sources:1},
+  {name:"克罗地亚",odds:101.00,flag:"🇭🇷",tier:1,change:+24.7,sources:1},
+  {name:"刚果民主共和国",odds:301.00,flag:"🇨🇩",tier:1,change:-59.9,sources:1},
+  {name:"加拿大",odds:81.00,flag:"🇨🇦",tier:1,change:-35.7,sources:1},
+  {name:"加纳",odds:301.00,flag:"🇬🇭",tier:1,change:-24.9,sources:1},
+  {name:"南非",odds:1001.00,flag:"🇿🇦",tier:1,change:+0.0,sources:1},
+  {name:"卡塔尔",odds:1001.00,flag:"🇶🇦",tier:1,change:-50.0,sources:1},
+  {name:"厄瓜多尔",odds:101.00,flag:"🇪🇨",tier:1,change:+0.0,sources:1},
+  {name:"哥伦比亚",odds:41.00,flag:"🇨🇴",tier:1,change:+20.6,sources:2},
+  {name:"土耳其",odds:126.00,flag:"🇹🇷",tier:1,change:+55.6,sources:1},
+  {name:"埃及",odds:201.00,flag:"🇪🇬",tier:1,change:-33.2,sources:1},
+  {name:"塞内加尔",odds:101.00,flag:"🇸🇳",tier:1,change:-19.8,sources:1},
+  {name:"墨西哥",odds:59.00,flag:"🇲🇽",tier:1,change:-11.9,sources:2},
+  {name:"奥地利",odds:101.00,flag:"🇦🇹",tier:1,change:-33.1,sources:1},
+  {name:"巴拉圭",odds:201.00,flag:"🇵🇾",tier:1,change:+33.1,sources:1},
+  {name:"巴拿马",odds:1001.00,flag:"🇵🇦",tier:1,change:-33.3,sources:1},
+  {name:"巴西",odds:11.50,flag:"🇧🇷",tier:1,change:+64.3,sources:2},
+  {name:"库拉索",odds:2501.00,flag:"🇨🇼",tier:1,change:-28.6,sources:1},
+  {name:"德国",odds:14.00,flag:"🇩🇪",tier:1,change:+3.7,sources:2},
+  {name:"挪威",odds:27.50,flag:"🇳🇴",tier:1,change:+5.8,sources:2},
+  {name:"捷克",odds:301.00,flag:"🇨🇿",tier:1,change:+0.0,sources:1},
+  {name:"摩洛哥",odds:37.50,flag:"🇲🇦",tier:1,change:-26.5,sources:2},
+  {name:"新西兰",odds:501.00,flag:"🇳🇿",tier:1,change:-80.0,sources:1},
+  {name:"日本",odds:51.00,flag:"🇯🇵",tier:1,change:+0.0,sources:2},
+  {name:"比利时",odds:41.00,flag:"🇧🇪",tier:1,change:+20.6,sources:2},
+  {name:"沙特",odds:751.00,flag:"🇸🇦",tier:1,change:-25.0,sources:1},
+  {name:"法国",odds:4.62,flag:"🇫🇷",tier:1,change:-22.9,sources:2},
+  {name:"波黑",odds:401.00,flag:"🇧🇦",tier:1,change:+14.2,sources:1},
+  {name:"海地",odds:2501.00,flag:"🇭🇹",tier:1,change:+0.0,sources:1},
+  {name:"澳大利亚",odds:101.00,flag:"🇦🇺",tier:1,change:-79.8,sources:1},
+  {name:"瑞典",odds:81.00,flag:"🇸🇪",tier:1,change:-35.7,sources:1},
+  {name:"瑞士",odds:41.00,flag:"🇨🇭",tier:1,change:-49.4,sources:1},
+  {name:"科特迪瓦",odds:101.00,flag:"🇨🇮",tier:1,change:-66.4,sources:1},
+  {name:"突尼斯",odds:751.00,flag:"🇹🇳",tier:1,change:+49.9,sources:1},
+  {name:"约旦",odds:1001.00,flag:"🇯🇴",tier:1,change:-60.0,sources:1},
+  {name:"美国",odds:37.50,flag:"🇺🇸",tier:1,change:-44.0,sources:2},
+  {name:"苏格兰",odds:151.00,flag:"🏴",tier:1,change:-39.8,sources:1},
+  {name:"英格兰",odds:6.75,flag:"🏴",tier:1,change:-18.2,sources:2},
+  {name:"荷兰",odds:21.00,flag:"🇳🇱",tier:1,change:+0.0,sources:2},
+  {name:"葡萄牙",odds:10.00,flag:"🇵🇹",tier:1,change:+11.1,sources:2},
+  {name:"西班牙",odds:6.50,flag:"🇪🇸",tier:1,change:-7.1,sources:2},
+  {name:"阿尔及利亚",odds:501.00,flag:"🇩🇿",tier:1,change:+24.9,sources:1},
+  {name:"阿根廷",odds:9.00,flag:"🇦🇷",tier:1,change:+24.1,sources:2},
+  {name:"韩国",odds:201.00,flag:"🇰🇷",tier:1,change:-49.9,sources:1}
 ];
 const fifaRanks = {"阿根廷":1,"西班牙":2,"法国":3,"英格兰":4,"葡萄牙":5,"巴西":6,"摩洛哥":7,"荷兰":8,"比利时":9,"德国":10,"克罗地亚":11,"哥伦比亚":13,"墨西哥":14,"塞内加尔":15,"乌拉圭":16,"美国":17,"日本":18,"瑞士":19,"伊朗":20,"土耳其":22,"厄瓜多尔":23,"奥地利":24,"韩国":25,"澳大利亚":27,"阿尔及利亚":28,"埃及":29,"加拿大":30,"挪威":31,"科特迪瓦":33,"巴拿马":34,"瑞典":38,"捷克":40,"巴拉圭":41,"苏格兰":42,"突尼斯":45,"刚果民主共和国":46,"乌兹别克斯坦":50,"南非":60,"沙特":61,"波黑":64,"加纳":73,"库拉索":82,"海地":83,"新西兰":85,"伊拉克":89,"约旦":92,"卡塔尔":96,"佛得角":100};
 const formerChampions = new Set(["阿根廷", "巴西", "英格兰", "法国", "德国", "西班牙", "乌拉圭"]);
