@@ -18,45 +18,44 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
   .bg-decor { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events: none; z-index:0; }
-  .bg-decor::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 10%, rgba(230,29,37,0.06) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(60,172,59,0.05) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(42,57,141,0.05) 0%, transparent 50%); }
-  .container { position: relative; z-index:1; max-width: 560px; margin: 0 auto; padding: 16px 16px 40px; }
+  .bg-decor::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 10%, rgba(230,29,37,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(60,172,59,0.06) 0%, transparent 50%), radial-gradient(circle at 50% 60%, rgba(42,57,141,0.06) 0%, transparent 50%); }
+  .container { position: relative; z-index:1; max-width: 500px; margin: 0 auto; padding: 16px 16px 40px; }
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 13px; padding: 8px 0; }
   .header { text-align: center; padding: 24px 0 20px; }
-  .header .icon { font-size: 48px; display: block; animation: bounce 2s ease-in-out infinite; }
-  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-  .header h1 { font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 8px 0 4px; }
+  .header .icon { font-size: 40px; }
+  .header h1 { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 8px 0 4px; }
   .header .subtitle { font-size: 13px; color: var(--text-dim); display: flex; align-items:center; justify-content:center; gap:6px; flex-wrap: wrap; }
   .header .subtitle .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation: pulse 1.5s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
   .tricolor-bar { height: 3px; background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%); border-radius: 2px; margin: 16px 0; }
-  .matchday-header { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; text-align: center; }
-  .matchday-header .md-date { font-size: 18px; font-weight: 700; color: var(--accent); }
+  .matchday-header { background: var(--card); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.06); }
+  .matchday-header .md-date { font-size: 15px; font-weight: 700; color: var(--text); }
   .matchday-header .md-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
-  .tz-note { background: rgba(230,29,37,0.08); border-left: 3px solid var(--accent); color: var(--text-dim); border-radius: 0 10px 10px 0; padding: 10px 12px; font-size: 11px; line-height: 1.6; margin-bottom: 16px; }
-  .match-card { background: var(--card); border-radius: 14px; padding: 16px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.06); }
-  .match-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .group-tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; color: #fff; background: linear-gradient(135deg, #2A398D, #4a60c8); }
-  .match-time { font-size: 13px; color: var(--text); font-weight: 600; flex:1; }
-  .conf-badge { padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
-  .match-teams { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-  .match-teams .team { text-align: center; flex: 1; }
-  .match-teams .team .flag { font-size: 28px; display: block; margin-bottom: 4px; }
-  .match-teams .team .name { font-size: 14px; font-weight: 600; }
-  .match-teams .vs { font-size: 16px; font-weight: 800; color: var(--text-dim); flex-shrink: 0; }
-  .match-info { display: flex; gap: 16px; font-size: 11px; color: var(--text-dim); margin-bottom: 12px; flex-wrap: wrap; }
-  .prob-bars { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+  .tz-note { font-size: 11px; color: var(--text-dim); background: rgba(255,255,255,0.03); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; line-height: 1.6; }
+  .match-card { background: var(--card); border-radius: 14px; padding: 16px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05); }
+  .match-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .group-tag { background: rgba(230,29,37,0.15); color: var(--accent); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+  .match-time { font-size: 12px; color: var(--text-dim); }
+  .conf-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px; }
+  .match-teams { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
+  .team { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .team .flag { font-size: 28px; }
+  .team .name { font-size: 14px; font-weight: 600; }
+  .vs { font-size: 13px; font-weight: 700; color: var(--text-dim); }
+  .match-info { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; font-size: 11px; color: var(--text-dim); justify-content: center; }
+  .prob-bars { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
   .prob-row { display: flex; align-items: center; gap: 8px; }
-  .prob-label { font-size: 11px; color: var(--text-dim); width: 32px; text-align: right; flex-shrink: 0; }
-  .prob-track { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
-  .prob-fill { height: 100%; border-radius: 4px; }
+  .prob-label { font-size: 12px; font-weight: 600; width: 32px; text-align: right; color: var(--text-dim); }
+  .prob-track { flex: 1; height: 14px; background: rgba(255,255,255,0.06); border-radius: 7px; overflow: hidden; }
+  .prob-fill { height: 100%; border-radius: 7px; transition: width 0.8s ease; }
   .home-fill { background: linear-gradient(90deg, #E61D25, #ff4d55); }
-  .draw-fill { background: linear-gradient(90deg, #2A398D, #5b6ec0); }
+  .draw-fill { background: linear-gradient(90deg, #2A398D, #4a60c8); }
   .away-fill { background: linear-gradient(90deg, #3CAC3B, #60d060); }
-  .prob-val { font-size: 12px; font-weight: 700; color: var(--text); width: 44px; text-align: right; flex-shrink: 0; }
-  .rec-row { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 8px; }
-  .rec-label { font-size: 11px; color: var(--text-dim); }
-  .rec-value { font-size: 16px; font-weight: 800; }
-  .context-note { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .prob-val { font-size: 13px; font-weight: 700; width: 48px; text-align: right; }
+  .rec-row { display: flex; justify-content: center; gap: 8px; align-items: center; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .rec-label { font-size: 12px; color: var(--text-dim); }
+  .rec-value { font-size: 15px; font-weight: 700; }
+  .context-note { font-size: 11px; color: var(--text-dim); margin-top: 8px; padding: 8px 10px; background: rgba(255,255,255,0.025); border-radius: 8px; line-height: 1.5; }
   .missing-note { font-size: 10px; color: #f59e0b; margin-top: 6px; padding: 6px 10px; background: rgba(245,158,11,0.08); border-radius: 8px; }
   .footer { text-align: center; padding: 24px 0; font-size: 11px; color: var(--text-dim); line-height: 1.8; }
   .footer .divider { width: 40px; height: 2px; background: rgba(255,255,255,0.1); margin: 0 auto 12px; border-radius: 1px; }
@@ -74,127 +73,124 @@
   <div class="header">
     <span class="icon">⚽</span>
     <h1>2026 世界杯每日胜负预测</h1>
-    <div class="subtitle"><span class="dot"></span>官方比赛日 2026.06.20 · 北京时间更新 2026.06.20 18:55</div>
+    <div class="subtitle"><span class="dot"></span>官方比赛日 2026.06.21 · 北京时间更新 2026.06.21 18:55</div>
   </div>
   <div class="tricolor-bar"></div>
   <div class="matchday-header">
-    <div class="md-date">📅 比赛日 2026.06.20（北美时间）</div>
-    <div class="md-sub">4 场比赛 · 全部未开赛 · 小组赛第2轮</div>
+    <div class="md-date">📅 比赛日 2026.06.21（北美时间）</div>
+    <div class="md-sub">4 场比赛 · 全部未开赛 · 小组赛第2轮（G组/H组）</div>
   </div>
-  <div class="tz-note">⏰ 时区说明：所有比赛时间为北美当地夏季时间（ET=UTC-4，CT=UTC-5，MT=UTC-6，PT=UTC-7）。北京时间 = ET + 12h。 当前北京时间 18:55 = 北美东部时间 06:55（开赛前）。本预测覆盖官方比赛日 4 场比赛。</div>
+  <div class="tz-note">⏰ 时区说明：所有比赛时间为北美东部夏令时间（ET=UTC-4）。北京时间 = ET + 12h。当前北京时间 18:55 = 北美东部时间 06:55（开赛前）。本预测覆盖官方比赛日 4 场比赛，均未开赛。</div>
   
     <div class="match-card">
       <div class="match-header">
-        <span class="group-tag">GF</span>
-        <span class="match-time">2026-06-20 23:00 BJT</span>
+        <span class="group-tag">GH</span>
+        <span class="match-time">2026-06-21 22:00 BJT</span>
         <span class="conf-badge" style="background:#22c55e20;color:#22c55e">🟢 置信度高</span>
       </div>
       <div class="match-teams">
-        <div class="team home"><span class="flag">🇳🇱</span><span class="name">荷兰</span></div>
+        <div class="team home"><span class="flag">🇪🇸</span><span class="name">西班牙</span></div>
         <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇸🇪</span><span class="name">瑞典</span></div>
+        <div class="team away"><span class="flag">🇸🇦</span><span class="name">沙特阿拉伯</span></div>
       </div>
       <div class="match-info">
-        <span>📍 休斯顿 NRG 体育场</span>
-        <span>🕐 2026-06-20 11:00 ET</span>
+        <span>📍 梅赛德斯-奔驰体育场，亚特兰大</span>
+        <span>🕐 2026-06-21 10:00 AM ET</span>
       </div>
       <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:56%"></div></div><span class="prob-val">56.0%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:23%"></div></div><span class="prob-val">23.5%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:20%"></div></div><span class="prob-val">20.5%</span></div>
+        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:88%"></div></div><span class="prob-val">87.8%</span></div>
+        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:9%"></div></div><span class="prob-val">8.9%</span></div>
+        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:3%"></div></div><span class="prob-val">3.4%</span></div>
       </div>
       <div class="rec-row">
         <span class="rec-label">推荐结果</span>
         <span class="rec-value" style="color:#22c55e">主胜</span>
       </div>
-      <div class="context-note">荷兰首轮 2-2 平日本，瑞典 5-1 胜突尼斯；瑞典取胜基本锁定出线，荷兰需反弹</div>
-      
+      <div class="context-note">西班牙首轮与佛得角战平积1分；沙特首轮与乌拉圭战平积1分；两队同积1分争出线主动权</div>
+      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（2026-06-21），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。</div>
     </div>
-
     <div class="match-card">
       <div class="match-header">
-        <span class="group-tag">GE</span>
-        <span class="match-time">2026-06-21 02:00 BJT</span>
+        <span class="group-tag">GG</span>
+        <span class="match-time">2026-06-22 01:00 BJT</span>
         <span class="conf-badge" style="background:#22c55e20;color:#22c55e">🟢 置信度高</span>
       </div>
       <div class="match-teams">
-        <div class="team home"><span class="flag">🇩🇪</span><span class="name">德国</span></div>
+        <div class="team home"><span class="flag">🇧🇪</span><span class="name">比利时</span></div>
         <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇨🇮</span><span class="name">科特迪瓦</span></div>
+        <div class="team away"><span class="flag">🇮🇷</span><span class="name">伊朗</span></div>
       </div>
       <div class="match-info">
-        <span>📍 多伦多体育场</span>
-        <span>🕐 2026-06-20 14:00 ET</span>
+        <span>📍 SoFi 体育场，洛杉矶</span>
+        <span>🕐 2026-06-21 1:00 PM ET</span>
       </div>
       <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:63%"></div></div><span class="prob-val">63.6%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:20%"></div></div><span class="prob-val">20.4%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:15%"></div></div><span class="prob-val">16.0%</span></div>
+        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:67%"></div></div><span class="prob-val">66.8%</span></div>
+        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:21%"></div></div><span class="prob-val">21.1%</span></div>
+        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:12%"></div></div><span class="prob-val">12.1%</span></div>
       </div>
       <div class="rec-row">
         <span class="rec-label">推荐结果</span>
         <span class="rec-value" style="color:#22c55e">主胜</span>
       </div>
-      <div class="context-note">德国首轮 7-1 大胜库拉索，科特迪瓦 1-0 胜厄瓜多尔；两队同积3分直接对话</div>
-      
+      <div class="context-note">比利时首轮与埃及战平积1分；伊朗首轮与新西兰战平积1分；同积1分争夺出线主动权</div>
+      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（2026-06-21），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。</div>
     </div>
-
     <div class="match-card">
       <div class="match-header">
-        <span class="group-tag">GE</span>
-        <span class="match-time">2026-06-21 06:00 BJT</span>
+        <span class="group-tag">GH</span>
+        <span class="match-time">2026-06-22 04:00 BJT</span>
         <span class="conf-badge" style="background:#22c55e20;color:#22c55e">🟢 置信度高</span>
       </div>
       <div class="match-teams">
-        <div class="team home"><span class="flag">🇪🇨</span><span class="name">厄瓜多尔</span></div>
+        <div class="team home"><span class="flag">🇺🇾</span><span class="name">乌拉圭</span></div>
         <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇨🇼</span><span class="name">库拉索</span></div>
+        <div class="team away"><span class="flag">🇨🇻</span><span class="name">佛得角</span></div>
       </div>
       <div class="match-info">
-        <span>📍 堪萨斯城体育场</span>
-        <span>🕐 2026-06-20 18:00 ET</span>
+        <span>📍 硬石体育场，迈阿密</span>
+        <span>🕐 2026-06-21 4:00 PM ET</span>
       </div>
       <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:85%"></div></div><span class="prob-val">85.6%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:10%"></div></div><span class="prob-val">10.2%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:4%"></div></div><span class="prob-val">4.2%</span></div>
+        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:66%"></div></div><span class="prob-val">65.7%</span></div>
+        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:23%"></div></div><span class="prob-val">22.8%</span></div>
+        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:11%"></div></div><span class="prob-val">11.4%</span></div>
       </div>
       <div class="rec-row">
         <span class="rec-label">推荐结果</span>
         <span class="rec-value" style="color:#22c55e">主胜</span>
       </div>
-      <div class="context-note">厄瓜多尔首轮 0-1 负科特迪瓦，库拉索 1-7 负德国；双方都急需积分保留晋级希望</div>
-      
+      <div class="context-note">乌拉圭首轮与沙特战平积1分急需取胜反弹；佛得角首轮与西班牙战平积1分但实力差距明显</div>
+      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（2026-06-21），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。</div>
     </div>
-
     <div class="match-card">
       <div class="match-header">
-        <span class="group-tag">GF</span>
-        <span class="match-time">2026-06-21 10:00 BJT</span>
+        <span class="group-tag">GG</span>
+        <span class="match-time">2026-06-22 07:00 BJT</span>
         <span class="conf-badge" style="background:#22c55e20;color:#22c55e">🟢 置信度高</span>
       </div>
       <div class="match-teams">
-        <div class="team home"><span class="flag">🇹🇳</span><span class="name">突尼斯</span></div>
+        <div class="team home"><span class="flag">🇳🇿</span><span class="name">新西兰</span></div>
         <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇯🇵</span><span class="name">日本</span></div>
+        <div class="team away"><span class="flag">🇪🇬</span><span class="name">埃及</span></div>
       </div>
       <div class="match-info">
-        <span>📍 蒙特雷 BBVA 体育场</span>
-        <span>🕐 2026-06-20 22:00 ET</span>
+        <span>📍 BC Place，温哥华</span>
+        <span>🕐 2026-06-21 7:00 PM ET</span>
       </div>
       <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:14%"></div></div><span class="prob-val">14.8%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:23%"></div></div><span class="prob-val">23.5%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:61%"></div></div><span class="prob-val">61.7%</span></div>
+        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:16%"></div></div><span class="prob-val">16.0%</span></div>
+        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:23%"></div></div><span class="prob-val">23.2%</span></div>
+        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:61%"></div></div><span class="prob-val">60.8%</span></div>
       </div>
       <div class="rec-row">
         <span class="rec-label">推荐结果</span>
         <span class="rec-value" style="color:#22c55e">客胜</span>
       </div>
-      <div class="context-note">突尼斯首轮 1-5 负瑞典，日本 2-2 平荷兰；日本需取胜争取出线主动权</div>
-      
+      <div class="context-note">新西兰首轮与伊朗战平积1分；埃及首轮与比利时战平积1分；均有出线机会</div>
+      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（2026-06-21），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。</div>
     </div>
-  <div class="footer"><div class="divider"></div>数据来源：Cleatz 多博彩公司赔率比较（DraftKings/FanDuel/BetMGM/BetRivers，2026-06-20）；FIFA 排名 whereig.com（2026-06-11）。<br>小组形势基于 fifawc-2026.com 首轮赛果。<br>📉 赔率下降 = 概率上升 &nbsp; | &nbsp; 📈 赔率上升 = 概率下降<br>伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。<br><span class="highlight">仅供参考，不构成投注建议</span></div>
+  <div class="footer"><div class="divider"></div>数据来源：cleatz 多博彩公司赔率比价（DraftKings/FanDuel/BetRivers/BetMGM，2026.06.21）；FIFA 排名 whereig.com（2026-06-11）。小组形势参照 cleatz 积分榜。<br>📉 赔率下降 = 概率上升 &nbsp; | &nbsp; 📈 赔率上升 = 概率下降<br>伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。<br><span class="highlight">仅供参考，不构成投注建议</span></div>
 </div>
 </body>
 </html>
