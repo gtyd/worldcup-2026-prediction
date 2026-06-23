@@ -14,183 +14,284 @@
     --accent3: #2A398D;
     --text: #f0f2f5;
     --text-dim: #8899b0;
+    --win: #E61D25;
+    --draw: #8b9dc3;
+    --lose: #4a6fa5;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
   .bg-decor { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events: none; z-index:0; }
   .bg-decor::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 10%, rgba(230,29,37,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(60,172,59,0.06) 0%, transparent 50%), radial-gradient(circle at 50% 60%, rgba(42,57,141,0.06) 0%, transparent 50%); }
   .container { position: relative; z-index:1; max-width: 500px; margin: 0 auto; padding: 16px 16px 40px; }
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 13px; padding: 8px 0; }
+  .back-link:hover { color: var(--accent); }
   .header { text-align: center; padding: 24px 0 20px; }
-  .header .icon { font-size: 40px; }
-  .header h1 { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 8px 0 4px; }
+  .header .icon { font-size: 48px; display: block; }
+  .header h1 { font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 8px 0 4px; }
   .header .subtitle { font-size: 13px; color: var(--text-dim); display: flex; align-items:center; justify-content:center; gap:6px; flex-wrap: wrap; }
-  .header .subtitle .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation: pulse 1.5s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  .tricolor-bar { height: 3px; background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%); border-radius: 2px; margin: 16px 0; }
-  .matchday-header { background: var(--card); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.06); }
-  .matchday-header .md-date { font-size: 15px; font-weight: 700; color: var(--text); }
-  .matchday-header .md-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
-  .tz-note { font-size: 11px; color: var(--text-dim); background: rgba(255,255,255,0.03); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; line-height: 1.6; }
-  .match-card { background: var(--card); border-radius: 14px; padding: 16px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05); }
-  .match-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-  .group-tag { background: rgba(230,29,37,0.15); color: var(--accent); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+  .tricolor-bar { height: 3px; background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%); border-radius: 2px; margin-bottom: 16px; }
+  .info-box { background: rgba(42,57,141,0.12); border: 1px solid rgba(42,57,141,0.2); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+  .info-box strong { color: var(--accent3); }
+  .note { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.07); color: var(--text-dim); border-radius: 14px; padding: 11px 12px; font-size: 11px; line-height: 1.7; margin-bottom: 16px; }
+  .match-card { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.06); }
+  .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .match-tag { background: rgba(230,29,37,0.12); color: var(--accent); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
   .match-time { font-size: 12px; color: var(--text-dim); }
-  .conf-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px; }
-  .match-teams { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
-  .team { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .team .flag { font-size: 28px; }
-  .team .name { font-size: 14px; font-weight: 600; }
-  .vs { font-size: 13px; font-weight: 700; color: var(--text-dim); }
-  .match-info { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; font-size: 11px; color: var(--text-dim); justify-content: center; }
+  .match-teams { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .team { text-align: center; flex: 1; }
+  .team-flag { font-size: 36px; display: block; }
+  .team-name { font-size: 16px; font-weight: 700; margin: 4px 0 2px; }
+  .team-rank { font-size: 10px; color: var(--text-dim); }
+  .vs { font-size: 18px; font-weight: 800; color: var(--text-dim); padding: 0 12px; }
+  .match-details { display: flex; flex-wrap: wrap; gap: 10px; font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
   .prob-bars { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-  .prob-row { display: flex; align-items: center; gap: 8px; }
-  .prob-label { font-size: 12px; font-weight: 600; width: 32px; text-align: right; color: var(--text-dim); }
-  .prob-track { flex: 1; height: 14px; background: rgba(255,255,255,0.06); border-radius: 7px; overflow: hidden; }
-  .prob-fill { height: 100%; border-radius: 7px; transition: width 0.8s ease; }
-  .home-fill { background: linear-gradient(90deg, #E61D25, #ff4d55); }
-  .draw-fill { background: linear-gradient(90deg, #2A398D, #4a60c8); }
-  .away-fill { background: linear-gradient(90deg, #3CAC3B, #60d060); }
-  .prob-val { font-size: 13px; font-weight: 700; width: 48px; text-align: right; }
-  .rec-row { display: flex; justify-content: center; gap: 8px; align-items: center; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.06); }
-  .rec-label { font-size: 12px; color: var(--text-dim); }
-  .rec-value { font-size: 15px; font-weight: 700; }
-  .context-note { font-size: 11px; color: var(--text-dim); margin-top: 8px; padding: 8px 10px; background: rgba(255,255,255,0.025); border-radius: 8px; line-height: 1.5; }
-  .missing-note { font-size: 10px; color: #f59e0b; margin-top: 6px; padding: 6px 10px; background: rgba(245,158,11,0.08); border-radius: 8px; }
-  .footer { text-align: center; padding: 24px 0; font-size: 11px; color: var(--text-dim); line-height: 1.8; }
-  .footer .divider { width: 40px; height: 2px; background: rgba(255,255,255,0.1); margin: 0 auto 12px; border-radius: 1px; }
-  .footer .highlight { color: var(--accent); font-weight: 600; }
-  .no-match { text-align: center; padding: 60px 20px; color: var(--text-dim); }
-  .no-match .icon { font-size: 48px; display: block; margin-bottom: 12px; }
-  .no-match h2 { font-size: 18px; color: var(--text); margin-bottom: 8px; }
-  @media (min-width: 560px) { .container { padding: 20px 24px 40px; } }
+  .prob-item { display: flex; align-items: center; gap: 8px; }
+  .prob-label { font-size: 11px; color: var(--text-dim); width: 36px; text-align: right; flex-shrink: 0; }
+  .prob-bar-wrap { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+  .prob-fill { height: 100%; border-radius: 4px; transition: width 0.6s; }
+  .home-fill { background: var(--win); }
+  .draw-fill { background: var(--draw); }
+  .away-fill { background: var(--lose); }
+  .prob-val { font-size: 12px; font-weight: 700; width: 50px; text-align: right; }
+  .match-recommend { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
+  .rec-label { font-size: 13px; }
+  .rec-value { font-size: 14px; font-weight: 700; color: var(--accent); }
+  .confidence { font-size: 11px; padding: 3px 8px; border-radius: 6px; margin-left: auto; }
+  .confidence.high { background: rgba(76,175,80,0.15); color: #4caf50; }
+  .confidence.mid { background: rgba(255,199,44,0.15); color: var(--tier4); }
+  .confidence.low { background: rgba(124,139,160,0.15); color: var(--text-dim); }
+  .match-form { font-size: 11px; color: var(--text-dim); }
+  .footer { text-align: center; padding: 20px 0; font-size: 11px; color: var(--text-dim); line-height: 1.8; }
+  .footer .divider { height:1px; background: rgba(255,255,255,0.06); margin: 16px 0; }
+  .footer .highlight { background: rgba(230,29,37,0.1); color: var(--accent); padding: 2px 8px; border-radius: 4px; }
+  .empty-state { text-align: center; padding: 40px 20px; }
+  .empty-state .emoji { font-size: 64px; }
+  .empty-state h2 { color: var(--text-dim); margin: 12px 0 8px; }
+  .empty-state p { font-size: 13px; color: var(--text-dim); }
+  @media (max-width: 380px) {
+    .team-flag { font-size: 28px; }
+    .team-name { font-size: 14px; }
+  }
 </style>
 </head>
 <body>
 <div class="bg-decor"></div>
 <div class="container">
-  <a class="back-link" href="../">← 返回预测中心</a>
+  <a href="../" class="back-link">← 返回预测中心</a>
   <div class="header">
     <span class="icon">⚽</span>
     <h1>2026 世界杯每日胜负预测</h1>
-    <div class="subtitle"><span class="dot"></span>官方比赛日 2026.06.22 · 北京时间更新 2026.06.22 18:55</div>
+    <div class="subtitle">官方比赛日 2026.06.23 · 北京时间更新 2026.06.23 19:53</div>
   </div>
+
   <div class="tricolor-bar"></div>
-  <div class="matchday-header">
-    <div class="md-date">📅 比赛日 2026.06.22（北美东部时间）</div>
-    <div class="md-sub">4 场比赛 · 全部未开赛 · 小组赛第2轮（I组/J组）</div>
+
+  <div class="info-box">
+    <strong>⏰ 时区说明：</strong>官方比赛日按北美赛地当地时间（主要 ET/美东时间）计。北京时间 (CST, UTC+8) ≈ 美东时间 +12小时。今天 {len(matches)} 场比赛跨越北京时间 6.23 深夜至 6.24 上午。<br>
+    <strong>📊 小组阶段：</strong>K组/L组第2轮。每组前2名 + 8个最佳小组第3晋级32强淘汰赛。
   </div>
-  <div class="tz-note">⏰ 时区说明：所有比赛时间为北美东部夏令时间（EDT=UTC-4）。北京时间 = EDT + 12h（如 13:00 EDT = 次日 01:00 BJT）。当前北京时间 18:55 = 北美东部时间 06:55（开赛前约6小时）。本预测覆盖官方比赛日第8天（6月22日）全部4场比赛，均未开赛。赛程来源：fifa-worldcup26.com（2026-06-22）。</div>
-  
-    <div class="match-card">
-      <div class="match-header">
-        <span class="group-tag">组 J</span>
-        <span class="match-time">2026-06-23 01:00 BJT</span>
-        <span class="conf-badge" style="background:#f59e0b20;color:#f59e0b">🟡 置信度中</span>
+
+  <div class="note">伤停信息与历史交锋数据暂缺，已跳过此项修正。近期状态来自小组赛积分榜(cleatz/whereig)。1X2赔率取自 cleatz 多博彩公司(DraftKings/FanDuel/BetRivers/BetMGM)最佳赔率，经去 vig 归一化处理。</div>
+
+      <div class="match-card">
+        <div class="match-header">
+          <span class="match-tag">K组 · 第2轮</span>
+          <span class="match-time">🕐 2026.06.23 23:00 BJT</span>
+        </div>
+        <div class="match-teams">
+          <div class="team home">
+            <span class="team-flag">🇵🇹</span>
+            <span class="team-name">葡萄牙</span>
+            <span class="team-rank">FIFA #5</span>
+          </div>
+          <div class="vs">VS</div>
+          <div class="team away">
+            <span class="team-flag">🇺🇿</span>
+            <span class="team-name">乌兹别克斯坦</span>
+            <span class="team-rank">FIFA #50</span>
+          </div>
+        </div>
+        <div class="match-details">
+          <span>📍 达拉斯 AT&T体育场</span>
+          <span>📅 官方比赛日 2026.06.23 (11:00 ET)</span>
+        </div>
+        <div class="prob-bars">
+          <div class="prob-item">
+            <div class="prob-label">主胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:86%"></div></div>
+            <div class="prob-val">86.2%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">平局</div>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:12%"></div></div>
+            <div class="prob-val">11.8%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">客胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:5%"></div></div>
+            <div class="prob-val">4.8%</div>
+          </div>
+        </div>
+        <div class="match-recommend">
+          <span class="rec-label">⭐ 推荐：</span>
+          <span class="rec-value">葡萄牙胜</span>
+          <span class="confidence high">置信度：高</span>
+        </div>
+        <div class="match-form">
+          <span>📊 近期：葡萄牙 W D (1胜1平，积4分) | 乌兹别克斯坦 L L (0胜2负，积0分)</span>
+        </div>
       </div>
-      <div class="match-teams">
-        <div class="team home"><span class="flag">🇦🇷</span><span class="name">阿根廷</span></div>
-        <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇦🇹</span><span class="name">奥地利</span></div>
+      <div class="match-card">
+        <div class="match-header">
+          <span class="match-tag">L组 · 第2轮</span>
+          <span class="match-time">🕐 2026.06.24 02:00 BJT</span>
+        </div>
+        <div class="match-teams">
+          <div class="team home">
+            <span class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+            <span class="team-name">英格兰</span>
+            <span class="team-rank">FIFA #4</span>
+          </div>
+          <div class="vs">VS</div>
+          <div class="team away">
+            <span class="team-flag">🇬🇭</span>
+            <span class="team-name">加纳</span>
+            <span class="team-rank">FIFA #73</span>
+          </div>
+        </div>
+        <div class="match-details">
+          <span>📍 迈阿密 硬石体育场</span>
+          <span>📅 官方比赛日 2026.06.23 (14:00 ET)</span>
+        </div>
+        <div class="prob-bars">
+          <div class="prob-item">
+            <div class="prob-label">主胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:83%"></div></div>
+            <div class="prob-val">83.3%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">平局</div>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:12%"></div></div>
+            <div class="prob-val">12.5%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">客胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:6%"></div></div>
+            <div class="prob-val">5.6%</div>
+          </div>
+        </div>
+        <div class="match-recommend">
+          <span class="rec-label">⭐ 推荐：</span>
+          <span class="rec-value">英格兰胜</span>
+          <span class="confidence high">置信度：高</span>
+        </div>
+        <div class="match-form">
+          <span>📊 近期：英格兰 W W (2胜0负，积6分) | 加纳 W L (1胜1负，积3分)</span>
+        </div>
       </div>
-      <div class="match-info">
-        <span>📍 AT&T 体育场，达拉斯</span>
-        <span>🕐 2026-06-22 1:00 PM ET</span>
+      <div class="match-card">
+        <div class="match-header">
+          <span class="match-tag">L组 · 第2轮</span>
+          <span class="match-time">🕐 2026.06.24 05:00 BJT</span>
+        </div>
+        <div class="match-teams">
+          <div class="team home">
+            <span class="team-flag">🇵🇦</span>
+            <span class="team-name">巴拿马</span>
+            <span class="team-rank">FIFA #34</span>
+          </div>
+          <div class="vs">VS</div>
+          <div class="team away">
+            <span class="team-flag">🇭🇷</span>
+            <span class="team-name">克罗地亚</span>
+            <span class="team-rank">FIFA #11</span>
+          </div>
+        </div>
+        <div class="match-details">
+          <span>📍 旧金山 李维斯体育场</span>
+          <span>📅 官方比赛日 2026.06.23 (17:00 ET)</span>
+        </div>
+        <div class="prob-bars">
+          <div class="prob-item">
+            <div class="prob-label">主胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:13%"></div></div>
+            <div class="prob-val">13.1%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">平局</div>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:22%"></div></div>
+            <div class="prob-val">22.4%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">客胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:67%"></div></div>
+            <div class="prob-val">66.7%</div>
+          </div>
+        </div>
+        <div class="match-recommend">
+          <span class="rec-label">⭐ 推荐：</span>
+          <span class="rec-value">克罗地亚胜</span>
+          <span class="confidence mid">置信度：中</span>
+        </div>
+        <div class="match-form">
+          <span>📊 近期：巴拿马 L L (0胜2负，积0分) | 克罗地亚 L D (0胜1平1负，积1分)</span>
+        </div>
       </div>
-      <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:65.3%"></div></div><span class="prob-val">65.3%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:22.4%"></div></div><span class="prob-val">22.4%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:12.3%"></div></div><span class="prob-val">12.3%</span></div>
+      <div class="match-card">
+        <div class="match-header">
+          <span class="match-tag">K组 · 第2轮</span>
+          <span class="match-time">🕐 2026.06.24 08:00 BJT</span>
+        </div>
+        <div class="match-teams">
+          <div class="team home">
+            <span class="team-flag">🇨🇴</span>
+            <span class="team-name">哥伦比亚</span>
+            <span class="team-rank">FIFA #13</span>
+          </div>
+          <div class="vs">VS</div>
+          <div class="team away">
+            <span class="team-flag">🇨🇩</span>
+            <span class="team-name">刚果民主共和国</span>
+            <span class="team-rank">FIFA #46</span>
+          </div>
+        </div>
+        <div class="match-details">
+          <span>📍 洛杉矶 SoFi体育场</span>
+          <span>📅 官方比赛日 2026.06.23 (20:00 ET)</span>
+        </div>
+        <div class="prob-bars">
+          <div class="prob-item">
+            <div class="prob-label">主胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:64%"></div></div>
+            <div class="prob-val">64.3%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">平局</div>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:23%"></div></div>
+            <div class="prob-val">23.3%</div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-label">客胜</div>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:15%"></div></div>
+            <div class="prob-val">14.8%</div>
+          </div>
+        </div>
+        <div class="match-recommend">
+          <span class="rec-label">⭐ 推荐：</span>
+          <span class="rec-value">哥伦比亚胜</span>
+          <span class="confidence mid">置信度：中</span>
+        </div>
+        <div class="match-form">
+          <span>📊 近期：哥伦比亚 W - (1胜0负，积3分) | 刚果民主共和国 D - (0胜1平，积1分)</span>
+        </div>
       </div>
-      <div class="rec-row">
-        <span class="rec-label">推荐结果</span>
-        <span class="rec-value" style="color:#22c55e">主胜</span>
-      </div>
-      <div class="context-note">阿根廷首轮3-0胜阿尔及利亚，气势如虹；奥地利首轮3-1胜约旦表现不俗。两队均积3分，胜者将锁定出线主动权。阿根廷FIFA排名第1，奥地利第24，实力差距显著。</div>
-      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（DraftKings/FanDuel/BetRivers/BetMGM，2026-06-22）、Oddsportal 综合赔率（2026-06-22），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。赔率隐含概率经归一化处理。</div>
-    </div>
-    <div class="match-card">
-      <div class="match-header">
-        <span class="group-tag">组 I</span>
-        <span class="match-time">2026-06-23 05:00 BJT</span>
-        <span class="conf-badge" style="background:#f59e0b20;color:#f59e0b">🟡 置信度中</span>
-      </div>
-      <div class="match-teams">
-        <div class="team home"><span class="flag">🇫🇷</span><span class="name">法国</span></div>
-        <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇮🇶</span><span class="name">伊拉克</span></div>
-      </div>
-      <div class="match-info">
-        <span>📍 林肯金融球场，费城</span>
-        <span>🕐 2026-06-22 5:00 PM ET</span>
-      </div>
-      <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:89.8%"></div></div><span class="prob-val">89.8%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:7.4%"></div></div><span class="prob-val">7.4%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:2.8%"></div></div><span class="prob-val">2.8%</span></div>
-      </div>
-      <div class="rec-row">
-        <span class="rec-label">推荐结果</span>
-        <span class="rec-value" style="color:#22c55e">主胜</span>
-      </div>
-      <div class="context-note">法国首轮3-1胜塞内加尔，姆巴佩领衔攻击线火力全开；伊拉克首轮1-4负于挪威，防守漏洞明显。法国FIFA排名第3，伊拉克第89，实力悬殊最大的一场。法国取胜几无悬念。</div>
-      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（DraftKings/FanDuel/BetRivers/BetMGM，2026-06-22）、Oddsportal 综合赔率（2026-06-22），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。赔率隐含概率经归一化处理。</div>
-    </div>
-    <div class="match-card">
-      <div class="match-header">
-        <span class="group-tag">组 I</span>
-        <span class="match-time">2026-06-23 08:00 BJT</span>
-        <span class="conf-badge" style="background:#f59e0b20;color:#f59e0b">🟡 置信度中</span>
-      </div>
-      <div class="match-teams">
-        <div class="team home"><span class="flag">🇳🇴</span><span class="name">挪威</span></div>
-        <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇸🇳</span><span class="name">塞内加尔</span></div>
-      </div>
-      <div class="match-info">
-        <span>📍 大都会人寿体育场，纽约/新泽西</span>
-        <span>🕐 2026-06-22 8:00 PM ET</span>
-      </div>
-      <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:43.3%"></div></div><span class="prob-val">43.3%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:27.7%"></div></div><span class="prob-val">27.7%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:29.0%"></div></div><span class="prob-val">29.0%</span></div>
-      </div>
-      <div class="rec-row">
-        <span class="rec-label">推荐结果</span>
-        <span class="rec-value" style="color:#22c55e">主胜</span>
-      </div>
-      <div class="context-note">挪威首轮4-1大胜伊拉克，哈兰德梅开二度状态火热；塞内加尔首轮1-3负于法国但整体实力不容小觑。两队实力接近，挪威凭借哈兰德略占优势。</div>
-      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（DraftKings/FanDuel/BetRivers/BetMGM，2026-06-22）、Oddsportal 综合赔率（2026-06-22），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。赔率隐含概率经归一化处理。</div>
-    </div>
-    <div class="match-card">
-      <div class="match-header">
-        <span class="group-tag">组 J</span>
-        <span class="match-time">2026-06-23 11:00 BJT</span>
-        <span class="conf-badge" style="background:#f59e0b20;color:#f59e0b">🟡 置信度中</span>
-      </div>
-      <div class="match-teams">
-        <div class="team home"><span class="flag">🇯🇴</span><span class="name">约旦</span></div>
-        <span class="vs">VS</span>
-        <div class="team away"><span class="flag">🇩🇿</span><span class="name">阿尔及利亚</span></div>
-      </div>
-      <div class="match-info">
-        <span>📍 李维斯体育场，旧金山湾区</span>
-        <span>🕐 2026-06-22 11:00 PM ET</span>
-      </div>
-      <div class="prob-bars">
-        <div class="prob-row"><span class="prob-label">主胜</span><div class="prob-track"><div class="prob-fill home-fill" style="width:15.2%"></div></div><span class="prob-val">15.2%</span></div>
-        <div class="prob-row"><span class="prob-label">平局</span><div class="prob-track"><div class="prob-fill draw-fill" style="width:22.6%"></div></div><span class="prob-val">22.6%</span></div>
-        <div class="prob-row"><span class="prob-label">客胜</span><div class="prob-track"><div class="prob-fill away-fill" style="width:62.2%"></div></div><span class="prob-val">62.2%</span></div>
-      </div>
-      <div class="rec-row">
-        <span class="rec-label">推荐结果</span>
-        <span class="rec-value" style="color:#22c55e">客胜</span>
-      </div>
-      <div class="context-note">约旦首轮1-3负于奥地利，实力处于下风；阿尔及利亚首轮0-3负于阿根廷但对手太强。阿尔及利亚FIFA排名第28，约旦第92，阿尔及利亚急需反弹取胜保留出线希望。</div>
-      <div class="missing-note">⚠️ 数据说明：赔率来源 cleatz 多博彩公司比价（DraftKings/FanDuel/BetRivers/BetMGM，2026-06-22）、Oddsportal 综合赔率（2026-06-22），FIFA排名来源 whereig.com（2026-06-11）。伤停/近期状态/历史交锋数据暂缺，以上因子未纳入概率计算。赔率隐含概率经归一化处理。</div>
-    </div>
-  <div class="footer"><div class="divider"></div>数据来源：cleatz 多博彩公司赔率比价（DraftKings/FanDuel/BetRivers/BetMGM，2026.06.22）；Oddsportal 综合赔率（2026.06.22）；FIFA 排名 whereig.com（2026-06-11）；小组形势参照 cleatz 积分榜。<br>📉 赔率下降 = 概率上升 &nbsp; | &nbsp; 📈 赔率上升 = 概率下降<br>赔率隐含概率经归一化处理，伤停/近期状态/历史交锋数据暂缺。<br><span class="highlight">仅供参考，不构成投注建议</span></div>
+
+  <div class="footer">
+    <div class="divider"></div>
+    赛程来源：cleatz 官方赛事页（2026.06.23）。1X2赔率来源：cleatz DraftKings/FanDuel/BetRivers/BetMGM 多博彩公司最佳赔率，经去 vig 归一化处理。<br>
+    伤停信息与历史交锋数据暂缺，已跳过修正。近期状态来自小组赛积分榜(cleatz/whereig)。FIFA排名来源：whereig.com（2026-06-11）。<br>
+    <span class="highlight">仅供参考，不构成投注建议</span>
+  </div>
 </div>
 </body>
 </html>

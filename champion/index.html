@@ -14,12 +14,6 @@
     --accent3: #2A398D;
     --text: #f0f2f5;
     --text-dim: #8899b0;
-    --bar-gold: linear-gradient(90deg, #E61D25, #ff4d55);
-    --bar-silver: linear-gradient(90deg, #2A398D, #4a60c8);
-    --bar-bronze: linear-gradient(90deg, #3CAC3B, #60d060);
-    --bar-elite: linear-gradient(90deg, #E61D25, #2A398D);
-    --bar-mid: linear-gradient(90deg, #3CAC3B, #2A398D);
-    --bar-low: linear-gradient(90deg, #5a6880, #3a4560);
     --tier1: #E61D25;
     --tier2: #2A398D;
     --tier3: #3CAC3B;
@@ -32,6 +26,7 @@
   .bg-decor::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 10%, rgba(230,29,37,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(60,172,59,0.06) 0%, transparent 50%), radial-gradient(circle at 50% 60%, rgba(42,57,141,0.06) 0%, transparent 50%); }
   .container { position: relative; z-index:1; max-width: 500px; margin: 0 auto; padding: 16px 16px 40px; }
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 13px; padding: 8px 0; }
+  .back-link:hover { color: var(--accent); }
   .header { text-align: center; padding: 24px 0 20px; }
   .header .trophy { font-size: 48px; display: block; animation: float 3s ease-in-out infinite; }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -48,138 +43,163 @@
   .note { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.07); color: var(--text-dim); border-radius: 14px; padding: 11px 12px; font-size: 11px; line-height: 1.7; margin-bottom: 14px; }
   .search-bar { position: relative; margin-bottom: 16px; }
   .search-bar input { width: 100%; padding: 12px 16px 12px 42px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: var(--card); color: var(--text); font-size: 15px; outline: none; transition: border-color 0.2s; }
-  .search-bar input:focus { border-color: var(--accent); }
-  .search-bar input::placeholder { color: var(--text-dim); }
-  .search-bar .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--text-dim); }
-  .search-bar .clear-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; background: rgba(230,29,37,0.15); border: none; color: var(--text-dim); font-size: 14px; cursor: pointer; display: none; align-items: center; justify-content: center; }
-  .search-bar .clear-btn.visible { display: flex; }
-  .tier-tags { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
-  .tier-tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 0.2s; background: var(--card); color: var(--text-dim); }
-  .tier-tag.active { color: #fff; border-color: transparent; }
-  .tier-tag.t1.active { background: var(--tier1); } .tier-tag.t2.active { background: var(--tier2); } .tier-tag.t3.active { background: var(--tier3); } .tier-tag.t4.active { background: var(--tier4); color: #1a1a2e; } .tier-tag.t5.active { background: var(--tier5); }
-  .section-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-  .section-title::after { content: ''; flex:1; height:1px; background: rgba(255,255,255,0.1); }
-  .section-subtitle { font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
-  .section-subtitle .host-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; margin-left: 4px; vertical-align: middle; background: linear-gradient(90deg, #E61D25, #2A398D, #3CAC3B); color: #fff; }
-  .team-list { display: flex; flex-direction: column; gap: 6px; }
-  .team-card { background: var(--card); border-radius: 12px; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; cursor: default; }
-  .team-card:active { background: var(--card-hover); transform: scale(0.99); }
-  .team-card .top-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .team-card .rank { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; background: rgba(255,255,255,0.08); color: var(--text-dim); flex-shrink: 0; }
-  .team-card .rank.top3 { background: linear-gradient(135deg, #E61D25, #ff4d55); color: #fff; }
-  .team-card .rank.top10 { background: rgba(230,29,37,0.2); color: var(--accent); }
-  .team-card .flag { font-size: 22px; flex-shrink: 0; }
-  .team-card .name { font-size: 15px; font-weight: 600; flex:1; min-width:0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .team-card .prob { font-size: 16px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
-  .team-card .odds-label { font-size: 11px; color: var(--text-dim); flex-shrink: 0; margin-left:2px; }
-  .team-card .bar-wrap { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; position: relative; }
-  .team-card .bar-fill { height: 100%; border-radius: 3px; transition: width 1s cubic-bezier(0.25,0.8,0.25,1.2); }
-  .team-card .odds-change { font-size: 11px; font-weight: 600; flex-shrink: 0; margin-left: 4px; min-width: 36px; text-align: right; }
-  .team-card .odds-change.up { color: #ef4444; } .team-card .odds-change.down { color: #22c55e; } .team-card .odds-change.flat { color: var(--text-dim); }
-  .team-card .bottom-info { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--text-dim); }
-  .bar-tier-1 { background: var(--bar-gold); } .bar-tier-2 { background: var(--bar-silver); } .bar-tier-3 { background: var(--bar-bronze); } .bar-tier-4 { background: var(--bar-mid); } .bar-tier-5 { background: var(--bar-low); }
-  .footer { text-align: center; padding: 24px 0; font-size: 11px; color: var(--text-dim); line-height: 1.8; }
-  .footer .divider { width: 40px; height: 2px; background: rgba(255,255,255,0.1); margin: 0 auto 12px; border-radius: 1px; }
-  .footer .highlight { color: var(--accent); font-weight: 600; }
-  .no-result { text-align: center; padding: 40px 20px; color: var(--text-dim); font-size: 14px; }
-  .no-result .icon { font-size: 36px; display:block; margin-bottom:8px; }
-  @media (min-width: 500px) { .container { padding: 20px 24px 40px; } .team-card { padding: 14px 16px; } .team-card .flag { font-size: 24px; } .team-card .name { font-size: 16px; } }
+  .search-bar input:focus { border-color: var(--accent3); }
+  .search-bar .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; }
+  .tier-nav { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tier-nav button { padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: var(--card); color: var(--text-dim); font-size: 12px; cursor: pointer; transition: all 0.2s; }
+  .tier-nav button.active { color: var(--text); border-color: currentColor; }
+  .tier-nav button.t1.active { border-color: var(--tier1); color: var(--tier1); }
+  .tier-nav button.t2.active { border-color: var(--tier2); color: var(--tier2); }
+  .tier-nav button.t3.active { border-color: var(--tier3); color: var(--tier3); }
+  .tier-nav button.t4.active { border-color: var(--tier4); color: var(--tier4); }
+  .tier-nav button.t5.active { border-color: var(--tier5); color: var(--tier5); }
+  .team-list { display: flex; flex-direction: column; gap: 8px; }
+  .team-row { background: var(--card); border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; cursor: default; position: relative; overflow: hidden; }
+  .team-row:hover { background: var(--card-hover); transform: translateX(4px); }
+  .team-row .rank-num { font-size: 13px; font-weight: 700; color: var(--text-dim); width: 28px; text-align: center; flex-shrink: 0; }
+  .team-row .rank-num.top3 { color: #FFD700; }
+  .team-row .flag { font-size: 28px; flex-shrink: 0; }
+  .team-row .info { flex: 1; min-width: 0; }
+  .team-row .info .name { font-size: 16px; font-weight: 600; }
+  .team-row .info .meta { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .team-row .info .meta span { margin-right: 8px; }
+  .team-row .prob-col { text-align: right; flex-shrink: 0; }
+  .team-row .prob-col .prob { font-size: 18px; font-weight: 700; }
+  .team-row .prob-col .change { font-size: 11px; margin-top: 2px; }
+  .team-row .prob-col .change.down { color: #4caf50; }
+  .team-row .prob-col .change.up { color: var(--accent); }
+  .team-row .tier-badge { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; flex-shrink: 0; }
+  .team-row .tier-badge.t1 { background: rgba(230,29,37,0.15); color: var(--tier1); }
+  .team-row .tier-badge.t2 { background: rgba(42,57,141,0.15); color: var(--tier2); }
+  .team-row .tier-badge.t3 { background: rgba(60,172,59,0.15); color: var(--tier3); }
+  .team-row .tier-badge.t4 { background: rgba(255,199,44,0.15); color: var(--tier4); }
+  .team-row .tier-badge.t5 { background: rgba(124,139,160,0.15); color: var(--tier5); }
+  .team-row .prob-bar { position: absolute; bottom: 0; left: 0; height: 3px; border-radius: 0 2px 0 0; transition: width 0.6s ease; }
+  .team-row .prob-bar.t1 { background: var(--tier1); }
+  .team-row .prob-bar.t2 { background: var(--tier2); }
+  .team-row .prob-bar.t3 { background: var(--tier3); }
+  .team-row .prob-bar.t4 { background: var(--tier4); }
+  .team-row .prob-bar.t5 { background: var(--tier5); }
+  .footer { text-align: center; padding: 20px 0; font-size: 11px; color: var(--text-dim); line-height: 1.8; }
+  .footer .divider { height:1px; background: rgba(255,255,255,0.06); margin: 16px 0; }
+  .footer .highlight { background: rgba(230,29,37,0.1); color: var(--accent); padding: 2px 8px; border-radius: 4px; }
+  .hidden { display: none !important; }
+  @media (max-width: 380px) {
+    .team-row { padding: 10px 12px; gap: 8px; }
+    .team-row .flag { font-size: 22px; }
+    .team-row .info .name { font-size: 14px; }
+    .team-row .prob-col .prob { font-size: 15px; }
+  }
 </style>
 </head>
 <body>
 <div class="bg-decor"></div>
 <div class="container">
-  <a class="back-link" href="../">← 返回预测中心</a>
+  <a href="../" class="back-link">← 返回预测中心</a>
   <div class="header">
     <span class="trophy">🏆</span>
     <h1>2026 美加墨世界杯夺冠预测</h1>
-    <div class="subtitle"><span class="dot"></span>基于多源赔率 + 基本面修正 · 数据更新至 2026.06.22</div>
+    <div class="subtitle"><span class="dot"></span> 2026.06.23 更新 · 48 支参赛球队</div>
   </div>
+
   <div class="overview">
-    <div class="stat-card"><div class="label">参赛球队</div><div class="value">48</div></div>
-    <div class="stat-card"><div class="label">最大热门</div><div class="value small">🇫🇷 法国</div></div>
-    <div class="stat-card"><div class="label">夺冠概率</div><div class="value small">17.4%</div></div>
+    <div class="stat-card">
+      <div class="label">🏆 最大热门</div>
+      <div class="value small">🇫🇷 法国</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">📊 夺冠概率</div>
+      <div class="value">14.82%</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">📈 数据来源</div>
+      <div class="value small">15队多源</div>
+    </div>
   </div>
+
   <div class="tricolor-bar"></div>
-  <div class="note">赔率来源：TheBettingInsider DraftKings 赔率（45支球队，2026.06.22）、cleatz 多博彩公司最佳赔率（DraftKings/FanDuel/BetRivers/BetMGM，前15热门，2026.06.22）。对每支球队取可核验来源均值作为综合赔率；3支球队（土耳其、突尼斯、海地）无最新公开赔率，按小组赛表现（0积分）估算为 +500000。近期10场胜率数据暂缺，已跳过此项修正。FIFA排名来源：whereig.com（2026-06-11）。赔率变动：本次 vs 2026.06.21 champion 页 teamsData 缓存。ⓘ 部分球队赔率源从BetMGM更换为DraftKings，跨源变动仅反映同队趋势对比。</div>
+
+  <div class="note">赔率来源：cleatz DraftKings 最佳赔率（15支热门，2026.06.23）、odds.cn 5家博彩公司均值（前10，2026.06.23）、Soccergraph BetMGM 完整48队赔率（2026.06.18）。多源取均值（前15队2-3源，其余33队BetMGM单源）。近期10场胜率数据暂缺，已跳过此项修正。FIFA排名来源：whereig.com（2026-06-11）。赔率变动：本次 vs 2026.06.22 champion 页 teamsData 缓存。<br>ⓘ 赔率源已稳定整合，变动值反映多源均值跨期对比趋势。</div>
+
   <div class="search-bar">
     <span class="search-icon">🔍</span>
-    <input type="text" id="search-input" placeholder="搜索球队...">
-    <button class="clear-btn" id="clear-btn">✕</button>
+    <input type="text" id="searchInput" placeholder="搜索球队..." oninput="filterTeams()">
   </div>
-  <div class="tier-tags" id="tier-tags">
-    <button class="tier-tag t1 active" data-tier="1">🔴 第一梯队 ≥8%</button>
-    <button class="tier-tag t2" data-tier="2">🔵 第二梯队 4-8%</button>
-    <button class="tier-tag t3" data-tier="3">🟢 第三梯队 2-4%</button>
-    <button class="tier-tag t4" data-tier="4">⚽ 黑马 0.8-2%</button>
-    <button class="tier-tag t5" data-tier="5">🌍 其他 &lt;0.8%</button>
+
+  <div class="tier-nav">
+    <button class="active" onclick="filterByTier('all', this)">全部 48</button>
+    <button class="t1" onclick="filterByTier(1, this)">第一梯队 4</button>
+    <button class="t2" onclick="filterByTier(2, this)">第二梯队 4</button>
+    <button class="t3" onclick="filterByTier(3, this)">第三梯队 4</button>
+    <button class="t4" onclick="filterByTier(4, this)">第四梯队 7</button>
+    <button class="t5" onclick="filterByTier(5, this)">第五梯队 29</button>
   </div>
-  <div id="team-list" class="team-list"></div>
-  <div id="no-result" class="no-result" style="display:none"><span class="icon">🔍</span>未找到匹配球队</div>
-  <div class="footer"><div class="divider"></div>赔率来源：TheBettingInsider DraftKings 赔率（45支球队，2026.06.22）、cleatz 多博彩公司最佳赔率（DraftKings/FanDuel/BetRivers/BetMGM，前15热门，2026.06.22）。对每支球队取可核验来源均值作为综合赔率。土耳其、突尼斯、海地无最新公开赔率，按小组赛0积分表现估算。近期10场胜率数据暂缺，已跳过此项修正。FIFA排名来源：whereig.com/FIFA男子世界排名（2026-06-11）。赔率变动：本次 vs 2026-06-21 champion 页 teamsData 缓存。<br>📉 赔率下降 = 概率上升 &nbsp; | &nbsp; 📈 赔率上升 = 概率下降<br>ⓘ 部分球队赔率源更换（BetMGM→DraftKings），变动值仅反映同队跨期对比趋势。<br><span class="highlight">仅供参考，不构成投注建议</span></div>
+
+  <div class="team-list" id="teamList"></div>
+
+  <div class="footer">
+    <div class="divider"></div>
+    赔率来源：cleatz DraftKings（15支热门，2026.06.23）、odds.cn 5博彩公司均值（前10，2026.06.23）、Soccergraph BetMGM 48队（2026.06.18）。前15队2-3源取均值，其余33队BetMGM单源。近期10场胜率数据暂缺，已跳过修正。FIFA排名来源：whereig.com/FIFA男子世界排名（2026-06-11）。赔率变动：本次 vs 2026-06-22 champion 页 teamsData 缓存。<br>📉 赔率下降 = 概率上升 &nbsp; | &nbsp; 📈 赔率上升 = 概率下降<br><span class="highlight">仅供参考，不构成投注建议</span>
+  </div>
 </div>
+
 <script>
-const teamsData = [{"name": "法国", "odds": 4.75, "flag": "🇫🇷", "tier": 1, "change": -3.1, "sources": 2, "rank": 3, "probability": 17.44}, {"name": "西班牙", "odds": 6.0, "flag": "🇪🇸", "tier": 1, "change": -7.7, "sources": 2, "rank": 2, "probability": 13.81}, {"name": "英格兰", "odds": 7.25, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "tier": 1, "change": 13.6, "sources": 2, "rank": 4, "probability": 11.43}, {"name": "阿根廷", "odds": 8.5, "flag": "🇦🇷", "tier": 1, "change": 12.7, "sources": 2, "rank": 1, "probability": 9.75}, {"name": "葡萄牙", "odds": 11.0, "flag": "🇵🇹", "tier": 2, "change": 6.5, "sources": 2, "rank": 5, "probability": 7.39}, {"name": "巴西", "odds": 12.5, "flag": "🇧🇷", "tier": 2, "change": 22.8, "sources": 2, "rank": 6, "probability": 6.63}, {"name": "德国", "odds": 14.5, "flag": "🇩🇪", "tier": 2, "change": 18.1, "sources": 2, "rank": 10, "probability": 5.71}, {"name": "荷兰", "odds": 15.0, "flag": "🇳🇱", "tier": 2, "change": -5.2, "sources": 2, "rank": 8, "probability": 5.42}, {"name": "挪威", "odds": 32.5, "flag": "🇳🇴", "tier": 3, "change": 0.0, "sources": 2, "rank": 33, "probability": 2.34}, {"name": "美国", "odds": 35.0, "flag": "🇺🇸", "tier": 3, "change": 20.3, "sources": 2, "rank": 17, "probability": 2.26}, {"name": "摩洛哥", "odds": 37.5, "flag": "🇲🇦", "tier": 3, "change": 7.1, "sources": 2, "rank": 7, "probability": 2.17}, {"name": "日本", "odds": 41.0, "flag": "🇯🇵", "tier": 4, "change": -15.5, "sources": 2, "rank": 18, "probability": 1.93}, {"name": "比利时", "odds": 46.0, "flag": "🇧🇪", "tier": 4, "change": 42.1, "sources": 2, "rank": 9, "probability": 1.77}, {"name": "哥伦比亚", "odds": 46.0, "flag": "🇨🇴", "tier": 4, "change": 0.0, "sources": 2, "rank": 13, "probability": 1.72}, {"name": "墨西哥", "odds": 53.5, "flag": "🇲🇽", "tier": 4, "change": -13.0, "sources": 2, "rank": 14, "probability": 1.48}, {"name": "瑞士", "odds": 81.0, "flag": "🇨🇭", "tier": 4, "change": 97.6, "sources": 1, "rank": 19, "probability": 0.98}, {"name": "乌拉圭", "odds": 101.0, "flag": "🇺🇾", "tier": 5, "change": 50.7, "sources": 1, "rank": 16, "probability": 0.8}, {"name": "克罗地亚", "odds": 101.0, "flag": "🇭🇷", "tier": 5, "change": 0.0, "sources": 1, "rank": 11, "probability": 0.78}, {"name": "塞内加尔", "odds": 101.0, "flag": "🇸🇳", "tier": 5, "change": 0.0, "sources": 1, "rank": 15, "probability": 0.78}, {"name": "科特迪瓦", "odds": 101.0, "flag": "🇨🇮", "tier": 5, "change": 0.0, "sources": 1, "rank": 94, "probability": 0.75}, {"name": "韩国", "odds": 151.0, "flag": "🇰🇷", "tier": 5, "change": -24.9, "sources": 1, "rank": 25, "probability": 0.5}, {"name": "加拿大", "odds": 151.0, "flag": "🇨🇦", "tier": 5, "change": 86.4, "sources": 1, "rank": 30, "probability": 0.5}, {"name": "奥地利", "odds": 161.0, "flag": "🇦🇹", "tier": 5, "change": 59.4, "sources": 1, "rank": 24, "probability": 0.47}, {"name": "瑞典", "odds": 201.0, "flag": "🇸🇪", "tier": 5, "change": 148.1, "sources": 1, "rank": 38, "probability": 0.38}, {"name": "厄瓜多尔", "odds": 201.0, "flag": "🇪🇨", "tier": 5, "change": 99.0, "sources": 1, "rank": 23, "probability": 0.38}, {"name": "澳大利亚", "odds": 201.0, "flag": "🇦🇺", "tier": 5, "change": 99.0, "sources": 1, "rank": 27, "probability": 0.38}, {"name": "埃及", "odds": 251.0, "flag": "🇪🇬", "tier": 5, "change": 24.9, "sources": 1, "rank": 29, "probability": 0.3}, {"name": "苏格兰", "odds": 301.0, "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "tier": 5, "change": 99.3, "sources": 1, "rank": 42, "probability": 0.25}, {"name": "阿尔及利亚", "odds": 301.0, "flag": "🇩🇿", "tier": 5, "change": -39.9, "sources": 1, "rank": 28, "probability": 0.25}, {"name": "捷克", "odds": 351.0, "flag": "🇨🇿", "tier": 5, "change": 16.6, "sources": 1, "rank": 40, "probability": 0.22}, {"name": "巴拉圭", "odds": 451.0, "flag": "🇵🇾", "tier": 5, "change": 124.4, "sources": 1, "rank": 41, "probability": 0.17}, {"name": "加纳", "odds": 501.0, "flag": "🇬🇭", "tier": 5, "change": 66.4, "sources": 1, "rank": 73, "probability": 0.15}, {"name": "波黑", "odds": 701.0, "flag": "🇧🇦", "tier": 5, "change": 74.8, "sources": 1, "rank": 64, "probability": 0.11}, {"name": "刚果民主共和国", "odds": 801.0, "flag": "🇨🇩", "tier": 5, "change": 166.1, "sources": 1, "rank": 96, "probability": 0.09}, {"name": "沙特", "odds": 1001.0, "flag": "🇸🇦", "tier": 5, "change": 33.3, "sources": 1, "rank": 61, "probability": 0.08}, {"name": "伊朗", "odds": 1001.0, "flag": "🇮🇷", "tier": 5, "change": 99.8, "sources": 1, "rank": 20, "probability": 0.08}, {"name": "南非", "odds": 2001.0, "flag": "🇿🇦", "tier": 5, "change": 99.9, "sources": 1, "rank": 60, "probability": 0.04}, {"name": "巴拿马", "odds": 2001.0, "flag": "🇵🇦", "tier": 5, "change": 99.9, "sources": 1, "rank": 102, "probability": 0.04}, {"name": "新西兰", "odds": 2001.0, "flag": "🇳🇿", "tier": 5, "change": 299.4, "sources": 1, "rank": 85, "probability": 0.04}, {"name": "乌兹别克斯坦", "odds": 2501.0, "flag": "🇺🇿", "tier": 5, "change": 149.9, "sources": 1, "rank": 50, "probability": 0.03}, {"name": "佛得角", "odds": 2501.0, "flag": "🇨🇻", "tier": 5, "change": 149.9, "sources": 1, "rank": 99, "probability": 0.03}, {"name": "卡塔尔", "odds": 2501.0, "flag": "🇶🇦", "tier": 5, "change": 149.9, "sources": 1, "rank": 56, "probability": 0.03}, {"name": "库拉索", "odds": 2501.0, "flag": "🇨🇼", "tier": 5, "change": 0.0, "sources": 1, "rank": 82, "probability": 0.03}, {"name": "约旦", "odds": 2501.0, "flag": "🇯🇴", "tier": 5, "change": 149.9, "sources": 1, "rank": 92, "probability": 0.03}, {"name": "伊拉克", "odds": 2501.0, "flag": "🇮🇶", "tier": 5, "change": 149.9, "sources": 1, "rank": 89, "probability": 0.03}, {"name": "土耳其", "odds": 5001.0, "flag": "🇹🇷", "tier": 5, "change": 3869.0, "sources": 1, "rank": 22, "probability": 0.02}, {"name": "突尼斯", "odds": 5001.0, "flag": "🇹🇳", "tier": 5, "change": 565.9, "sources": 1, "rank": 97, "probability": 0.02}, {"name": "海地", "odds": 5001.0, "flag": "🇭🇹", "tier": 5, "change": 100.0, "sources": 1, "rank": 83, "probability": 0.02}];
-const fifaRanks = {"阿根廷": 1, "西班牙": 2, "法国": 3, "英格兰": 4, "葡萄牙": 5, "巴西": 6, "摩洛哥": 7, "荷兰": 8, "比利时": 9, "德国": 10, "克罗地亚": 11, "哥伦比亚": 13, "墨西哥": 14, "塞内加尔": 15, "乌拉圭": 16, "美国": 17, "日本": 18, "瑞士": 19, "伊朗": 20, "土耳其": 22, "厄瓜多尔": 23, "奥地利": 24, "韩国": 25, "澳大利亚": 27, "阿尔及利亚": 28, "埃及": 29, "加拿大": 30, "瑞典": 38, "捷克": 40, "巴拉圭": 41, "苏格兰": 42, "乌兹别克斯坦": 50, "卡塔尔": 56, "南非": 60, "沙特": 61, "波黑": 64, "加纳": 73, "库拉索": 82, "海地": 83, "新西兰": 85, "伊拉克": 89, "约旦": 92, "科特迪瓦": 94, "刚果民主共和国": 96, "突尼斯": 97, "佛得角": 99, "巴拿马": 102};
-const formerChampions = new Set(["阿根廷", "德国", "巴西", "英格兰", "法国", "乌拉圭", "西班牙"]);
-function getFundamentalFactor(teamName) {
-  let factor = 1;
-  const rank = fifaRanks[teamName];
-  if (rank && rank <= 10) factor += 0.07;
-  else if (rank && rank <= 20) factor += 0.04;
-  if (formerChampions.has(teamName)) factor += 0.02;
-  return factor;
+const teamsData = [{"name": "法国", "odds": 5.0, "flag": "🇫🇷", "tier": 1, "change": 4.6, "sources": 3, "rank": 3, "probability": 14.82, "group": "I"}, {"name": "英格兰", "odds": 6.2, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "tier": 1, "change": -14.3, "sources": 3, "rank": 4, "probability": 11.79, "group": "L"}, {"name": "西班牙", "odds": 6.3, "flag": "🇪🇸", "tier": 1, "change": 5.6, "sources": 3, "rank": 2, "probability": 11.68, "group": "H"}, {"name": "阿根廷", "odds": 7.1, "flag": "🇦🇷", "tier": 1, "change": -16.9, "sources": 3, "rank": 1, "probability": 10.51, "group": "J"}, {"name": "葡萄牙", "odds": 9.2, "flag": "🇵🇹", "tier": 2, "change": -16.1, "sources": 3, "rank": 5, "probability": 7.75, "group": "K"}, {"name": "巴西", "odds": 9.9, "flag": "🇧🇷", "tier": 2, "change": -20.7, "sources": 3, "rank": 6, "probability": 7.32, "group": "C"}, {"name": "德国", "odds": 11.6, "flag": "🇩🇪", "tier": 2, "change": -19.9, "sources": 3, "rank": 10, "probability": 6.13, "group": "E"}, {"name": "荷兰", "odds": 16.2, "flag": "🇳🇱", "tier": 2, "change": 8.2, "sources": 3, "rank": 8, "probability": 4.34, "group": "F"}, {"name": "美国", "odds": 28.5, "flag": "🇺🇸", "tier": 3, "change": -18.7, "sources": 3, "rank": 17, "probability": 2.41, "group": "D"}, {"name": "挪威", "odds": 27.5, "flag": "🇳🇴", "tier": 3, "change": -15.4, "sources": 2, "rank": 31, "probability": 2.41, "group": "I"}, {"name": "比利时", "odds": 32.4, "flag": "🇧🇪", "tier": 3, "change": -29.6, "sources": 3, "rank": 9, "probability": 2.17, "group": "G"}, {"name": "摩洛哥", "odds": 34.0, "flag": "🇲🇦", "tier": 3, "change": -9.3, "sources": 2, "rank": 7, "probability": 2.08, "group": "C"}, {"name": "哥伦比亚", "odds": 41.0, "flag": "🇨🇴", "tier": 4, "change": -10.9, "sources": 2, "rank": 13, "probability": 1.69, "group": "K"}, {"name": "瑞士", "odds": 41.0, "flag": "🇨🇭", "tier": 4, "change": -49.4, "sources": 1, "rank": 19, "probability": 1.67, "group": "B"}, {"name": "日本", "odds": 46.0, "flag": "🇯🇵", "tier": 4, "change": 12.2, "sources": 2, "rank": 18, "probability": 1.49, "group": "F"}, {"name": "墨西哥", "odds": 59.0, "flag": "🇲🇽", "tier": 4, "change": 10.3, "sources": 2, "rank": 14, "probability": 1.17, "group": "A"}, {"name": "乌拉圭", "odds": 67.0, "flag": "🇺🇾", "tier": 4, "change": -33.7, "sources": 1, "rank": 16, "probability": 1.05, "group": "H"}, {"name": "加拿大", "odds": 81.0, "flag": "🇨🇦", "tier": 4, "change": -46.4, "sources": 1, "rank": 30, "probability": 0.82, "group": "B"}, {"name": "瑞典", "odds": 81.0, "flag": "🇸🇪", "tier": 4, "change": -59.7, "sources": 1, "rank": 38, "probability": 0.82, "group": "F"}, {"name": "克罗地亚", "odds": 101.0, "flag": "🇭🇷", "tier": 5, "change": 0.0, "sources": 1, "rank": 11, "probability": 0.69, "group": "L"}, {"name": "塞内加尔", "odds": 101.0, "flag": "🇸🇳", "tier": 5, "change": 0.0, "sources": 1, "rank": 15, "probability": 0.68, "group": "I"}, {"name": "厄瓜多尔", "odds": 101.0, "flag": "🇪🇨", "tier": 5, "change": -49.8, "sources": 1, "rank": 23, "probability": 0.66, "group": "E"}, {"name": "奥地利", "odds": 101.0, "flag": "🇦🇹", "tier": 5, "change": -37.3, "sources": 1, "rank": 24, "probability": 0.66, "group": "J"}, {"name": "澳大利亚", "odds": 101.0, "flag": "🇦🇺", "tier": 5, "change": -49.8, "sources": 1, "rank": 27, "probability": 0.66, "group": "D"}, {"name": "科特迪瓦", "odds": 101.0, "flag": "🇨🇮", "tier": 5, "change": 0.0, "sources": 1, "rank": 33, "probability": 0.66, "group": "E"}, {"name": "土耳其", "odds": 126.0, "flag": "🇹🇷", "tier": 5, "change": -97.5, "sources": 1, "rank": 22, "probability": 0.53, "group": "D"}, {"name": "苏格兰", "odds": 151.0, "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "tier": 5, "change": -49.8, "sources": 1, "rank": 42, "probability": 0.44, "group": "C"}, {"name": "韩国", "odds": 201.0, "flag": "🇰🇷", "tier": 5, "change": 33.1, "sources": 1, "rank": 25, "probability": 0.33, "group": "A"}, {"name": "埃及", "odds": 201.0, "flag": "🇪🇬", "tier": 5, "change": -19.9, "sources": 1, "rank": 29, "probability": 0.33, "group": "G"}, {"name": "巴拉圭", "odds": 201.0, "flag": "🇵🇾", "tier": 5, "change": -55.4, "sources": 1, "rank": 41, "probability": 0.33, "group": "D"}, {"name": "捷克", "odds": 301.0, "flag": "🇨🇿", "tier": 5, "change": -14.2, "sources": 1, "rank": 40, "probability": 0.22, "group": "A"}, {"name": "刚果民主共和国", "odds": 301.0, "flag": "🇨🇩", "tier": 5, "change": -62.4, "sources": 1, "rank": 46, "probability": 0.22, "group": "K"}, {"name": "加纳", "odds": 301.0, "flag": "🇬🇭", "tier": 5, "change": -39.9, "sources": 1, "rank": 73, "probability": 0.22, "group": "L"}, {"name": "波黑", "odds": 401.0, "flag": "🇧🇦", "tier": 5, "change": -42.8, "sources": 1, "rank": 64, "probability": 0.17, "group": "B"}, {"name": "伊朗", "odds": 501.0, "flag": "🇮🇷", "tier": 5, "change": -50.0, "sources": 1, "rank": 20, "probability": 0.14, "group": "G"}, {"name": "阿尔及利亚", "odds": 501.0, "flag": "🇩🇿", "tier": 5, "change": 66.4, "sources": 1, "rank": 28, "probability": 0.13, "group": "J"}, {"name": "新西兰", "odds": 501.0, "flag": "🇳🇿", "tier": 5, "change": -75.0, "sources": 1, "rank": 85, "probability": 0.13, "group": "G"}, {"name": "突尼斯", "odds": 751.0, "flag": "🇹🇳", "tier": 5, "change": -85.0, "sources": 1, "rank": 45, "probability": 0.09, "group": "F"}, {"name": "沙特", "odds": 751.0, "flag": "🇸🇦", "tier": 5, "change": -25.0, "sources": 1, "rank": 61, "probability": 0.09, "group": "H"}, {"name": "巴拿马", "odds": 1001.0, "flag": "🇵🇦", "tier": 5, "change": -50.0, "sources": 1, "rank": 34, "probability": 0.07, "group": "L"}, {"name": "乌兹别克斯坦", "odds": 1001.0, "flag": "🇺🇿", "tier": 5, "change": -60.0, "sources": 1, "rank": 50, "probability": 0.07, "group": "K"}, {"name": "卡塔尔", "odds": 1001.0, "flag": "🇶🇦", "tier": 5, "change": -60.0, "sources": 1, "rank": 56, "probability": 0.07, "group": "B"}, {"name": "伊拉克", "odds": 1001.0, "flag": "🇮🇶", "tier": 5, "change": -60.0, "sources": 1, "rank": 57, "probability": 0.07, "group": "I"}, {"name": "南非", "odds": 1001.0, "flag": "🇿🇦", "tier": 5, "change": -50.0, "sources": 1, "rank": 60, "probability": 0.07, "group": "A"}, {"name": "约旦", "odds": 1001.0, "flag": "🇯🇴", "tier": 5, "change": -60.0, "sources": 1, "rank": 63, "probability": 0.07, "group": "J"}, {"name": "佛得角", "odds": 1001.0, "flag": "🇨🇻", "tier": 5, "change": -60.0, "sources": 1, "rank": 67, "probability": 0.07, "group": "H"}, {"name": "库拉索", "odds": 2501.0, "flag": "🇨🇼", "tier": 5, "change": 0.0, "sources": 1, "rank": 82, "probability": 0.03, "group": "E"}, {"name": "海地", "odds": 2501.0, "flag": "🇭🇹", "tier": 5, "change": -50.0, "sources": 1, "rank": 83, "probability": 0.03, "group": "C"}];
+
+function renderTeams(list) {
+  const container = document.getElementById('teamList');
+  container.innerHTML = list.map((t, i) => {
+    const tierClass = 't' + t.tier;
+    const rankClass = i < 3 ? ' top3' : '';
+    const changeHtml = t.change != null
+      ? (t.change <= 0
+        ? '<div class="change down">📉 ' + Math.abs(t.change).toFixed(1) + '%</div>'
+        : '<div class="change up">📈 +' + t.change.toFixed(1) + '%</div>')
+      : '<div class="change" style="color:var(--text-dim)">—</div>';
+    const sourcesNote = t.sources >= 2 ? ' · ' + t.sources + '源' : '';
+    return `<div class="team-row">
+      <div class="prob-bar ${tierClass}" style="width:${Math.max(t.probability * 4, 0.5)}%"></div>
+      <div class="rank-num${rankClass}">#${i + 1}</div>
+      <div class="flag">${t.flag}</div>
+      <div class="info">
+        <div class="name">${t.name}</div>
+        <div class="meta"><span>🌍 组${t.group} ${GROUPS[t.name] || '?'}</span><span>📊 FIFA #${t.rank}</span><span>💴 ${t.odds.toFixed(1)}${sourcesNote}</span></div>
+      </div>
+      <div class="prob-col">
+        <div class="prob">${t.probability.toFixed(2)}%</div>
+        ${changeHtml}
+      </div>
+      <div class="tier-badge ${tierClass}">${['','🥇一档','🥈二档','🥉三档','4档','5档'][t.tier]}</div>
+    </div>`;
+  }).join('');
 }
-function getTierByProbability(probability) { if (probability >= 8) return 1; if (probability >= 4) return 2; if (probability >= 2) return 3; if (probability >= 0.8) return 4; return 5; }
-function calculateProbabilities(data) {
-  const rawProbs = data.map(t => ({ ...t, rawProb: (1 / t.odds) * getFundamentalFactor(t.name) }));
-  const totalRaw = rawProbs.reduce((sum, t) => sum + t.rawProb, 0);
-  return rawProbs.map(t => {
-    const probability = (t.rawProb / totalRaw) * 100;
-    const calculatedTier = getTierByProbability(probability);
-    if (calculatedTier !== t.tier) console.warn(t.name + " 梯队数据与概率不一致，已按概率动态修正为第 " + calculatedTier + " 梯队");
-    return { ...t, tier: calculatedTier, probability };
-  }).sort((a, b) => b.probability - a.probability);
+
+// Make GROUPS available in renderTeams scope
+const GROUPS = {"墨西哥": "A", "韩国": "A", "捷克": "A", "南非": "A", "加拿大": "B", "瑞士": "B", "波黑": "B", "卡塔尔": "B", "巴西": "C", "摩洛哥": "C", "苏格兰": "C", "海地": "C", "美国": "D", "澳大利亚": "D", "巴拉圭": "D", "土耳其": "D", "德国": "E", "科特迪瓦": "E", "厄瓜多尔": "E", "库拉索": "E", "荷兰": "F", "日本": "F", "瑞典": "F", "突尼斯": "F", "埃及": "G", "伊朗": "G", "比利时": "G", "新西兰": "G", "西班牙": "H", "乌拉圭": "H", "佛得角": "H", "沙特": "H", "法国": "I", "挪威": "I", "塞内加尔": "I", "伊拉克": "I", "阿根廷": "J", "奥地利": "J", "阿尔及利亚": "J", "约旦": "J", "哥伦比亚": "K", "刚果民主共和国": "K", "葡萄牙": "K", "乌兹别克斯坦": "K", "英格兰": "L", "加纳": "L", "巴拿马": "L", "克罗地亚": "L"};
+
+let currentTier = 'all';
+
+function filterByTier(tier, btn) {
+  currentTier = tier;
+  document.querySelectorAll('.tier-nav button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterTeams();
 }
-const teams = calculateProbabilities(teamsData);
-const maxProb = teams[0].probability;
-function getTierClass(tier) { return ({1:'bar-tier-1',2:'bar-tier-2',3:'bar-tier-3',4:'bar-tier-4',5:'bar-tier-5'})[tier] || 'bar-tier-5'; }
-function getTierLabel(tier) { return ({1:'🔴 第一梯队',2:'🔵 第二梯队',3:'🟢 第三梯队',4:'⚽ 黑马梯队',5:'🌍 其他球队'})[tier] || ''; }
-function getRankClass(idx) { if (idx===0) return 'top3'; if (idx<3) return 'top3'; if (idx<10) return 'top10'; return ''; }
-function renderList(data) {
-  const listEl = document.getElementById('team-list');
-  const noEl = document.getElementById('no-result');
-  if (data.length === 0) { listEl.innerHTML = ''; noEl.style.display = 'block'; return; }
-  noEl.style.display = 'none';
-  let html = '';
-  data.forEach((t, idx) => {
-    const barW = (t.probability / maxProb * 100).toFixed(1);
-    const changeClass = t.change > 0.5 ? 'up' : (t.change < -0.5 ? 'down' : 'flat');
-    const changeSymbol = t.change > 0.5 ? '↑' : (t.change < -0.5 ? '↓' : '→');
-    const rankClass = getRankClass(idx);
-    html += '<div class="team-card"><div class="top-row"><span class="rank ' + rankClass + '">' + (idx+1) + '</span><span class="flag">' + t.flag + '</span><span class="name">' + t.name + '</span><span class="prob">' + t.probability.toFixed(1) + '%</span><span class="odds-change ' + changeClass + '">' + changeSymbol + ' ' + Math.abs(t.change).toFixed(1) + '%</span></div><div class="bar-wrap"><div class="bar-fill ' + getTierClass(t.tier) + '" style="width:' + barW + '%"></div></div><div class="bottom-info"><span>综合赔率 ' + t.odds.toFixed(2) + ' · ' + getTierLabel(t.tier) + '</span><span style="font-size:10px;opacity:0.6">来源 ' + t.sources + '家</span></div></div>';
-  });
-  listEl.innerHTML = html;
+
+function filterTeams() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  let filtered = teamsData;
+  if (currentTier !== 'all') {
+    filtered = filtered.filter(t => t.tier === currentTier);
+  }
+  if (q) {
+    filtered = filtered.filter(t => t.name.toLowerCase().includes(q) || t.flag.includes(q));
+  }
+  renderTeams(filtered);
 }
-let activeTier = 0;
-function filter() {
-  const q = document.getElementById('search-input').value.toLowerCase();
-  let filtered = activeTier === 0 ? teams : teams.filter(t => t.tier === activeTier);
-  if (q) filtered = filtered.filter(t => t.name.toLowerCase().includes(q) || t.flag.includes(q));
-  renderList(filtered);
-  document.getElementById('clear-btn').classList.toggle('visible', q.length > 0);
-}
-document.getElementById('search-input').addEventListener('input', filter);
-document.getElementById('clear-btn').addEventListener('click', () => { document.getElementById('search-input').value = ''; filter(); });
-document.querySelectorAll('.tier-tag').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tier-tag').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeTier = parseInt(btn.dataset.tier);
-    filter();
-  });
-});
-renderList(teams);
+
+// Init
+renderTeams(teamsData);
 </script>
 </body>
 </html>
