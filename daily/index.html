@@ -2,296 +2,484 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026美加墨世界杯 · 每日比赛胜负预测</title>
 <style>
-  :root {
-    --bg: #0c1628;
-    --card: #131e36;
-    --card-hover: #1a2a4a;
-    --accent: #E61D25;
-    --accent2: #3CAC3B;
-    --accent3: #2A398D;
-    --text: #f0f2f5;
-    --text-dim: #8899b0;
-    --win: #E61D25;
-    --draw: #8b9dc3;
-    --lose: #4a6fa5;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-  .bg-decor { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events: none; z-index:0; }
-  .bg-decor::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 10%, rgba(230,29,37,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(60,172,59,0.06) 0%, transparent 50%), radial-gradient(circle at 50% 60%, rgba(42,57,141,0.06) 0%, transparent 50%); }
-  .container { position: relative; z-index:1; max-width: 500px; margin: 0 auto; padding: 16px 16px 40px; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 13px; padding: 8px 0; }
-  .back-link:hover { color: var(--accent); }
-  .header { text-align: center; padding: 24px 0 20px; }
-  .header .icon { font-size: 48px; display: block; }
-  .header h1 { font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #E61D25, #2A398D, #3CAC3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 8px 0 4px; }
-  .header .subtitle { font-size: 13px; color: var(--text-dim); display: flex; align-items:center; justify-content:center; gap:6px; flex-wrap: wrap; }
-  .tricolor-bar { height: 3px; background: linear-gradient(90deg, #E61D25 33%, #2A398D 33% 66%, #3CAC3B 66%); border-radius: 2px; margin-bottom: 16px; }
-  .info-box { background: rgba(42,57,141,0.12); border: 1px solid rgba(42,57,141,0.2); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
-  .info-box strong { color: var(--accent3); }
-  .note { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.07); color: var(--text-dim); border-radius: 14px; padding: 11px 12px; font-size: 11px; line-height: 1.7; margin-bottom: 16px; }
-  .match-card { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.06); }
-  .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .match-tag { background: rgba(230,29,37,0.12); color: var(--accent); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
-  .match-time { font-size: 12px; color: var(--text-dim); }
-  .match-teams { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-  .team { text-align: center; flex: 1; }
-  .team-flag { font-size: 36px; display: block; }
-  .team-name { font-size: 16px; font-weight: 700; margin: 4px 0 2px; }
-  .team-rank { font-size: 10px; color: var(--text-dim); }
-  .vs { font-size: 18px; font-weight: 800; color: var(--text-dim); padding: 0 12px; }
-  .match-details { display: flex; flex-wrap: wrap; gap: 10px; font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
-  .prob-bars { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-  .prob-item { display: flex; align-items: center; gap: 8px; }
-  .prob-label { font-size: 11px; color: var(--text-dim); width: 36px; text-align: right; flex-shrink: 0; }
-  .prob-bar-wrap { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
-  .prob-fill { height: 100%; border-radius: 4px; transition: width 0.6s; }
-  .home-fill { background: var(--win); }
-  .draw-fill { background: var(--draw); }
-  .away-fill { background: var(--lose); }
-  .prob-val { font-size: 12px; font-weight: 700; width: 50px; text-align: right; }
-  .match-recommend { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
-  .rec-label { font-size: 13px; }
-  .rec-value { font-size: 14px; font-weight: 700; color: var(--accent); }
-  .confidence { font-size: 11px; padding: 3px 8px; border-radius: 6px; margin-left: auto; }
-  .confidence.high { background: rgba(76,175,80,0.15); color: #4caf50; }
-  .confidence.mid { background: rgba(255,199,44,0.15); color: var(--tier4); }
-  .confidence.low { background: rgba(124,139,160,0.15); color: var(--text-dim); }
-  .match-form { font-size: 11px; color: var(--text-dim); }
-  .footer { text-align: center; padding: 20px 0; font-size: 11px; color: var(--text-dim); line-height: 1.8; }
-  .footer .divider { height:1px; background: rgba(255,255,255,0.06); margin: 16px 0; }
-  .footer .highlight { background: rgba(230,29,37,0.1); color: var(--accent); padding: 2px 8px; border-radius: 4px; }
-  .empty-state { text-align: center; padding: 40px 20px; }
-  .empty-state .emoji { font-size: 64px; }
-  .empty-state h2 { color: var(--text-dim); margin: 12px 0 8px; }
-  .empty-state p { font-size: 13px; color: var(--text-dim); }
-  @media (max-width: 380px) {
+:root {
+    --usa-red: #E61D25;
+    --canada-blue: #2A398D;
+    --mexico-green: #3CAC3B;
+    --bg: #0d1117;
+    --card: #161b22;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --border: #30363d;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+.tricolor-bg {
+    position: fixed; top:0; left:0; right:0; height:4px; z-index:100;
+    background: linear-gradient(90deg, var(--usa-red) 33.33%, var(--canada-blue) 33.33%, var(--canada-blue) 66.66%, var(--mexico-green) 66.66%);
+}
+.container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+.nav-link { display: inline-block; color: var(--text-dim); text-decoration: none; font-size: 13px; margin-bottom: 16px; }
+.nav-link:hover { color: var(--text); }
+h1 {
+    font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 4px;
+    background: linear-gradient(90deg, var(--usa-red), var(--canada-blue), var(--mexico-green));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-dim); font-size: 13px; margin-bottom: 8px; }
+.tricolor-bar { height: 3px; background: linear-gradient(90deg, var(--usa-red), var(--canada-blue), var(--mexico-green)); border-radius: 2px; margin-bottom: 20px; }
+.info-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 16px; font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.info-box strong { color: var(--text); }
+.section-header { font-size: 18px; font-weight: 700; margin: 20px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+.section-header.completed { color: var(--text-dim); }
+.section-header.upcoming { color: var(--text); }
+.match-card { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.06); }
+.match-card.completed { opacity: 0.75; }
+.match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.match-tag { font-size: 12px; background: rgba(255,255,255,0.06); padding: 3px 10px; border-radius: 12px; color: var(--text-dim); }
+.match-time { font-size: 13px; color: var(--text-dim); }
+.match-teams { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 10px; }
+.team { text-align: center; flex: 1; }
+.team-flag { font-size: 36px; display: block; margin-bottom: 4px; }
+.team-name { font-weight: 700; font-size: 16px; }
+.team-rank { font-size: 11px; color: var(--text-dim); }
+.vs { font-size: 18px; font-weight: 800; color: var(--text-dim); padding: 0 12px; }
+.match-details { text-align: center; font-size: 12px; color: var(--text-dim); margin-bottom: 10px; }
+.score-line { text-align: center; font-size: 28px; font-weight: 800; margin: 8px 0; }
+.score-line .winner { color: var(--mexico-green); }
+.status-tag { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.status-tag.done { background: rgba(139,148,158,0.15); color: var(--text-dim); }
+.prob-bars { display: flex; gap: 6px; margin: 10px 0; }
+.prob-item { flex: 1; text-align: center; }
+.prob-label { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+.prob-bar-wrap { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 4px; }
+.prob-fill { height: 100%; border-radius: 3px; }
+.home-fill { background: var(--usa-red); }
+.draw-fill { background: var(--canada-blue); }
+.away-fill { background: var(--mexico-green); }
+.prob-val { font-size: 14px; font-weight: 700; }
+.match-recommend { text-align: center; margin: 8px 0; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; }
+.rec-label { font-size: 13px; color: var(--text-dim); }
+.rec-value { font-size: 16px; font-weight: 800; }
+.confidence { font-size: 12px; padding: 2px 8px; border-radius: 8px; margin-left: 8px; }
+.confidence.high { background: rgba(60,172,59,0.15); color: var(--mexico-green); }
+.confidence.mid { background: rgba(255,169,77,0.15); color: #ffa94d; }
+.confidence.low { background: rgba(230,29,37,0.15); color: var(--usa-red); }
+.match-form { text-align: center; font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+.match-key { font-size: 12px; color: var(--text-dim); margin-top: 6px; padding: 6px; background: rgba(255,255,255,0.02); border-radius: 6px; }
+.note { font-size: 12px; color: var(--text-dim); margin-top: 8px; line-height: 1.6; }
+@media (max-width: 600px) {
+    .match-teams { gap: 8px; }
+    .team-name { font-size: 13px; }
     .team-flag { font-size: 28px; }
-    .team-name { font-size: 14px; }
-  }
+    .score-line { font-size: 22px; }
+    h1 { font-size: 22px; }
+}
 </style>
 </head>
 <body>
-<div class="bg-decor"></div>
+<div class="tricolor-bg"></div>
 <div class="container">
-  <a href="../" class="back-link">← 返回预测中心</a>
-  <div class="header">
-    <span class="icon">⚽</span>
-    <h1>2026 世界杯每日胜负预测</h1>
-    <div class="subtitle">官方比赛日 2026.06.23 · 北京时间更新 2026.06.23 19:53</div>
-  </div>
+<a href="../" class="nav-link">← 返回预测中心</a>
+<h1>2026 世界杯每日胜负预测</h1>
+<div class="subtitle">官方比赛日：2026.06.25（北美当地）· 北京时间更新：2026.06.25 17:23</div>
+<div class="tricolor-bar"></div>
 
-  <div class="tricolor-bar"></div>
+<div class="info-box">
+    <strong>📊 时区说明：</strong>官方比赛日按举办地当地日期（美国/加拿大/墨西哥）定义。本轮 D/E/F 组当地日期 6月25日 = 北京时间 6月26日凌晨/上午。<br>
+    <strong>📊 小组阶段：</strong>D/E/F组第3轮（小组赛末轮）。同组两场比赛同时开赛。每组前2名 + 8个最佳小组第3晋级32强淘汰赛。
+</div>
 
-  <div class="info-box">
-    <strong>⏰ 时区说明：</strong>官方比赛日按北美赛地当地时间（主要 ET/美东时间）计。北京时间 (CST, UTC+8) ≈ 美东时间 +12小时。今天 {len(matches)} 场比赛跨越北京时间 6.23 深夜至 6.24 上午。<br>
-    <strong>📊 小组阶段：</strong>K组/L组第2轮。每组前2名 + 8个最佳小组第3晋级32强淘汰赛。
-  </div>
+<div class="note">1X2赔率取自 Cleatz 多博彩公司（DraftKings/FanDuel/BetRivers/BetMGM）最佳赔率，经去 vig 归一化处理。综合市场赔率隐含概率 + FIFA排名差修正。伤停/近期状态/历史交锋数据暂缺，已跳过相关修正。小组积分榜来源：Cleatz 实时数据（2026.06.25）。</div>
 
-  <div class="note">伤停信息与历史交锋数据暂缺，已跳过此项修正。近期状态来自小组赛积分榜(cleatz/whereig)。1X2赔率取自 cleatz 多博彩公司(DraftKings/FanDuel/BetRivers/BetMGM)最佳赔率，经去 vig 归一化处理。</div>
+<!-- ====== COMPLETED MATCHES ====== -->
+<h2 class="section-header completed">✅ 已完赛 · A/B/C组第3轮（官方比赛日 6月24日 当地）</h2>
 
-      <div class="match-card">
-        <div class="match-header">
-          <span class="match-tag">K组 · 第2轮</span>
-          <span class="match-time">🕐 2026.06.23 23:00 BJT</span>
+<div class="match-card completed">
+    <div class="match-header">
+        <span class="match-tag">B组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.25 03:00</span>
+        <span class="status-tag done">完赛</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇨🇭</span>
+            <div class="team-name">瑞士</div>
         </div>
-        <div class="match-teams">
-          <div class="team home">
-            <span class="team-flag">🇵🇹</span>
-            <span class="team-name">葡萄牙</span>
-            <span class="team-rank">FIFA #5</span>
-          </div>
-          <div class="vs">VS</div>
-          <div class="team away">
-            <span class="team-flag">🇺🇿</span>
-            <span class="team-name">乌兹别克斯坦</span>
-            <span class="team-rank">FIFA #50</span>
-          </div>
+        <div class="score-line">2-1</div>
+        <div class="team">
+            <span class="team-flag">🇨🇦</span>
+            <div class="team-name">加拿大</div>
         </div>
-        <div class="match-details">
-          <span>📍 达拉斯 AT&T体育场</span>
-          <span>📅 官方比赛日 2026.06.23 (11:00 ET)</span>
+    </div>
+    <div class="match-details">📍 温哥华 BC Place · 当地时间 06.24 12:00 PDT</div>
+    <div class="match-key">💡 巴尔加斯、曼赞比破门，瑞士小组第一；加拿大历史性晋级</div>
+</div>
+<div class="match-card completed">
+    <div class="match-header">
+        <span class="match-tag">B组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.25 03:00</span>
+        <span class="status-tag done">完赛</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇧🇦</span>
+            <div class="team-name">波黑</div>
         </div>
-        <div class="prob-bars">
-          <div class="prob-item">
-            <div class="prob-label">主胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:86%"></div></div>
-            <div class="prob-val">86.2%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">平局</div>
-            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:12%"></div></div>
-            <div class="prob-val">11.8%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">客胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:5%"></div></div>
-            <div class="prob-val">4.8%</div>
-          </div>
+        <div class="score-line">3-1</div>
+        <div class="team">
+            <span class="team-flag">🇶🇦</span>
+            <div class="team-name">卡塔尔</div>
         </div>
-        <div class="match-recommend">
-          <span class="rec-label">⭐ 推荐：</span>
-          <span class="rec-value">葡萄牙胜</span>
-          <span class="confidence high">置信度：高</span>
+    </div>
+    <div class="match-details">📍 西雅图 Lumen Field · 当地时间 06.24 12:00 PDT</div>
+    <div class="match-key">💡 阿拉贝戈维奇世界波，哲科150场里程碑；波黑积4分待定小组第三</div>
+</div>
+<div class="match-card completed">
+    <div class="match-header">
+        <span class="match-tag">C组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.25 06:00</span>
+        <span class="status-tag done">完赛</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+            <div class="team-name">苏格兰</div>
         </div>
-        <div class="match-form">
-          <span>📊 近期：葡萄牙 W D (1胜1平，积4分) | 乌兹别克斯坦 L L (0胜2负，积0分)</span>
+        <div class="score-line">0-3</div>
+        <div class="team">
+            <span class="team-flag">🇧🇷</span>
+            <div class="team-name">巴西</div>
         </div>
-      </div>
-      <div class="match-card">
-        <div class="match-header">
-          <span class="match-tag">L组 · 第2轮</span>
-          <span class="match-time">🕐 2026.06.24 02:00 BJT</span>
+    </div>
+    <div class="match-details">📍 迈阿密 Hard Rock Stadium · 当地时间 06.24 18:00 EDT</div>
+    <div class="match-key">💡 维尼修斯双响+库尼亚破门，内马尔复出替补登场；巴西小组第一</div>
+</div>
+<div class="match-card completed">
+    <div class="match-header">
+        <span class="match-tag">C组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.25 06:00</span>
+        <span class="status-tag done">完赛</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇲🇦</span>
+            <div class="team-name">摩洛哥</div>
         </div>
-        <div class="match-teams">
-          <div class="team home">
-            <span class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
-            <span class="team-name">英格兰</span>
-            <span class="team-rank">FIFA #4</span>
-          </div>
-          <div class="vs">VS</div>
-          <div class="team away">
-            <span class="team-flag">🇬🇭</span>
-            <span class="team-name">加纳</span>
-            <span class="team-rank">FIFA #73</span>
-          </div>
+        <div class="score-line">4-2</div>
+        <div class="team">
+            <span class="team-flag">🇭🇹</span>
+            <div class="team-name">海地</div>
         </div>
-        <div class="match-details">
-          <span>📍 迈阿密 硬石体育场</span>
-          <span>📅 官方比赛日 2026.06.23 (14:00 ET)</span>
+    </div>
+    <div class="match-details">📍 亚特兰大 Mercedes-Benz Stadium · 当地时间 06.24 18:00 EDT</div>
+    <div class="match-key">💡 海地两度领先被逆转，阿什拉夫进球，摩洛哥小组第二晋级</div>
+</div>
+<div class="match-card completed">
+    <div class="match-header">
+        <span class="match-tag">A组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.25 09:00</span>
+        <span class="status-tag done">完赛</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇨🇿</span>
+            <div class="team-name">捷克</div>
         </div>
-        <div class="prob-bars">
-          <div class="prob-item">
-            <div class="prob-label">主胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:83%"></div></div>
-            <div class="prob-val">83.3%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">平局</div>
-            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:12%"></div></div>
-            <div class="prob-val">12.5%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">客胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:6%"></div></div>
-            <div class="prob-val">5.6%</div>
-          </div>
+        <div class="score-line">0-3</div>
+        <div class="team">
+            <span class="team-flag">🇲🇽</span>
+            <div class="team-name">墨西哥</div>
         </div>
-        <div class="match-recommend">
-          <span class="rec-label">⭐ 推荐：</span>
-          <span class="rec-value">英格兰胜</span>
-          <span class="confidence high">置信度：高</span>
+    </div>
+    <div class="match-details">📍 墨西哥城 Estadio Azteca · 当地时间 06.24 20:00 CDT</div>
+    <div class="match-key">💡 墨西哥三战全胜零失球，奥乔亚第六届世界杯；捷克垫底出局</div>
+</div>
+<div class="match-card completed">
+    <div class="match-header">
+        <span class="match-tag">A组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.25 09:00</span>
+        <span class="status-tag done">完赛</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇿🇦</span>
+            <div class="team-name">南非</div>
         </div>
-        <div class="match-form">
-          <span>📊 近期：英格兰 W W (2胜0负，积6分) | 加纳 W L (1胜1负，积3分)</span>
+        <div class="score-line">1-0</div>
+        <div class="team">
+            <span class="team-flag">🇰🇷</span>
+            <div class="team-name">韩国</div>
         </div>
-      </div>
-      <div class="match-card">
-        <div class="match-header">
-          <span class="match-tag">L组 · 第2轮</span>
-          <span class="match-time">🕐 2026.06.24 05:00 BJT</span>
-        </div>
-        <div class="match-teams">
-          <div class="team home">
-            <span class="team-flag">🇵🇦</span>
-            <span class="team-name">巴拿马</span>
-            <span class="team-rank">FIFA #34</span>
-          </div>
-          <div class="vs">VS</div>
-          <div class="team away">
-            <span class="team-flag">🇭🇷</span>
-            <span class="team-name">克罗地亚</span>
-            <span class="team-rank">FIFA #11</span>
-          </div>
-        </div>
-        <div class="match-details">
-          <span>📍 旧金山 李维斯体育场</span>
-          <span>📅 官方比赛日 2026.06.23 (17:00 ET)</span>
-        </div>
-        <div class="prob-bars">
-          <div class="prob-item">
-            <div class="prob-label">主胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:13%"></div></div>
-            <div class="prob-val">13.1%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">平局</div>
-            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:22%"></div></div>
-            <div class="prob-val">22.4%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">客胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:67%"></div></div>
-            <div class="prob-val">66.7%</div>
-          </div>
-        </div>
-        <div class="match-recommend">
-          <span class="rec-label">⭐ 推荐：</span>
-          <span class="rec-value">克罗地亚胜</span>
-          <span class="confidence mid">置信度：中</span>
-        </div>
-        <div class="match-form">
-          <span>📊 近期：巴拿马 L L (0胜2负，积0分) | 克罗地亚 L D (0胜1平1负，积1分)</span>
-        </div>
-      </div>
-      <div class="match-card">
-        <div class="match-header">
-          <span class="match-tag">K组 · 第2轮</span>
-          <span class="match-time">🕐 2026.06.24 08:00 BJT</span>
-        </div>
-        <div class="match-teams">
-          <div class="team home">
-            <span class="team-flag">🇨🇴</span>
-            <span class="team-name">哥伦比亚</span>
-            <span class="team-rank">FIFA #13</span>
-          </div>
-          <div class="vs">VS</div>
-          <div class="team away">
-            <span class="team-flag">🇨🇩</span>
-            <span class="team-name">刚果民主共和国</span>
-            <span class="team-rank">FIFA #46</span>
-          </div>
-        </div>
-        <div class="match-details">
-          <span>📍 洛杉矶 SoFi体育场</span>
-          <span>📅 官方比赛日 2026.06.23 (20:00 ET)</span>
-        </div>
-        <div class="prob-bars">
-          <div class="prob-item">
-            <div class="prob-label">主胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:64%"></div></div>
-            <div class="prob-val">64.3%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">平局</div>
-            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:23%"></div></div>
-            <div class="prob-val">23.3%</div>
-          </div>
-          <div class="prob-item">
-            <div class="prob-label">客胜</div>
-            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:15%"></div></div>
-            <div class="prob-val">14.8%</div>
-          </div>
-        </div>
-        <div class="match-recommend">
-          <span class="rec-label">⭐ 推荐：</span>
-          <span class="rec-value">哥伦比亚胜</span>
-          <span class="confidence mid">置信度：中</span>
-        </div>
-        <div class="match-form">
-          <span>📊 近期：哥伦比亚 W - (1胜0负，积3分) | 刚果民主共和国 D - (0胜1平，积1分)</span>
-        </div>
-      </div>
+    </div>
+    <div class="match-details">📍 蒙特雷 Estadio BBVA · 当地时间 06.24 20:00 CDT</div>
+    <div class="match-key">💡 马塞科制胜球，孙兴慜替补未救主；南非历史首进淘汰赛，韩国积3分待定</div>
+</div>
+<!-- ====== UPCOMING PREDICTIONS ====== -->
+<h2 class="section-header upcoming">🔮 赛前预测 · D/E/F组第3轮（官方比赛日 6月25日 当地 → 北京时间 6月26日）</h2>
 
-  <div class="footer">
-    <div class="divider"></div>
-    赛程来源：cleatz 官方赛事页（2026.06.23）。1X2赔率来源：cleatz DraftKings/FanDuel/BetRivers/BetMGM 多博彩公司最佳赔率，经去 vig 归一化处理。<br>
-    伤停信息与历史交锋数据暂缺，已跳过修正。近期状态来自小组赛积分榜(cleatz/whereig)。FIFA排名来源：whereig.com（2026-06-11）。<br>
-    <span class="highlight">仅供参考，不构成投注建议</span>
-  </div>
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">E组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.26 04:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇨🇼</span>
+            <div class="team-name">库拉索</div>
+            <div class="team-rank">FIFA #85</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇨🇮</span>
+            <div class="team-name">科特迪瓦</div>
+            <div class="team-rank">FIFA #33</div>
+        </div>
+    </div>
+    <div class="match-details">📍 费城 Lincoln Financial Field · 当地时间 06.25 16:00 EDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">主胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:4.2%"></div></div>
+            <span class="prob-val">4.2%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:11.5%"></div></div>
+            <span class="prob-val">11.5%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">客胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:84.3%"></div></div>
+            <span class="prob-val">84.3%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">✈️ 推荐：</span>
+        <span class="rec-value">客胜</span>
+        <span class="confidence high">高置信度</span>
+    </div>
+    <div class="match-form">科特迪瓦需胜确保出线；库拉索已无晋级希望。排名差52位，市场赔率极度倾向客胜。</div>
+</div>
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">E组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.26 04:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇪🇨</span>
+            <div class="team-name">厄瓜多尔</div>
+            <div class="team-rank">FIFA #23</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇩🇪</span>
+            <div class="team-name">德国</div>
+            <div class="team-rank">FIFA #10</div>
+        </div>
+    </div>
+    <div class="match-details">📍 纽约 MetLife Stadium · 当地时间 06.25 16:00 EDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">主胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:15.7%"></div></div>
+            <span class="prob-val">15.7%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:18.7%"></div></div>
+            <span class="prob-val">18.7%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">客胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:65.6%"></div></div>
+            <span class="prob-val">65.6%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">✈️ 推荐：</span>
+        <span class="rec-value">客胜</span>
+        <span class="confidence high">高置信度</span>
+    </div>
+    <div class="match-form">德国已提前出线，末轮争小组头名；厄瓜多尔需至少拿分。排名差13位。</div>
+</div>
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">F组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.26 07:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇯🇵</span>
+            <div class="team-name">日本</div>
+            <div class="team-rank">FIFA #18</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇸🇪</span>
+            <div class="team-name">瑞典</div>
+            <div class="team-rank">FIFA #38</div>
+        </div>
+    </div>
+    <div class="match-details">📍 达拉斯 AT&T Stadium · 当地时间 06.25 18:00 CDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">主胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:52.7%"></div></div>
+            <span class="prob-val">52.7%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:26.6%"></div></div>
+            <span class="prob-val">26.6%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">客胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:20.7%"></div></div>
+            <span class="prob-val">20.7%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">🏠 推荐：</span>
+        <span class="rec-value">主胜</span>
+        <span class="confidence mid">中置信度</span>
+    </div>
+    <div class="match-form">日本与荷兰同积4分抢小组头名；瑞典积1分需胜保晋级希望。排名差20位，日本技术优势。</div>
+</div>
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">F组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.26 07:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇹🇳</span>
+            <div class="team-name">突尼斯</div>
+            <div class="team-rank">FIFA #45</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇳🇱</span>
+            <div class="team-name">荷兰</div>
+            <div class="team-rank">FIFA #8</div>
+        </div>
+    </div>
+    <div class="match-details">📍 堪萨斯城 Arrowhead Stadium · 当地时间 06.25 18:00 CDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">主胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:2.7%"></div></div>
+            <span class="prob-val">2.7%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:7.9%"></div></div>
+            <span class="prob-val">7.9%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">客胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:89.5%"></div></div>
+            <span class="prob-val">89.5%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">✈️ 推荐：</span>
+        <span class="rec-value">客胜</span>
+        <span class="confidence high">高置信度</span>
+    </div>
+    <div class="match-form">荷兰实力碾压，突尼斯已提前淘汰。排名差37位。</div>
+</div>
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">D组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.26 10:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇵🇾</span>
+            <div class="team-name">巴拉圭</div>
+            <div class="team-rank">FIFA #41</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇦🇺</span>
+            <div class="team-name">澳大利亚</div>
+            <div class="team-rank">FIFA #27</div>
+        </div>
+    </div>
+    <div class="match-details">📍 旧金山 Levi's Stadium · 当地时间 06.25 19:00 PDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">主胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:30.4%"></div></div>
+            <span class="prob-val">30.4%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:44.1%"></div></div>
+            <span class="prob-val">44.1%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">客胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:25.5%"></div></div>
+            <span class="prob-val">25.5%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">🤝 推荐：</span>
+        <span class="rec-value">平局</span>
+        <span class="confidence low">低置信度</span>
+    </div>
+    <div class="match-form">双方实力接近，巴拉圭需胜争晋级；澳大利亚打平即可确保出线。赔率极度倾向平局。</div>
+</div>
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">D组 · 第3轮</span>
+        <span class="match-time">🕐 BJT 06.26 10:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇹🇷</span>
+            <div class="team-name">土耳其</div>
+            <div class="team-rank">FIFA #22</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇺🇸</span>
+            <div class="team-name">美国</div>
+            <div class="team-rank">FIFA #17</div>
+        </div>
+    </div>
+    <div class="match-details">📍 洛杉矶 SoFi Stadium · 当地时间 06.25 19:00 PDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">主胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:23.5%"></div></div>
+            <span class="prob-val">23.5%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:23.1%"></div></div>
+            <span class="prob-val">23.1%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">客胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:53.4%"></div></div>
+            <span class="prob-val">53.4%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">✈️ 推荐：</span>
+        <span class="rec-value">客胜</span>
+        <span class="confidence mid">中置信度</span>
+    </div>
+    <div class="match-form">美国东道主已锁定小组第一；土耳其已提前淘汰。赔率受土耳其无欲无求影响。</div>
+</div>
 </div>
 </body>
 </html>
