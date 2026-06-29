@@ -64,8 +64,8 @@ h1 { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 4px; 
 .empty-state { background: var(--card); border: 1px dashed var(--border); border-radius: 16px; padding: 32px; text-align: center; color: var(--text-dim); margin-bottom: 14px; }
 .empty-state .icon { font-size: 36px; margin-bottom: 12px; }
 .empty-state .title { font-size: 16px; color: var(--text); margin-bottom: 6px; font-weight: 600; }
-.status-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
-.status-tag.done { background: rgba(139,148,158,0.2); color: var(--text-dim); }
+.result-badge { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-left: 6px; }
+.result-badge.win { background: rgba(60,172,59,0.2); color: var(--mexico-green); }
 @media (max-width: 600px) {
     .match-teams { gap: 8px; }
     .team-flag { font-size: 28px; }
@@ -78,21 +78,20 @@ h1 { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 4px; 
 <div class="container">
 <a href="../" class="nav-link">← 返回预测中心</a>
 <h1>2026 世界杯每日胜负预测</h1>
-<div class="subtitle">官方比赛日：2026.06.28（北美当地，淘汰赛首日）· 北京时间更新：2026.06.28 20:30</div>
+<div class="subtitle">官方比赛日：2026.06.29（北美当地，淘汰赛第2日）· 北京时间更新：2026.06.29 20:30</div>
 <div class="tricolor-bar"></div>
 
 <div class="info-box">
-    <strong>📊 时区说明：</strong>官方比赛日按举办地当地日期定义。6月28日北美当地 = 北京时间6月29日凌晨。淘汰赛阶段每场比赛独立开赛时间。<br>
-    <strong>⚽ 淘汰赛阶段：</strong>48强小组赛结束，进入32强淘汰赛。本日仅1场比赛（Match 73）。淘汰赛为单败制，90分钟战平进入加时+点球。<br>
-    <strong>📋 1X2 赔率：</strong>取自 Cleatz 多博彩公司（DraftKings/FanDuel/BetRivers/BetMGM，2026.06.28）最佳赔率均值，经去vig归一化。
+    <strong>📊 时区说明：</strong>官方比赛日按举办地当地日期定义。6月29日北美当地 = 北京时间6月30日凌晨/上午。淘汰赛阶段每场比赛独立开赛时间。<br>
+    <strong>⚽ 淘汰赛阶段：</strong>48强小组赛结束，进入32强淘汰赛。淘汰赛为单败制，90分钟战平进入加时+点球。<br>
+    <strong>📋 1X2 赔率：</strong>取自 Cleatz 多博彩公司（DraftKings/FanDuel/BetMGM/BetRivers，2026.06.29）最佳赔率 + OddsPortal（2026.06.29），双源去vig归一化。<br>
+    <strong>⚠️ 数据暂缺，已跳过此项修正：</strong>伤停/近期状态/历史交锋暂缺，未补造。
 </div>
 
-<div class="note">⏰ 临近开赛预警：本场 BJT 06.29 03:00 开赛，距预测时间约6.5小时，赔率/伤停信息仍有变化可能。淘汰赛首日，请持续关注最终阵容公告。</div>
+<!-- ====== COMPLETED MATCHES ====== -->
+<h2 class="section-header completed">✅ 已完赛 · 淘汰赛第1日（官方比赛日 6月28日 当地）</h2>
 
-<!-- ====== UPCOMING PREDICTIONS ====== -->
-<h2 class="section-header upcoming">🔮 赛前预测 · 32强淘汰赛首日（官方比赛日 6月28日 当地）</h2>
-
-<div class="match-card">
+<div class="match-card completed">
     <div class="match-header">
         <span class="match-tag">🏆 32强 · Match 73</span>
         <span class="match-time">🕐 BJT 06.29 03:00</span>
@@ -103,54 +102,179 @@ h1 { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 4px; 
             <div class="team-name">南非</div>
             <div class="team-rank">FIFA #63 · A组第2</div>
         </div>
-        <div class="vs">VS</div>
+        <div class="vs">
+            <span class="score-line">0 - 1</span>
+        </div>
         <div class="team">
             <span class="team-flag">🇨🇦</span>
-            <div class="team-name">加拿大</div>
+            <div class="team-name">加拿大 <span class="result-badge win">胜</span></div>
             <div class="team-rank">FIFA #48 · B组第2</div>
         </div>
     </div>
-    <div class="match-details">📍 洛杉矶 SoFi Stadium · 当地时间 06.28 12:00 PDT（淘汰赛揭幕战）</div>
+    <div class="match-details">📍 SoFi Stadium, 洛杉矶 · 当地时间 06.28 12:00 PDT · 进球：Eustáquio 90'+2 绝杀</div>
+    <div class="match-form">加拿大凭借 Eustáquio 补时第2分钟绝杀1-0淘汰南非，晋级16强。南非控球率58%但进攻效率低（8%危险进攻 vs 加拿大34%），加拿大13次射门7次射中。</div>
+</div>
+
+<!-- ====== UPCOMING PREDICTIONS ====== -->
+<h2 class="section-header upcoming">🔮 赛前预测 · 32强淘汰赛第2日（官方比赛日 6月29日 当地）</h2>
+
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">🏆 32强 · 淘汰赛第2日 · Match 76</span>
+        <span class="match-time">🕐 BJT 06.30 00:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇧🇷</span>
+            <div class="team-name">巴西</div>
+            <div class="team-rank">FIFA #6 · C组第1</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇯🇵</span>
+            <div class="team-name">日本</div>
+            <div class="team-rank">FIFA #28 · F组第2</div>
+        </div>
+    </div>
+    <div class="match-details">📍 NRG Stadium, 休斯顿 · 当地时间 06.29 11:00 CDT</div>
     <div class="prob-bars">
         <div class="prob-item">
-            <span class="prob-label">南非胜</span>
-            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:17.1%"></div></div>
-            <span class="prob-val">17.1%</span>
+            <span class="prob-label">巴西胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:57.0%"></div></div>
+            <span class="prob-val">57.0%</span>
         </div>
         <div class="prob-item">
             <span class="prob-label">平局</span>
-            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:26.8%"></div></div>
-            <span class="prob-val">26.8%</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:25.3%"></div></div>
+            <span class="prob-val">25.3%</span>
         </div>
         <div class="prob-item">
-            <span class="prob-label">加拿大胜</span>
-            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:56.1%"></div></div>
-            <span class="prob-val">56.1%</span>
+            <span class="prob-label">日本胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:17.7%"></div></div>
+            <span class="prob-val">17.7%</span>
         </div>
     </div>
     <div class="match-recommend">
         <span class="rec-label">🏆 90分钟推荐：</span>
-        <span class="rec-value">加拿大胜</span>
+        <span class="rec-value">巴西胜</span>
         <span class="confidence high">高置信度</span>
     </div>
     <div class="match-recommend">
         <span class="rec-label">⚡ 晋级推荐：</span>
-        <span class="rec-value">加拿大</span>
+        <span class="rec-value">巴西</span>
         <span class="confidence high">高置信度</span>
     </div>
-    <div class="match-form">南非末轮1-0爆冷击败韩国锁定A组第2；加拿大末轮1-1平波黑以B组第2晋级。加拿大FIFA #48 > 南非 #63，加拿大小组赛防守稳健（0.6失球/场）。</div>
-    <div class="match-key">💡 加拿大晋级概率约70%（90分钟胜率+半数平局走点球）；戴维斯可能继续伤缺。冷门风险点：南非首战爆冷强队后士气正盛，淘汰赛无包袱。</div>
+    <div class="match-form">巴西小组赛C组第1出线（2胜1平）；日本F组第2（1胜1平1负）。巴西FIFA #6远高于日本#28，实力差距明显。</div>
+    <div class="match-key">💡 巴西晋级概率约75%（90分钟胜率+部分平局走加时/点球）。冷门风险：日本在世界杯淘汰赛常有爆冷表现（2022击败德国/西班牙），不可轻视。</div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">🏆 32强 · 淘汰赛第2日 · Match 74</span>
+        <span class="match-time">🕐 BJT 06.30 02:30</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇩🇪</span>
+            <div class="team-name">德国</div>
+            <div class="team-rank">FIFA #10 · E组第1</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇵🇾</span>
+            <div class="team-name">巴拉圭</div>
+            <div class="team-rank">FIFA #55 · D组第3（最佳8之一）</div>
+        </div>
+    </div>
+    <div class="match-details">📍 Gillette Stadium, 禹克斯堡 · 当地时间 06.29 14:30 EDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">德国胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:70.7%"></div></div>
+            <span class="prob-val">70.7%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:18.9%"></div></div>
+            <span class="prob-val">18.9%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">巴拉圭胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:10.3%"></div></div>
+            <span class="prob-val">10.3%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">🏆 90分钟推荐：</span>
+        <span class="rec-value">德国胜</span>
+        <span class="confidence high">高置信度</span>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">⚡ 晋级推荐：</span>
+        <span class="rec-value">德国</span>
+        <span class="confidence high">高置信度</span>
+    </div>
+    <div class="match-form">德国E组第1出线（3连胜）；巴拉圭作为D组第3勉强晋级。德国FIFA #10远高于巴拉圭#55，实力碾压。</div>
+    <div class="match-key">💡 德国晋级概率约85%（90分钟胜率极高+平局走加时仍大概率晋级）。冷门风险极低：巴拉圭小组赛仅凭最佳第3名勉强入围。</div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <span class="match-tag">🏆 32强 · 淘汰赛第2日 · Match 75</span>
+        <span class="match-time">🕐 BJT 06.30 08:00</span>
+    </div>
+    <div class="match-teams">
+        <div class="team">
+            <span class="team-flag">🇳🇱</span>
+            <div class="team-name">荷兰</div>
+            <div class="team-rank">FIFA #7 · F组第1</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <span class="team-flag">🇲🇦</span>
+            <div class="team-name">摩洛哥</div>
+            <div class="team-rank">FIFA #14 · C组第2</div>
+        </div>
+    </div>
+    <div class="match-details">📍 Estadio BBVA, 蒙特雷 · 当地时间 06.29 19:00 CDT</div>
+    <div class="prob-bars">
+        <div class="prob-item">
+            <span class="prob-label">荷兰胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill home-fill" style="width:34.8%"></div></div>
+            <span class="prob-val">34.8%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-fill draw-fill" style="width:30.8%"></div></div>
+            <span class="prob-val">30.8%</span>
+        </div>
+        <div class="prob-item">
+            <span class="prob-label">摩洛哥胜</span>
+            <div class="prob-bar-wrap"><div class="prob-fill away-fill" style="width:34.4%"></div></div>
+            <span class="prob-val">34.4%</span>
+        </div>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">🏆 90分钟推荐：</span>
+        <span class="rec-value">平局倾向</span>
+        <span class="confidence mid">中置信度</span>
+    </div>
+    <div class="match-recommend">
+        <span class="rec-label">⚡ 晋级推荐：</span>
+        <span class="rec-value">荷兰</span>
+        <span class="confidence mid">中置信度</span>
+    </div>
+    <div class="match-form">荷兰F组第1出线；摩洛哥C组第2。荷兰FIFA #7略高于摩洛哥#14，但差距不大。摩洛哥2022世界杯杀入半决赛，淘汰赛经验丰富。</div>
+    <div class="match-key">💡 本场最可能90分钟平局（30.8%），两队实力接近。荷兰晋级概率约55%（90分钟胜+半数平局走加时/点球）。冷门风险高：摩洛哥淘汰赛韧性极强，荷兰进攻端状态存疑。</div>
 </div>
 
 <!-- ====== NEXT MATCHDAY PREVIEW ====== -->
-<h2 class="section-header upcoming">📅 下一比赛日预览 · 32强淘汰赛第二日（官方比赛日 6月29日 当地）</h2>
+<h2 class="section-header upcoming">📅 下一比赛日预览 · 32强淘汰赛第3日（官方比赛日 6月30日 当地）</h2>
 <div class="info-box">
-    <strong>6月29日（北美当地）将进行3场32强淘汰赛：</strong><br>
-    • 巴西 vs 日本（BJT 06.30 00:00 · NRG Stadium 休斯顿）<br>
-    • 德国 vs 巴拉圭（BJT 06.30 03:30 · Gillette Stadium 福克斯堡）<br>
-    • 荷兰 vs 摩洛哥（BJT 06.30 10:00 · Estadio BBVA 蒙特雷）<br>
+    <strong>6月30日（北美当地）将进行3场32强淘汰赛：</strong><br>
+    • 法国 vs 瑞典（BJT 07.01 05:00 · MetLife Stadium, 新泽西）• 科特迪瓦 vs 挪威（BJT 07.01 01:00 · 硬石体育场, 迈阿密）• 墨西哥 vs 厄瓜多尔（BJT 07.01 09:00 · Estadio Azteca, 墨西哥城）
     <br>
-    <strong>📋 数据暂缺，已跳过此项修正：</strong>6月29日详细1X2赔率需待博彩公司更新，将在下一次预测中提供。
+    <strong>📋 数据暂缺，已跳过此项修正：</strong>6月30日详细1X2赔率需待博彩公司更新，将在下一次预测中提供。
 </div>
 
 </body>
