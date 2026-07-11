@@ -82,7 +82,7 @@ h1 {
 .top3-card.rank3 { border-color: rgba(205,127,50,0.3); }
 .top3-card .medal { font-size: 24px; margin-bottom: 4px; }
 .top3-card .team { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-.top3-card .team-prob { font-size: 24px; font-weight: 800; color: var(--tier1); }
+.top3-card .team-prob { font-size: 24px; font-weight: 800; }
 .top3-card .rank-info { font-size: 11px; color: var(--text-dim); }
 @media (max-width: 600px) {
     .team-row { padding: 10px 8px; gap: 6px; }
@@ -102,123 +102,109 @@ h1 {
 <div class="container">
 <a href="../" class="nav-link">← 返回预测中心</a>
 <h1>2026 美加墨世界杯夺冠预测</h1>
-<div class="subtitle">数据更新：2026.07.08 · 赔率来源：Cleatz/DraftKings 即时赔率（2026.07.08）+ Oddspedia/Bet365（2026.07.07）+ StatSniper（2026.07.08），三源取均值</div>
+<div class="subtitle">2026.07.11 · QF 半数已完 · 6 队存活 · 42 队淘汰</div>
 <div class="tricolor-bar"></div>
 
 <div class="info-box">
-    <strong>📊 数据说明：</strong>综合赔率基于 Cleatz/DraftKings（博彩）、Oddspedia/Bet365（博彩）与 StatSniper 三源均值。R16 全部结束，哥伦比亚、埃及新增淘汰；存活 8 支 QF 球队修正后归一化到 100%。<br>
-    <strong>📈 基本面修正：</strong>FIFA Top 5 排名 +9%（法国/西班牙/阿根廷/英格兰）、Top 6-10 +6%、Top 11-20 +4%，历史世界杯冠军（🇦🇷🇫🇷🇪🇸🏴󠁧󠁢󠁥󠁮󠁧󠁿）额外 +2%。<br>
-    <strong>⚠️ 赔率变动：</strong>变动百分比 = (新赔率 - 旧赔率)/旧赔率 × 100%，正数=赔率上升/概率下降，负数=赔率下降/概率上升。<br>
-    <strong>📋 数据暂缺，已跳过此项修正：</strong>近期10场胜率、伤停数据暂缺；瑞士、挪威、摩洛哥、比利时等队仅 1-2 家来源提供实时冠军赔率，综合均值代表性受限，已在数据来源中说明。<br>
+    <strong>🏆 赛事进程：</strong>四分之一决赛进行中。Match 97 法国 2-0 摩洛哥（晋级SF）、Match 98 西班牙 2-1 比利时（晋级SF）；今晚 Match 99 挪威 vs 英格兰、Match 100 阿根廷 vs 瑞士。<br>
+    <strong>📊 赔率来源：</strong>① 直播吧/中国博彩机构综合赔率（2026.07.11）；② UK Standard/多家英国博彩公司最佳赔率（Bet365/Pinnacle/William Hill/Betfair/Ladbrokes，2026.07.11）；③ OPTA 超级计算机夺冠概率（2026.07.11，西班牙淘汰比利时后更新）。三源取均值，去vig归一化。<br>
+    <strong>📝 基本面修正：</strong>FIFA Top10 +7.5%（法国/西班牙/阿根廷/英格兰）；FIFA Top11-20 +4%（瑞士）；世界杯冠军球队 +2%（法国/西班牙/阿根廷/英格兰）；挪威(#31)无排名修正。近期10场胜率数据暂缺，已跳过此项修正。修正后归一化到100%。<br>
+    <strong>ℹ️ 赔率变动说明：</strong>正数 ↑ = 赔率上升（夺冠概率下降）；负数 ↓ = 赔率下降（夺冠概率上升）。与上次(2026.07.08)对比。
 </div>
 
 <div class="top3-grid">
+
     <div class="top3-card rank1">
         <div class="medal">🥇</div>
         <div class="team">法国</div>
-        <div class="team-prob">33.41%</div>
-        <div class="rank-info">FIFA 排名 #3 · 赔率 2.8</div>
+        <div class="team-prob" style="color: var(--tier1);">36.4%</div>
+        <div class="rank-info">FIFA #3 · 赔率 2.6</div>
     </div>
     <div class="top3-card rank2">
         <div class="medal">🥈</div>
         <div class="team">西班牙</div>
-        <div class="team-prob">19.99%</div>
-        <div class="rank-info">FIFA 排名 #2 · 赔率 4.6</div>
+        <div class="team-prob" style="color: var(--tier1);">23.6%</div>
+        <div class="rank-info">FIFA #2 · 赔率 4.33</div>
     </div>
     <div class="top3-card rank3">
         <div class="medal">🥉</div>
         <div class="team">阿根廷</div>
-        <div class="team-prob">18.04%</div>
-        <div class="rank-info">FIFA 排名 #1 · 赔率 5.1</div>
-    </div></div>
+        <div class="team-prob" style="color: var(--tier1);">16.8%</div>
+        <div class="rank-info">FIFA #1 · 赔率 5.5</div>
+    </div>
+</div>
 
 <div class="tier-legend">
-    <span class="tier-tag t1">第一梯队 · 顶级热门 ≥8%</span>
-    <span class="tier-tag t2">第二梯队 · 强力竞争者 4-8%</span>
-    <span class="tier-tag t3">第三梯队 · 潜在黑马 2-4%</span>
-    <span class="tier-tag t4">第四梯队 · 外围挑战 0.8-2%</span>
+    <span class="tier-tag t1">第一梯队 · 热门 ≥8%</span>
+    <span class="tier-tag t2">第二梯队 · 有望 4%~8%</span>
+    <span class="tier-tag t3">第三梯队 · 黑马 2%~4%</span>
+    <span class="tier-tag t4">第四梯队 · 冷门 0.8%~2%</span>
     <span class="tier-tag t5">第五梯队 · 长线冷门 &lt;0.8%</span>
     <span class="tier-tag t0">已淘汰</span>
 </div>
 
 <div class="card">
+
     <div class="team-row tier1">
         <span class="rank">#3</span>
         <span class="name">法国</span>
-        <span class="prob">33.41%</span>
-        <span class="odds">2.8</span>
-        <span class="change down">-4.5%</span>
-        <span class="tier-label">第一梯队梯队</span>
+        <span class="prob">36.4%</span>
+        <span class="odds">2.6</span>
+        <span class="change down">-7.1% ↓</span>
+        <span class="tier-label">第一梯队</span>
         <div class="bar-wrap"><div class="bar-fill tier1" style="width:100.0%"></div></div>
     </div>
     <div class="team-row tier1">
         <span class="rank">#2</span>
         <span class="name">西班牙</span>
-        <span class="prob">19.99%</span>
-        <span class="odds">4.6</span>
-        <span class="change down">-5.5%</span>
-        <span class="tier-label">第一梯队梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier1" style="width:59.8%"></div></div>
+        <span class="prob">23.6%</span>
+        <span class="odds">4.33</span>
+        <span class="change down">-5.9% ↓</span>
+        <span class="tier-label">第一梯队</span>
+        <div class="bar-wrap"><div class="bar-fill tier1" style="width:64.8%"></div></div>
     </div>
     <div class="team-row tier1">
         <span class="rank">#1</span>
         <span class="name">阿根廷</span>
-        <span class="prob">18.04%</span>
-        <span class="odds">5.1</span>
-        <span class="change up">+0.6%</span>
-        <span class="tier-label">第一梯队梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier1" style="width:54.0%"></div></div>
+        <span class="prob">16.8%</span>
+        <span class="odds">5.5</span>
+        <span class="change up">+7.8% ↑</span>
+        <span class="tier-label">第一梯队</span>
+        <div class="bar-wrap"><div class="bar-fill tier1" style="width:46.2%"></div></div>
     </div>
     <div class="team-row tier1">
         <span class="rank">#4</span>
         <span class="name">英格兰</span>
-        <span class="prob">15.87%</span>
-        <span class="odds">5.8</span>
-        <span class="change down">-4.4%</span>
-        <span class="tier-label">第一梯队梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier1" style="width:47.5%"></div></div>
+        <span class="prob">15.6%</span>
+        <span class="odds">6.0</span>
+        <span class="change up">+3.4% ↑</span>
+        <span class="tier-label">第一梯队</span>
+        <div class="bar-wrap"><div class="bar-fill tier1" style="width:42.9%"></div></div>
     </div>
     <div class="team-row tier2">
         <span class="rank">#31</span>
         <span class="name">挪威</span>
-        <span class="prob">5.05%</span>
-        <span class="odds">16.5</span>
-        <span class="change down">-2.4%</span>
-        <span class="tier-label">第二梯队梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier2" style="width:15.1%"></div></div>
-    </div>
-    <div class="team-row tier3">
-        <span class="rank">#7</span>
-        <span class="name">摩洛哥</span>
-        <span class="prob">2.81%</span>
-        <span class="odds">31.5</span>
-        <span class="change down">-2.5%</span>
-        <span class="tier-label">第三梯队梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier3" style="width:8.4%"></div></div>
-    </div>
-    <div class="team-row tier3">
-        <span class="rank">#9</span>
-        <span class="name">比利时</span>
-        <span class="prob">2.72%</span>
-        <span class="odds">32.5</span>
-        <span class="change down">-20.9%</span>
-        <span class="tier-label">第三梯队梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier3" style="width:8.1%"></div></div>
+        <span class="prob">5.2%</span>
+        <span class="odds">17.0</span>
+        <span class="change up">+3.0% ↑</span>
+        <span class="tier-label">第二梯队</span>
+        <div class="bar-wrap"><div class="bar-fill tier2" style="width:14.3%"></div></div>
     </div>
     <div class="team-row tier3">
         <span class="rank">#19</span>
         <span class="name">瑞士</span>
-        <span class="prob">2.11%</span>
-        <span class="odds">41.0</span>
-        <span class="change down">-51.0%</span>
-        <span class="tier-label">第三梯队梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier3" style="width:6.3%"></div></div>
+        <span class="prob">2.4%</span>
+        <span class="odds">34.0</span>
+        <span class="change down">-17.1% ↓</span>
+        <span class="tier-label">第三梯队</span>
+        <div class="bar-wrap"><div class="bar-fill tier3" style="width:6.6%"></div></div>
     </div>
 </div>
 
 <div class="elim-section">
-<h2>❌ 已淘汰球队（40支） — 最近淘汰：哥伦比亚 🇨🇴、埃及 🇪🇬（R16）</h2>
+<h2>❌ 已淘汰球队（42支） — 最近淘汰：摩洛哥 🇲🇦、比利时 🇧🇪（QF）</h2>
 <div class="card">
+
     <div class="team-row tier0 eliminated">
         <span class="rank">#6</span>
         <span class="name">巴西</span>
@@ -310,7 +296,7 @@ h1 {
         <div class="bar-wrap"><div class="bar-fill tier0" style="width:0.0%"></div></div>
     </div>
     <div class="team-row tier0 eliminated">
-        <span class="rank">#46</span>
+        <span class="rank">#73</span>
         <span class="name">刚果民主共和国</span>
         <span class="prob">0%</span>
         <span class="odds">—</span>
@@ -319,7 +305,7 @@ h1 {
         <div class="bar-wrap"><div class="bar-fill tier0" style="width:0.0%"></div></div>
     </div>
     <div class="team-row tier0 eliminated">
-        <span class="rank">#73</span>
+        <span class="rank">#50</span>
         <span class="name">加纳</span>
         <span class="prob">0%</span>
         <span class="odds">—</span>
@@ -579,16 +565,32 @@ h1 {
         <span class="tier-label">已淘汰</span>
         <div class="bar-wrap"><div class="bar-fill tier0" style="width:0.0%"></div></div>
     </div>
+    <div class="team-row tier0 eliminated">
+        <span class="rank">#7</span>
+        <span class="name">摩洛哥</span>
+        <span class="prob">0%</span>
+        <span class="odds">—</span>
+        <span class="change">—</span>
+        <span class="tier-label">已淘汰</span>
+        <div class="bar-wrap"><div class="bar-fill tier0" style="width:0.0%"></div></div>
+    </div>
+    <div class="team-row tier0 eliminated">
+        <span class="rank">#9</span>
+        <span class="name">比利时</span>
+        <span class="prob">0%</span>
+        <span class="odds">—</span>
+        <span class="change">—</span>
+        <span class="tier-label">已淘汰</span>
+        <div class="bar-wrap"><div class="bar-fill tier0" style="width:0.0%"></div></div>
+    </div>
 </div>
 </div>
 
 <div class="info-box" style="margin-top:16px;">
-    <strong>🔍 自查结果：</strong>teamsData 共 48 条 ✓（存活 8 + 淘汰 40）；梯队分类与概率一致 ✓；日期已更新为 2026.07.08 ✓。<br>
-    <strong>📊 梯队分布：</strong>第一梯队 4 队 · 第二梯队 1 队 · 第三梯队 3 队 · 第四梯队 0 队 · 第五梯队 0 队 · 已淘汰 40 队 · 合计 48 队。<br>
-    <strong>📅 数据截止：</strong>Cleatz/DraftKings 即时赔率（2026.07.08 07h UTC）；Oddspedia/Bet365（2026.07.07）；StatSniper（2026.07.08）。FIFA 排名来源 whereig.com 2026-06-11。<br>
-    <strong>📝 赔率变动前三：</strong>    <strong>1. </strong>瑞士 -51.0% ↓（点球淘汰哥伦比亚后赔率大幅缩短，从 83.7 降至 41.0）
-    <strong>2. </strong>比利时 -20.9% ↓（4-1 大胜美国后赔率收紧）
-    <strong>3. </strong>西班牙 -5.5% ↓
+    <strong>🔍 自查结果：</strong>teamsData 共 48 条 ✓（存活 6 + 淘汰 42）；梯队分类与概率一致 ✓；日期已更新为 2026.07.11 ✓。<br>
+    <strong>📊 梯队分布：</strong>第一梯队 4 队 · 第二梯队 1 队 · 第三梯队 1 队 · 第四梯队 0 队 · 第五梯队 0 队 · 已淘汰 42 队 · 合计 48 队。<br>
+    <strong>📅 数据截止：</strong>直播吧/中国博彩综合赔率 + UK Standard/英国多家博彩最佳赔率 + OPTA 超级计算机（2026.07.11）。FIFA 排名来源 whereig.com 2026-06-11。<br>
+    <strong>📝 赔率变动前三：</strong><strong>1. </strong>瑞士 -17.1% ↓（赔率下降/概率上升） · 赔率从 41.0 大幅降至 34.00，进入 QF 后关注度提升<strong>2. </strong>阿根廷 7.8% ↑（赔率上升/概率下降） · 赔率从 5.1 升至 5.50，市场对其 SF 对手瑞士后的路径风险有所顾虑<strong>3. </strong>法国 -7.1% ↓（赔率下降/概率上升） · 赔率从 2.8 降至 2.60，SF 将对阵西班牙，路径收紧后赔率进一步缩短
 </div>
 </div>
 </body>
