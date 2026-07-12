@@ -39,6 +39,7 @@ h1 {
 .info-box strong { color: var(--text); }
 .match-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
 .match-card.played { opacity: 0.6; }
+.match-card.upcoming { border-color: rgba(42,57,141,0.4); }
 .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
 .match-title { font-size: 18px; font-weight: 700; }
 .match-meta { font-size: 12px; color: var(--text-dim); }
@@ -74,6 +75,10 @@ h1 {
 .advance-box { margin-top: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px 12px; font-size: 12px; }
 .advance-box strong { color: var(--text); }
 .upcoming-note { background: rgba(42,57,141,0.15); border: 1px solid rgba(42,57,141,0.3); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px; color: var(--text-dim); }
+.rest-day { text-align: center; padding: 30px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; }
+.rest-day .icon { font-size: 48px; margin-bottom: 12px; }
+.rest-day .title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.rest-day .desc { font-size: 14px; color: var(--text-dim); }
 @media (max-width: 600px) {
     .teams-display { gap: 8px; }
     .team-box .flag { font-size: 24px; }
@@ -87,132 +92,24 @@ h1 {
 <div class="container">
 <a href="../" class="nav-link">← 返回预测中心</a>
 <h1>2026 世界杯每日胜负预测</h1>
-<div class="subtitle">官方比赛日 2026.07.11（周六） · 北美当地日期 · 覆盖 2 场 QF + 2 场 QF 已完赛 · 北京时间更新 2026.07.11 19:00</div>
+<div class="subtitle">官方比赛日 2026.07.12（周六）· 北美当地日期 · QF 收官日 2 场已完赛 · 北京时间更新 2026.07.12 19:15</div>
 <div class="tricolor-bar"></div>
 
 <div class="info-box">
-    <strong>📅 时区说明：</strong>官方比赛日以北美赛地当地日期为准。7月11日（周六当地）为 QF 收官日：Match 99 挪威 vs 英格兰（Miami）+ Match 100 阿根廷 vs 瑞士（Kansas City）。Match 97/98 已于 7/9-7/10 完赛（法国/西班牙晋级SF）。每场比赛标注赛地当地开球时间 + 北京时间换算。<br>
-    <strong>📊 数据来源：</strong>1X2 赔率来自竞彩官方（2026.07.11）+ 易胜博即时（2026.07.11）+ FanDuel/DraftKings（2026.07.11）+ UK Standard 多家博彩最佳赔率（2026.07.11），四源交叉核验去vig归一化。晋级赔率源 FanDuel to-qualify 市场。赛程来自 FIFA 官方赛事页 / fifaworldcupnews.com / 2026footballnews.com。<br>
-    <strong>📋 数据暂缺，已跳过：</strong>近期10场战绩、历史交锋完整数据、完整伤停名单暂缺；挪威英格兰仅确认英格兰 Henderson/Livramento/Quansah 缺阵。置信度基于赔率来源充足度和排名差可靠性。<br>
-    <strong>🏟️ 本轮：</strong>四分之一决赛收官日 · 7月11日 · 2 场赛前预测 + 2 场已完赛 · QF 全部结束后进入半决赛。<br>
-    <strong>⚠️ 临近开赛提醒：</strong>Match 99 距开赛约 10 小时；Match 100 距开赛约 14 小时。赔率为即时最新数据，但临场阵容/伤停仍可能变化。
+    <strong>📅 时区说明：</strong>官方比赛日以北美赛地当地日期为准。7月12日（北美当地）为 QF 收官日：Match 99 挪威 vs 英格兰（Miami Hard Rock Stadium）+ Match 100 阿根廷 vs 瑞士（Kansas City Arrowhead Stadium）。两场均已完赛（北京时间 7/12 05:00 和 09:00），已标注为跳过预测。<br>
+    <strong>📊 数据来源：</strong>SF 1X2 赔率来自 Crown/皇冠（2026.07.12）+ Fox Sports（2026.07.12）+ ESPN（2026.07.12），多源去vig归一化。晋级赔率来自 BetMGM/DraftKings to-advance 市场。赛程来自 FIFA 官方赛事页。<br>
+    <strong>📋 数据暂缺，已跳过：</strong>完整伤停名单、近期10场详细战绩暂缺；历史交锋数据来自纳米数据（英格兰 vs 阿根廷近5场：英格兰3胜2负）。<br>
+    <strong>🏟️ 本轮：</strong>四分之一决赛收官日 · 2 场已完赛 · 休赛3天后进入半决赛。<br>
+    <strong>🏆 四强对阵：</strong>SF1 法国 vs 西班牙（BJT 7/15 03:00 Dallas AT&T Stadium）· SF2 英格兰 vs 阿根廷（BJT 7/16 03:00 Atlanta Mercedes-Benz Stadium）· 三四名决赛 BJT 7/19 05:00 Miami · 决赛 BJT 7/20 03:00 New York/New Jersey
 </div>
 
-
-<div class="upcoming-note">
-    <strong>📅 半决赛预告：</strong>Match 97/98 胜者已确定：<br>
-    · <strong>SF1：</strong>法国 🇫🇷 vs 西班牙 🇪🇸 · 预计 7月15日左右 · 场地待定<br>
-    · <strong>SF2：</strong>Match 99 胜者 vs Match 100 胜者（今晚 QF 后确定）<br>
-    SF1 两支欧洲最强球队正面交锋，赔率市场已给出法国略占优势（法国 2.60 vs 西班牙 4.33 夺冠赔率）。
+<div class="rest-day">
+    <div class="icon">⚽</div>
+    <div class="title">今日无赛前预测</div>
+    <div class="desc">QF 最后 2 场已于北京时间 7/12 05:00 和 09:00 完赛。下一场比赛为 SF1 法国 vs 西班牙（BJT 7/15 03:00），距今约 2 天半。下方为半决赛前瞻预测。</div>
 </div>
 
-<div class="section-title">✅ R16 已完赛（8场）</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 79 · 十六强赛</span>
-        <span class="match-meta">7月4日 · NRG Stadium, Houston · 12:00 CDT 当地 → BJT 7/5 01:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇨🇦</div><div class="tname">加拿大</div><div class="rank">#30</div></div>
-        <div class="vs">0 : 3</div>
-        <div class="team-box"><div class="flag">🇲🇦</div><div class="tname">摩洛哥</div><div class="rank">#7</div></div>
-    </div>
-    <div class="match-result">摩洛哥 3-0 加拿大 · Ounahi 梅开二度 + Rahimi 补时</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 80 · 十六强赛</span>
-        <span class="match-meta">7月4日 · Lincoln Financial Field, Philadelphia · 17:00 EDT 当地 → BJT 7/5 05:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇵🇾</div><div class="tname">巴拉圭</div><div class="rank">#41</div></div>
-        <div class="vs">0 : 1</div>
-        <div class="team-box"><div class="flag">🇫🇷</div><div class="tname">法国</div><div class="rank">#3</div></div>
-    </div>
-    <div class="match-result">法国 1-0 巴拉圭 · Mbappé 点球制胜</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 81 · 十六强赛</span>
-        <span class="match-meta">7月5日 · MetLife Stadium, East Rutherford · 16:00 EDT 当地 → BJT 7/6 04:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇧🇷</div><div class="tname">巴西</div><div class="rank">#6</div></div>
-        <div class="vs">1 : 2</div>
-        <div class="team-box"><div class="flag">🇳🇴</div><div class="tname">挪威</div><div class="rank">#31</div></div>
-    </div>
-    <div class="match-result">挪威 2-1 巴西 · Haaland 双响绝杀 ⚡ 爆冷晋级</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 82 · 十六强赛</span>
-        <span class="match-meta">7月5日 · Estadio Azteca, Mexico City · 18:00 CST 当地 → BJT 7/6 08:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇲🇽</div><div class="tname">墨西哥</div><div class="rank">#14</div></div>
-        <div class="vs">2 : 3</div>
-        <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">#4</div></div>
-    </div>
-    <div class="match-result">英格兰 3-2 墨西哥 · Bellingham 双响，三狮10人作战晋级</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 83 · 十六强赛</span>
-        <span class="match-meta">7月6日 · AT&T Stadium, Arlington · 14:00 CDT 当地 → BJT 7/7 03:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇵🇹</div><div class="tname">葡萄牙</div><div class="rank">#5</div></div>
-        <div class="vs">0 : 1</div>
-        <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">#2</div></div>
-    </div>
-    <div class="match-result">西班牙 1-0 葡萄牙 · Merino 90+2' 绝杀，Cristiano Ronaldo 世界杯谢幕</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 84 · 十六强赛</span>
-        <span class="match-meta">7月6日 · Lumen Field, Seattle · 17:00 PDT 当地 → BJT 7/7 08:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇺🇸</div><div class="tname">美国</div><div class="rank">#17</div></div>
-        <div class="vs">1 : 4</div>
-        <div class="team-box"><div class="flag">🇧🇪</div><div class="tname">比利时</div><div class="rank">#9</div></div>
-    </div>
-    <div class="match-result">比利时 4-1 美国 · De Ketelaere/Vanaken/Lukaku 进球，东道主止步</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 85 · 十六强赛</span>
-        <span class="match-meta">7月7日 · Mercedes-Benz Stadium, Atlanta · 12:00 EDT 当地 → BJT 7/8 00:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">#1</div></div>
-        <div class="vs">3 : 2</div>
-        <div class="team-box"><div class="flag">🇪🇬</div><div class="tname">埃及</div><div class="rank">#29</div></div>
-    </div>
-    <div class="match-result">阿根廷 3-2 埃及 · Romero/Messi/Enzo Fernandez 10分钟连入3球逆转</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 86 · 十六强赛</span>
-        <span class="match-meta">7月7日 · BC Place, Vancouver · 13:00 PDT 当地 → BJT 7/8 04:00</span>
-    </div>
-    <div class="teams-display">
-        <div class="team-box"><div class="flag">🇨🇭</div><div class="tname">瑞士</div><div class="rank">#19</div></div>
-        <div class="vs">0(4) : 0(3)</div>
-        <div class="team-box"><div class="flag">🇨🇴</div><div class="tname">哥伦比亚</div><div class="rank">#13</div></div>
-    </div>
-    <div class="match-result">瑞士 0-0 哥伦比亚（点球 4-3）· 120分钟闷战，瑞士点球致胜</div>
-</div>
-
-<div class="section-title">✅ QF 已完赛（2场）</div>
+<div class="section-title">✅ QF 已完赛（4场）</div>
 
 <div class="match-card played">
     <div class="match-header">
@@ -240,88 +137,120 @@ h1 {
     <div class="match-result">西班牙 2-1 比利时 · Ruiz + Merino 补时绝杀，西班牙晋级SF对阵法国</div>
 </div>
 
-<div class="section-title">🔮 赛前预测 · QF 收官日（2场）</div>
-
-<div class="match-card">
+<div class="match-card played">
     <div class="match-header">
         <span class="match-title">Match 99 · 四分之一决赛</span>
-        <span class="match-meta">7月11日 · Hard Rock Stadium, Miami Gardens · 17:00 EDT 当地 → BJT 7/12 05:00</span>
+        <span class="match-meta">7月12日 · Hard Rock Stadium, Miami Gardens · 17:00 EDT 当地 → BJT 7/12 05:00</span>
     </div>
     <div class="teams-display">
         <div class="team-box"><div class="flag">🇳🇴</div><div class="tname">挪威</div><div class="rank">#31</div></div>
-        <div class="vs">VS</div>
+        <div class="vs">1 : 2 (AET)</div>
         <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">#4</div></div>
     </div>
-    <div class="prob-bars">
-        <div class="prob-row">
-            <span class="prob-label">挪威胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:47.3%"></div></div>
-            <span class="prob-value">23.4%</span>
-        </div>
-        <div class="prob-row">
-            <span class="prob-label">平局</span>
-            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:54.7%"></div></div>
-            <span class="prob-value">27.1%</span>
-        </div>
-        <div class="prob-row">
-            <span class="prob-label">英格兰胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar win" style="width:100.0%"></div></div>
-            <span class="prob-value">49.5%</span>
-        </div>
-    </div>
-    <div class="advance-box">
-        <strong>🏆 晋级概率：</strong>挪威 33.4% | 英格兰 66.6%（含加时/点球按 90 分钟概率折算）
-    </div>
-    <div class="pick-box">
-        <span class="pick-label conf-high">推荐：英格兰胜 / 英格兰晋级</span>
-        <span class="conf-tag high">高置信度</span>
-        <div class="pick-detail">挪威 FIFA #31 vs 英格兰 #4。Haaland vs Kane 射手对决（本届 7球 vs 6球）。英格兰综合实力明显占优，但右后卫人手紧缺（Henderson 手腕伤/Livramento 腿筋伤/Quansah 红牌停赛）；挪威爆冷淘汰巴西后士气高涨。市场赔率倾向英格兰（竞彩 1.74/3.65/3.56），但信心不足。1X2赔率源：竞彩 + 易胜博 + FanDuel + UK Standard 四源去vig归一化。晋级赔率源：FanDuel（England -230/Norway +184）去vig归一化。</div>
-    </div>
+    <div class="match-result">英格兰 2-1 挪威（加时）· Bellingham 梅开二度救主，挪威先入一球后被逆转 ⚡</div>
 </div>
 
-<div class="match-card">
+<div class="match-card played">
     <div class="match-header">
         <span class="match-title">Match 100 · 四分之一决赛</span>
-        <span class="match-meta">7月11日 · Arrowhead Stadium, Kansas City · 20:00 CDT 当地 → BJT 7/12 09:00</span>
+        <span class="match-meta">7月12日 · Arrowhead Stadium, Kansas City · 20:00 CDT 当地 → BJT 7/12 09:00</span>
     </div>
     <div class="teams-display">
         <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">#1</div></div>
-        <div class="vs">VS</div>
+        <div class="vs">3 : 1 (AET)</div>
         <div class="team-box"><div class="flag">🇨🇭</div><div class="tname">瑞士</div><div class="rank">#19</div></div>
+    </div>
+    <div class="match-result">阿根廷 3-1 瑞士（加时）· Mac Allister 10' 先拔头筹，Ndoye 67' 扳平，Álvarez 112' 绝杀 + Lautaro 120+1' 锁定胜局</div>
+</div>
+
+<div class="section-title">🔮 半决赛前瞻预测（2场）</div>
+
+<div class="match-card upcoming">
+    <div class="match-header">
+        <span class="match-title">Match 101 · 半决赛 SF1</span>
+        <span class="match-meta">7月14日当地 · AT&T Stadium, Arlington (Dallas) · 14:00 CDT 当地 → BJT 7/15 03:00</span>
+    </div>
+    <div class="teams-display">
+        <div class="team-box"><div class="flag">🇫🇷</div><div class="tname">法国</div><div class="rank">#3</div></div>
+        <div class="vs">VS</div>
+        <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">#2</div></div>
     </div>
     <div class="prob-bars">
         <div class="prob-row">
-            <span class="prob-label">阿根廷胜</span>
+            <span class="prob-label">法国胜</span>
             <div class="prob-bar-wrap"><div class="prob-bar win" style="width:100.0%"></div></div>
-            <span class="prob-value">57.6%</span>
+            <span class="prob-value">41.4%</span>
         </div>
         <div class="prob-row">
             <span class="prob-label">平局</span>
-            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:43.9%"></div></div>
-            <span class="prob-value">25.3%</span>
+            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:71.0%"></div></div>
+            <span class="prob-value">29.4%</span>
         </div>
         <div class="prob-row">
-            <span class="prob-label">瑞士胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:29.9%"></div></div>
-            <span class="prob-value">17.2%</span>
+            <span class="prob-label">西班牙胜</span>
+            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:70.8%"></div></div>
+            <span class="prob-value">29.3%</span>
         </div>
     </div>
     <div class="advance-box">
-        <strong>🏆 晋级概率：</strong>阿根廷 75.3% | 瑞士 24.7%（含加时/点球按 90 分钟概率折算）
+        <strong>🏆 晋级概率：</strong>法国 56.1% | 西班牙 43.9%（含加时/点球按 90 分钟概率折算）
     </div>
     <div class="pick-box">
-        <span class="pick-label conf-high">推荐：阿根廷胜 / 阿根廷晋级</span>
-        <span class="conf-tag high">高置信度</span>
-        <div class="pick-detail">阿根廷 FIFA #1 vs 瑞士 #19。卫冕冠军本届全胜（5战5胜），Messi/Enzo Fernandez/Romero 状态出色；瑞士 R16 点球淘汰哥伦比亚后 QF 无新增伤停，防守体系严密但进攻乏力。市场赔率明确倾向阿根廷（DraftKings -145/Fox Sports -146/易胜博 1.67），让半一盘口显示阿根廷赢球即赢盘。1X2赔率源：易胜博 + Fox Sports + Bovada + Yahoo 四源去vig归一化。</div>
+        <span class="pick-label conf-mid">推荐：法国胜 / 法国晋级</span>
+        <span class="conf-tag mid">中置信度</span>
+        <div class="pick-detail">法国 FIFA #3 vs 西班牙 #2。法国本届6战全胜（常规时间），打入16球仅失2球，从未落后；Mbappé 领衔攻击线状态火热。西班牙 QF 补时绝杀比利时晋级，控球体系成熟但面对法国防线效率存疑。1X2赔率源：Crown 皇冠（法2.26/平3.20/西3.30）+ Fox Sports（法2.30/平3.22/西3.13）双源去vig归一化。晋级概率交叉验证：OPTA 法国57.44%/西班牙42.56%。注意：半决赛可能进入加时/点球，29.4%平局概率较高。</div>
     </div>
 </div>
 
+<div class="match-card upcoming">
+    <div class="match-header">
+        <span class="match-title">Match 102 · 半决赛 SF2</span>
+        <span class="match-meta">7月15日当地 · Mercedes-Benz Stadium, Atlanta · 15:00 EDT 当地 → BJT 7/16 03:00</span>
+    </div>
+    <div class="teams-display">
+        <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">#4</div></div>
+        <div class="vs">VS</div>
+        <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">#1</div></div>
+    </div>
+    <div class="prob-bars">
+        <div class="prob-row">
+            <span class="prob-label">英格兰胜</span>
+            <div class="prob-bar-wrap"><div class="prob-bar win" style="width:100.0%"></div></div>
+            <span class="prob-value">39.1%</span>
+        </div>
+        <div class="prob-row">
+            <span class="prob-label">平局</span>
+            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:73.8%"></div></div>
+            <span class="prob-value">28.9%</span>
+        </div>
+        <div class="prob-row">
+            <span class="prob-label">阿根廷胜</span>
+            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:81.8%"></div></div>
+            <span class="prob-value">32.0%</span>
+        </div>
+    </div>
+    <div class="advance-box">
+        <strong>🏆 晋级概率：</strong>英格兰 53.6% | 阿根廷 46.4%（含加时/点球按 90 分钟概率折算）
+    </div>
+    <div class="pick-box">
+        <span class="pick-label conf-low">推荐：英格兰小胜 / 英格兰晋级（极度均势）</span>
+        <span class="conf-tag low">低置信度</span>
+        <div class="pick-detail">英格兰 FIFA #4 vs 阿根廷 #1。宿命对决——1986马拉多纳之手、1998欧文追风少年、2022世界杯后的再度交锋。英格兰 QF 经加时险胜挪威（Bellingham 双响），阿根廷 QF 同样经加时淘汰瑞士。两队晋级之路均布满波折。1X2赔率源：ESPN（英2.25/平3.05/阿2.75）单源去vig归一化。晋级赔率交叉验证：BetMGM/DraftKings 英格兰-120/阿根廷-105（52%/48%），几乎五五开。历史交锋近5场：英格兰3胜2负略占优。大小球走势指向保守（2.5球以下被看好）。⚠️ 此场为最可能爆冷/进入点球大战的半决赛。</div>
+    </div>
+</div>
+
+<div class="upcoming-note">
+    <strong>📅 后续赛程预告：</strong><br>
+    · <strong>三四名决赛：</strong>BJT 7月19日 05:00 · Miami Hard Rock Stadium<br>
+    · <strong>决赛：</strong>BJT 7月20日 03:00 · New York/New Jersey MetLife Stadium
+</div>
+
 <div class="info-box" style="margin-top:16px;">
-    <strong>🔍 自查结果：</strong>官方比赛日 2026.07.11 赛程已核对 ✓；R16 8场+QF 2场已完赛标注为跳过预测 ✓；QF 2场赛前预测概率已归一化 ✓。<br>
-    <strong>📊 赔率来源：</strong>竞彩 + 易胜博 + FanDuel/DraftKings + UK Standard 四源去vig归一化。晋级赔率 FanDuel to-qualify。赔率更新于 2026.07.11。<br>
-    <strong>📋 最稳推荐 TOP3：</strong>1）Match 100 阿根廷胜（高置信度 57.6%）；2）Match 99 英格兰胜（高置信度 49.5%，但注意挪威爆冷风险）；3）Match 100 阿根廷晋级（高置信度 75.3%）。<br>
-    <strong>⚠️ 冷门风险最高：</strong>Match 99 挪威 vs 英格兰。挪威爆冷淘汰巴西后士气高涨，Haaland 个人能力突出（本届7球）；英格兰右后卫人手紧缺（3人缺阵），为最可能出现冷门的 QF。若挪威晋级SF，将迎战阿根廷/瑞士胜者。<br>
-    <strong>📅 自动生成：</strong>2026.07.11 19:00 BJT。FIFA 排名来源 whereig.com 2026-06-11。赛程来源 FIFA 官方赛事页 / 2026footballnews.com / khelnow.com 交叉核验。
+    <strong>🔍 自查结果：</strong>官方比赛日 2026.07.12 赛程已核对 ✓；QF 4场已完赛标注为跳过预测 ✓；SF 2场赛前预测概率已归一化 ✓。<br>
+    <strong>📊 赔率来源：</strong>SF1 Crown + Fox Sports 双源去vig归一化；SF2 ESPN + BetMGM/DraftKings to-advance 交叉验证。赔率更新于 2026.07.12。<br>
+    <strong>📋 最稳推荐 TOP3：</strong>1）SF1 法国晋级（中置信度 56.1%，法国6战全胜状态碾压）；2）SF1 法国胜（中置信度 41.4%，但平局概率29.4%需警惕）；3）SF2 英格兰晋级（低置信度 53.6%，英阿五五开极度均势）。<br>
+    <strong>⚠️ 冷门风险最高：</strong>SF2 英格兰 vs 阿根廷。两队实力极为接近（晋级赔率 52%/48%），历史恩怨浓厚，大概率进入加时/点球。阿根廷作为卫冕冠军+梅西最后一舞的动力不可低估。<br>
+    <strong>📅 自动生成：</strong>2026.07.12 19:15 BJT。FIFA 排名来源 whereig.com 2026-06-11。赛程来源 FIFA 官方赛事页 + ESPN + 央广网/网易体育交叉核验。
 </div>
 </div>
 </body>
