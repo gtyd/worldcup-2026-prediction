@@ -40,6 +40,7 @@ h1 {
 .match-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
 .match-card.played { opacity: 0.6; }
 .match-card.upcoming { border-color: rgba(42,57,141,0.4); }
+.match-card.final { border-color: rgba(230,29,37,0.4); }
 .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
 .match-title { font-size: 18px; font-weight: 700; }
 .match-meta { font-size: 12px; color: var(--text-dim); }
@@ -70,15 +71,13 @@ h1 {
 .conf-tag.mid { background: rgba(255,169,77,0.15); color: var(--draw); }
 .conf-tag.low { background: rgba(230,29,37,0.15); color: var(--lose); }
 .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-.empty-state { text-align: center; padding: 40px; color: var(--text-dim); }
-.timezone-note { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
-.advance-box { margin-top: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px 12px; font-size: 12px; }
-.advance-box strong { color: var(--text); }
-.upcoming-note { background: rgba(42,57,141,0.15); border: 1px solid rgba(42,57,141,0.3); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px; color: var(--text-dim); }
 .rest-day { text-align: center; padding: 30px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; }
 .rest-day .icon { font-size: 48px; margin-bottom: 12px; }
 .rest-day .title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
 .rest-day .desc { font-size: 14px; color: var(--text-dim); }
+.upcoming-note { background: rgba(42,57,141,0.15); border: 1px solid rgba(42,57,141,0.3); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px; color: var(--text-dim); }
+.advance-box { margin-top: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px 12px; font-size: 12px; }
+.advance-box strong { color: var(--text); }
 @media (max-width: 600px) {
     .teams-display { gap: 8px; }
     .team-box .flag { font-size: 24px; }
@@ -92,165 +91,138 @@ h1 {
 <div class="container">
 <a href="../" class="nav-link">← 返回预测中心</a>
 <h1>2026 世界杯每日胜负预测</h1>
-<div class="subtitle">官方比赛日 2026.07.12（周六）· 北美当地日期 · QF 收官日 2 场已完赛 · 北京时间更新 2026.07.12 19:15</div>
+<div class="subtitle">官方比赛日 2026.07.17（休赛日）· 北京时间更新 2026.07.17 19:00</div>
 <div class="tricolor-bar"></div>
 
 <div class="info-box">
-    <strong>📅 时区说明：</strong>官方比赛日以北美赛地当地日期为准。7月12日（北美当地）为 QF 收官日：Match 99 挪威 vs 英格兰（Miami Hard Rock Stadium）+ Match 100 阿根廷 vs 瑞士（Kansas City Arrowhead Stadium）。两场均已完赛（北京时间 7/12 05:00 和 09:00），已标注为跳过预测。<br>
-    <strong>📊 数据来源：</strong>SF 1X2 赔率来自 Crown/皇冠（2026.07.12）+ Fox Sports（2026.07.12）+ ESPN（2026.07.12），多源去vig归一化。晋级赔率来自 BetMGM/DraftKings to-advance 市场。赛程来自 FIFA 官方赛事页。<br>
-    <strong>📋 数据暂缺，已跳过：</strong>完整伤停名单、近期10场详细战绩暂缺；历史交锋数据来自纳米数据（英格兰 vs 阿根廷近5场：英格兰3胜2负）。<br>
-    <strong>🏟️ 本轮：</strong>四分之一决赛收官日 · 2 场已完赛 · 休赛3天后进入半决赛。<br>
-    <strong>🏆 四强对阵：</strong>SF1 法国 vs 西班牙（BJT 7/15 03:00 Dallas AT&T Stadium）· SF2 英格兰 vs 阿根廷（BJT 7/16 03:00 Atlanta Mercedes-Benz Stadium）· 三四名决赛 BJT 7/19 05:00 Miami · 决赛 BJT 7/20 03:00 New York/New Jersey
+    <strong>📅 时区说明：</strong>官方比赛日以北美赛地当地日期为准。7月17日（北美当地）为休赛日，无比赛安排。半决赛已于 7/14-7/15（北美当地）全部结束。下一场比赛为三四名决赛：法国 vs 英格兰（BJT 7/19 05:00 Miami），再下一场为决赛：西班牙 vs 阿根廷（BJT 7/20 03:00 New York/New Jersey MetLife Stadium）。<br>
+    <strong>📊 数据来源：</strong>三四名决赛 1X2 赔率来自 FanDuel + FOX Sports + Yahoo Sports + 纳米数据(bet365/明陞) + Toffeeweb 多博彩公司比较（2026.07.17），多源去vig归一化。决赛 1X2 赔率来自 FanDuel + Fanatics + bet365(纳米数据) + betting.net 四源去vig归一化。夺冠赔率来自 FanDuel + Fanatics + DraftKings + BetMGM + OneFootball UK 五源去vig归一化。赛程来自 FIFA 官方赛事页。<br>
+    <strong>📋 数据暂缺，已跳过：</strong>完整伤停名单暂缺；近期10场详细战绩暂缺。历史交锋数据来自纳米数据（西班牙 vs 阿根廷近5场：西班牙3胜2负；法国 vs 英格兰近5场：法国3胜1平1负）。<br>
+    <strong>🏟️ 赛事阶段：</strong>半决赛全部结束 · 7/17 休赛日 · 7/18（北美当地）三四名决赛 · 7/19（北美当地）决赛。
 </div>
 
 <div class="rest-day">
     <div class="icon">⚽</div>
-    <div class="title">今日无赛前预测</div>
-    <div class="desc">QF 最后 2 场已于北京时间 7/12 05:00 和 09:00 完赛。下一场比赛为 SF1 法国 vs 西班牙（BJT 7/15 03:00），距今约 2 天半。下方为半决赛前瞻预测。</div>
+    <div class="title">今日休赛 · 决赛倒计时 2 天</div>
+    <div class="desc">半决赛已于北京时间 7/15 和 7/16 凌晨全部结束。下一场比赛为三四名决赛（法国 vs 英格兰，BJT 7/19 05:00），决赛（西班牙 vs 阿根廷，BJT 7/20 03:00）。下方为半决赛赛果及即将到来比赛的预测。</div>
 </div>
 
-<div class="section-title">✅ QF 已完赛（4场）</div>
+<div class="section-title">✅ 半决赛已完赛（2场）</div>
 
 <div class="match-card played">
     <div class="match-header">
-        <span class="match-title">Match 97 · 四分之一决赛</span>
-        <span class="match-meta">7月9日 · Gillette Stadium, Foxborough · 16:00 EDT 当地 → BJT 7/10 04:00</span>
+        <span class="match-title">Match 101 · 半决赛 SF1</span>
+        <span class="match-meta">7月14日当地 · AT&T Stadium, Arlington (Dallas) · 14:00 CDT → BJT 7/15 03:00</span>
     </div>
     <div class="teams-display">
         <div class="team-box"><div class="flag">🇫🇷</div><div class="tname">法国</div><div class="rank">#3</div></div>
-        <div class="vs">2 : 0</div>
-        <div class="team-box"><div class="flag">🇲🇦</div><div class="tname">摩洛哥</div><div class="rank">#7</div></div>
-    </div>
-    <div class="match-result">法国 2-0 摩洛哥 · Mbappé 60' 突射破门 + Dembélé 66' 远射锁定胜局</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 98 · 四分之一决赛</span>
-        <span class="match-meta">7月10日 · SoFi Stadium, Inglewood · 12:00 PDT 当地 → BJT 7/11 03:00</span>
-    </div>
-    <div class="teams-display">
+        <div class="vs">0 : 2</div>
         <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">#2</div></div>
-        <div class="vs">2 : 1</div>
-        <div class="team-box"><div class="flag">🇧🇪</div><div class="tname">比利时</div><div class="rank">#9</div></div>
     </div>
-    <div class="match-result">西班牙 2-1 比利时 · Ruiz + Merino 补时绝杀，西班牙晋级SF对阵法国</div>
+    <div class="match-result">法国 0-2 西班牙 · 奥亚萨瓦尔 22' 点球破门 + 波罗 58' 单刀推射锁定胜局 · 法国本届首次落后即完败</div>
 </div>
 
 <div class="match-card played">
     <div class="match-header">
-        <span class="match-title">Match 99 · 四分之一决赛</span>
-        <span class="match-meta">7月12日 · Hard Rock Stadium, Miami Gardens · 17:00 EDT 当地 → BJT 7/12 05:00</span>
+        <span class="match-title">Match 102 · 半决赛 SF2</span>
+        <span class="match-meta">7月15日当地 · Mercedes-Benz Stadium, Atlanta · 15:00 EDT → BJT 7/16 03:00</span>
     </div>
     <div class="teams-display">
-        <div class="team-box"><div class="flag">🇳🇴</div><div class="tname">挪威</div><div class="rank">#31</div></div>
-        <div class="vs">1 : 2 (AET)</div>
         <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">#4</div></div>
-    </div>
-    <div class="match-result">英格兰 2-1 挪威（加时）· Bellingham 梅开二度救主，挪威先入一球后被逆转 ⚡</div>
-</div>
-
-<div class="match-card played">
-    <div class="match-header">
-        <span class="match-title">Match 100 · 四分之一决赛</span>
-        <span class="match-meta">7月12日 · Arrowhead Stadium, Kansas City · 20:00 CDT 当地 → BJT 7/12 09:00</span>
-    </div>
-    <div class="teams-display">
+        <div class="vs">1 : 2</div>
         <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">#1</div></div>
-        <div class="vs">3 : 1 (AET)</div>
-        <div class="team-box"><div class="flag">🇨🇭</div><div class="tname">瑞士</div><div class="rank">#19</div></div>
     </div>
-    <div class="match-result">阿根廷 3-1 瑞士（加时）· Mac Allister 10' 先拔头筹，Ndoye 67' 扳平，Álvarez 112' 绝杀 + Lautaro 120+1' 锁定胜局</div>
+    <div class="match-result">英格兰 1-2 阿根廷 · 戈登 55' 先拔头筹，费尔南德斯 85' 远射扳平（梅西助攻），劳塔罗 90+2' 绝杀（梅西助攻）· 卫冕冠军惊天逆转 ⚡</div>
 </div>
 
-<div class="section-title">🔮 半决赛前瞻预测（2场）</div>
+<div class="section-title">🔮 即将到来（2场）</div>
 
 <div class="match-card upcoming">
     <div class="match-header">
-        <span class="match-title">Match 101 · 半决赛 SF1</span>
-        <span class="match-meta">7月14日当地 · AT&T Stadium, Arlington (Dallas) · 14:00 CDT 当地 → BJT 7/15 03:00</span>
+        <span class="match-title">Match 103 · 三四名决赛</span>
+        <span class="match-meta">7月18日当地 · Miami Stadium · 17:00 EDT → BJT 7/19 05:00</span>
     </div>
     <div class="teams-display">
         <div class="team-box"><div class="flag">🇫🇷</div><div class="tname">法国</div><div class="rank">#3</div></div>
         <div class="vs">VS</div>
-        <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">#2</div></div>
+        <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">#4</div></div>
     </div>
     <div class="prob-bars">
         <div class="prob-row">
             <span class="prob-label">法国胜</span>
             <div class="prob-bar-wrap"><div class="prob-bar win" style="width:100.0%"></div></div>
-            <span class="prob-value">41.4%</span>
+            <span class="prob-value">48.2%</span>
         </div>
         <div class="prob-row">
             <span class="prob-label">平局</span>
-            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:71.0%"></div></div>
-            <span class="prob-value">29.4%</span>
+            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:53.5%"></div></div>
+            <span class="prob-value">25.8%</span>
         </div>
         <div class="prob-row">
-            <span class="prob-label">西班牙胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:70.8%"></div></div>
-            <span class="prob-value">29.3%</span>
+            <span class="prob-label">英格兰胜</span>
+            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:54.0%"></div></div>
+            <span class="prob-value">26.0%</span>
         </div>
     </div>
     <div class="advance-box">
-        <strong>🏆 晋级概率：</strong>法国 56.1% | 西班牙 43.9%（含加时/点球按 90 分钟概率折算）
+        <strong>🏆 季军概率：</strong>法国 64.0% | 英格兰 36.0%（含加时/点球按 90 分钟概率折算）
     </div>
     <div class="pick-box">
-        <span class="pick-label conf-mid">推荐：法国胜 / 法国晋级</span>
+        <span class="pick-label conf-mid">推荐：法国胜 / 法国获季军</span>
         <span class="conf-tag mid">中置信度</span>
-        <div class="pick-detail">法国 FIFA #3 vs 西班牙 #2。法国本届6战全胜（常规时间），打入16球仅失2球，从未落后；Mbappé 领衔攻击线状态火热。西班牙 QF 补时绝杀比利时晋级，控球体系成熟但面对法国防线效率存疑。1X2赔率源：Crown 皇冠（法2.26/平3.20/西3.30）+ Fox Sports（法2.30/平3.22/西3.13）双源去vig归一化。晋级概率交叉验证：OPTA 法国57.44%/西班牙42.56%。注意：半决赛可能进入加时/点球，29.4%平局概率较高。</div>
+        <div class="pick-detail">法国 FIFA #3 vs 英格兰 #4。两支半决赛失意豪门的荣誉之战。法国本届仅失4球防线稳固，姆巴佩8球领跑金靴争夺；英格兰半决赛惨遭绝杀心理打击更大，且体能消耗更多（SF打满100+分钟）。德尚告别战，法国多休息一天。但季军战 historically 进球多、防守松，英格兰贝林厄姆6球状态火热。1X2赔率源：FanDuel（法-110/平+280/英+280）+ Yahoo Sports（法-101/平+260/英+257）+ bet365/明陞（法1.90/平3.68/英3.53）+ Toffeeweb 5家博彩均值（法1.99/平3.67/英3.65），多源去vig归一化。季军概率交叉验证：FanDuel to-advance 法国-205/英格兰+164（64%/36%）。历史交锋近5场：法国3胜1平1负（含2022世界杯2-1胜）。</div>
     </div>
 </div>
 
-<div class="match-card upcoming">
+<div class="match-card final">
     <div class="match-header">
-        <span class="match-title">Match 102 · 半决赛 SF2</span>
-        <span class="match-meta">7月15日当地 · Mercedes-Benz Stadium, Atlanta · 15:00 EDT 当地 → BJT 7/16 03:00</span>
+        <span class="match-title">Match 104 · 决赛 🏆</span>
+        <span class="match-meta">7月19日当地 · MetLife Stadium, East Rutherford NJ · 15:00 EDT → BJT 7/20 03:00</span>
     </div>
     <div class="teams-display">
-        <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">#4</div></div>
+        <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">#2</div></div>
         <div class="vs">VS</div>
         <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">#1</div></div>
     </div>
     <div class="prob-bars">
         <div class="prob-row">
-            <span class="prob-label">英格兰胜</span>
+            <span class="prob-label">西班牙胜</span>
             <div class="prob-bar-wrap"><div class="prob-bar win" style="width:100.0%"></div></div>
-            <span class="prob-value">39.1%</span>
+            <span class="prob-value">41.8%</span>
         </div>
         <div class="prob-row">
             <span class="prob-label">平局</span>
-            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:73.8%"></div></div>
-            <span class="prob-value">28.9%</span>
+            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:76.4%"></div></div>
+            <span class="prob-value">31.9%</span>
         </div>
         <div class="prob-row">
             <span class="prob-label">阿根廷胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:81.8%"></div></div>
-            <span class="prob-value">32.0%</span>
+            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:62.9%"></div></div>
+            <span class="prob-value">26.3%</span>
         </div>
     </div>
     <div class="advance-box">
-        <strong>🏆 晋级概率：</strong>英格兰 53.6% | 阿根廷 46.4%（含加时/点球按 90 分钟概率折算）
+        <strong>🏆 夺冠概率：</strong>西班牙 59.1% | 阿根廷 40.9%（含加时/点球按 90 分钟概率折算）
     </div>
     <div class="pick-box">
-        <span class="pick-label conf-low">推荐：英格兰小胜 / 英格兰晋级（极度均势）</span>
-        <span class="conf-tag low">低置信度</span>
-        <div class="pick-detail">英格兰 FIFA #4 vs 阿根廷 #1。宿命对决——1986马拉多纳之手、1998欧文追风少年、2022世界杯后的再度交锋。英格兰 QF 经加时险胜挪威（Bellingham 双响），阿根廷 QF 同样经加时淘汰瑞士。两队晋级之路均布满波折。1X2赔率源：ESPN（英2.25/平3.05/阿2.75）单源去vig归一化。晋级赔率交叉验证：BetMGM/DraftKings 英格兰-120/阿根廷-105（52%/48%），几乎五五开。历史交锋近5场：英格兰3胜2负略占优。大小球走势指向保守（2.5球以下被看好）。⚠️ 此场为最可能爆冷/进入点球大战的半决赛。</div>
+        <span class="pick-label conf-mid">推荐：西班牙胜 / 西班牙夺冠</span>
+        <span class="conf-tag mid">中置信度</span>
+        <div class="pick-detail">西班牙 FIFA #2 vs 阿根廷 #1。矛与盾的终极对决：西班牙37场不败追平历史纪录，本届仅丢1球；阿根廷卫冕冠军，梅西39岁最后一舞，淘汰赛4次逆转晋级。西班牙多休息一天（14年数据显示额外休息日球队13/14次夺冠），控球体系成熟，亚马尔仍未完全爆发但球队已所向披靡。阿根廷防线漏洞百出但梅西贡献10球（进球+助攻）占全队17球的59%。1X2赔率源：FanDuel（西+130/平+190/阿+270）+ Fanatics（西+130/平+200/阿+250）+ bet365（西2.32/平3.15/阿3.73）+ betting.net（西+125/平+195/阿+265），四源去vig归一化。夺冠赔率交叉验证：Polymarket 西58%/阿42%，Kalshi 西58%/阿42%，OPTA 西56.31%/阿43.69%，The Athletic 西59%/阿41%。历史交锋近5场：西班牙3胜2负。⚠️ 西班牙点球大战历史战绩差（5次仅1胜），若拖入点球阿根廷经验优势大。大小球 Under 2.5 被看好（-170）。</div>
     </div>
 </div>
 
 <div class="upcoming-note">
-    <strong>📅 后续赛程预告：</strong><br>
-    · <strong>三四名决赛：</strong>BJT 7月19日 05:00 · Miami Hard Rock Stadium<br>
-    · <strong>决赛：</strong>BJT 7月20日 03:00 · New York/New Jersey MetLife Stadium
+    <strong>📅 赛程预告：</strong><br>
+    · <strong>三四名决赛：</strong>法国 vs 英格兰 · BJT 7月19日 05:00 · Miami Hard Rock Stadium<br>
+    · <strong>决赛 🏆：</strong>西班牙 vs 阿根廷 · BJT 7月20日 03:00 · New York/New Jersey MetLife Stadium
 </div>
 
 <div class="info-box" style="margin-top:16px;">
-    <strong>🔍 自查结果：</strong>官方比赛日 2026.07.12 赛程已核对 ✓；QF 4场已完赛标注为跳过预测 ✓；SF 2场赛前预测概率已归一化 ✓。<br>
-    <strong>📊 赔率来源：</strong>SF1 Crown + Fox Sports 双源去vig归一化；SF2 ESPN + BetMGM/DraftKings to-advance 交叉验证。赔率更新于 2026.07.12。<br>
-    <strong>📋 最稳推荐 TOP3：</strong>1）SF1 法国晋级（中置信度 56.1%，法国6战全胜状态碾压）；2）SF1 法国胜（中置信度 41.4%，但平局概率29.4%需警惕）；3）SF2 英格兰晋级（低置信度 53.6%，英阿五五开极度均势）。<br>
-    <strong>⚠️ 冷门风险最高：</strong>SF2 英格兰 vs 阿根廷。两队实力极为接近（晋级赔率 52%/48%），历史恩怨浓厚，大概率进入加时/点球。阿根廷作为卫冕冠军+梅西最后一舞的动力不可低估。<br>
-    <strong>📅 自动生成：</strong>2026.07.12 19:15 BJT。FIFA 排名来源 whereig.com 2026-06-11。赛程来源 FIFA 官方赛事页 + ESPN + 央广网/网易体育交叉核验。
+    <strong>🔍 自查结果：</strong>官方比赛日 2026.07.17 休赛日已标注 ✓；SF 2场已完赛标注为跳过预测 ✓；三四名决赛+决赛 2场赛前预测概率已归一化 ✓。<br>
+    <strong>📊 赔率来源：</strong>三四名决赛 FanDuel + Yahoo Sports + bet365/明陞 + Toffeeweb 多源去vig归一化；决赛 FanDuel + Fanatics + bet365 + betting.net 四源去vig归一化。赔率更新于 2026.07.16-17。<br>
+    <strong>📋 最稳推荐 TOP3：</strong>1）决赛 西班牙夺冠（中置信度 59.1%，37场不败+仅丢1球+多休息一天）；2）三四名决赛 法国获季军（中置信度 64.0%，防线稳固+姆巴佩冲金靴+德尚告别战）；3）决赛 西班牙胜（中置信度 41.8%，但平局概率31.9%需警惕加时/点球）。<br>
+    <strong>⚠️ 冷门风险最高：</strong>决赛 西班牙 vs 阿根廷。阿根廷淘汰赛4次逆转晋级，梅西大赛韧性不可低估；西班牙点球大战5次仅1胜，若拖入点球阿根廷经验优势极大。阿根廷作为卫冕冠军+梅西最后一舞的情感动力可能逆转数据差距。<br>
+    <strong>📅 自动生成：</strong>2026.07.17 19:00 BJT。FIFA 排名来源 whereig.com 2026-06-11。赛程来源 FIFA 官方赛事页 + 央广网/网易体育交叉核验。
 </div>
 </div>
 </body>

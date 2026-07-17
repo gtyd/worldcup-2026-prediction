@@ -51,10 +51,6 @@ h1 {
 .team-row:last-child { border-bottom: none; }
 .team-row.eliminated { opacity: 0.45; }
 .team-row.tier1 { border-left: 3px solid var(--tier1); }
-.team-row.tier2 { border-left: 3px solid var(--tier2); }
-.team-row.tier3 { border-left: 3px solid var(--tier3); }
-.team-row.tier4 { border-left: 3px solid var(--tier4); }
-.team-row.tier5 { border-left: 3px solid var(--tier5); }
 .team-row.tier0 { border-left: 3px solid var(--text-dim); }
 .rank { width: 32px; text-align: center; font-weight: 700; font-size: 15px; color: var(--text-dim); }
 .name { flex: 1; font-weight: 600; font-size: 15px; min-width: 100px; }
@@ -67,25 +63,18 @@ h1 {
 .bar-wrap { flex: 2; min-width: 80px; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
 .bar-fill.tier1 { background: var(--tier1); }
-.bar-fill.tier2 { background: var(--tier2); }
-.bar-fill.tier3 { background: var(--tier3); }
-.bar-fill.tier4 { background: var(--tier4); }
-.bar-fill.tier5 { background: var(--tier5); }
 .bar-fill.tier0 { background: var(--text-dim); }
 .elim-section { margin-top: 20px; padding-top: 12px; border-top: 2px dashed var(--border); }
 .elim-section h2 { font-size: 16px; color: var(--text-dim); margin-bottom: 12px; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
-.top3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
-.top3-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
-.top3-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
-.top3-card.rank1 { border-color: rgba(255,215,0,0.3); }
-.top3-card.rank2 { border-color: rgba(192,192,192,0.25); }
-.top3-card.rank3 { border-color: rgba(205,127,50,0.3); }
-.top3-card.rank4 { border-color: rgba(205,127,50,0.15); }
-.top3-card .medal { font-size: 24px; margin-bottom: 4px; }
-.top3-card .team { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-.top3-card .team-prob { font-size: 22px; font-weight: 800; }
-.top3-card .rank-info { font-size: 11px; color: var(--text-dim); }
+.top3-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; }
+.top3-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+.top3-card.rank1 { border-color: rgba(255,215,0,0.4); }
+.top3-card.rank2 { border-color: rgba(192,192,192,0.3); }
+.top3-card .medal { font-size: 28px; margin-bottom: 6px; }
+.top3-card .team { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.top3-card .team-prob { font-size: 28px; font-weight: 800; }
+.top3-card .rank-info { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
 @media (max-width: 600px) {
     .team-row { padding: 10px 8px; gap: 6px; }
     .name { font-size: 13px; min-width: 60px; }
@@ -95,7 +84,7 @@ h1 {
     .tier-label { width: 50px; font-size: 10px; }
     .bar-wrap { min-width: 40px; }
     h1 { font-size: 22px; }
-    .top3-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .top3-grid-2 { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -104,40 +93,28 @@ h1 {
 <div class="container">
 <a href="../" class="nav-link">← 返回预测中心</a>
 <h1>2026 美加墨世界杯夺冠预测</h1>
-<div class="subtitle">2026.07.12 · QF 全部结束 · 4 队存活 · 44 队淘汰</div>
+<div class="subtitle">2026.07.17 · 半决赛结束 · 2 队存活 · 46 队淘汰</div>
 <div class="tricolor-bar"></div>
 
 <div class="info-box">
-    <strong>🏆 赛事进程：</strong>四分之一决赛全部结束！Match 99 英格兰 2-1 挪威（AET，Bellingham 双响）、Match 100 阿根廷 3-1 瑞士（AET，Mac Allister/Alvarez/Lautaro 进球）。半决赛对阵：<strong>SF1 法国 vs 西班牙</strong>（BJT 7/15 03:00 Dallas）、<strong>SF2 英格兰 vs 阿根廷</strong>（BJT 7/16 03:00 Atlanta）。FIFA 排名前四会师四强，均为世界杯冠军球队。<br>
-    <strong>📊 赔率来源：</strong>① bet365 夺冠赔率（2026.07.12 QF 后更新）；② DraftKings 夺冠期货（2026.07.12）；③ 直播吧/中国博彩综合赔率（2026.07.12）。三源取均值，去vig归一化。<br>
-    <strong>📝 基本面修正：</strong>FIFA Top10 +7.5%（法国#3/西班牙#2/阿根廷#1/英格兰#4 均适用）；世界杯冠军球队 +2%（四队均为前世界杯冠军）。因四队修正系数相同，归一化后无实质影响。近期10场胜率数据暂缺，已跳过此项修正。修正后归一化到100%。<br>
-    <strong>ℹ️ 赔率变动说明：</strong>正数 ↑ = 赔率上升（夺冠概率下降）；负数 ↓ = 赔率下降（夺冠概率上升）。与上次(2026.07.11)对比。挪威、瑞士于 QF 出局，新增至淘汰区。
+    <strong>🏆 赛事进程：</strong>半决赛全部结束！Match 101 法国 0-2 西班牙（奥亚萨瓦尔 22' 点球破门 + 波罗 58' 单刀推射锁定胜局，法国本届首次落后即完败）· Match 102 英格兰 1-2 阿根廷（戈登 55' 先拔头筹，费尔南德斯 85' 远射扳平 + 劳塔罗 90+2' 绝杀，梅西两次助攻造逆转）。决赛对阵：<strong>西班牙 vs 阿根廷</strong>（BJT 7/20 03:00 纽约/新泽西 MetLife Stadium）。三四名决赛：法国 vs 英格兰（BJT 7/19 05:00 Miami）。<br>
+    <strong>📊 赔率来源：</strong>① FanDuel 夺冠赔率（2026.07.16 SF 后）；② Fanatics Sportsbook 夺冠期货（2026.07.16）；③ DraftKings 夺冠期货（2026.07.16）；④ BetMGM 夺冠赔率（2026.07.16）；⑤ OneFootball/英国博彩最佳赔率（2026.07.16）。五源取均值，去vig归一化。<br>
+    <strong>📝 基本面修正：</strong>FIFA Top10 +7.5%（西班牙#2/阿根廷#1 均适用）；世界杯冠军球队 +2%（西班牙 2010 冠军 + 阿根廷 1978/1986/2022 冠军均适用）。因两队修正系数相同，归一化后无实质影响。近期10场胜率数据暂缺，已跳过此项修正。修正后归一化到100%。<br>
+    <strong>ℹ️ 赔率变动说明：</strong>正数 ↑ = 赔率上升（夺冠概率下降）；负数 ↓ = 赔率下降（夺冠概率上升）。与上次(2026.07.12)对比。法国、英格兰于半决赛出局，新增至淘汰区。
 </div>
 
-<div class="top3-grid-4">
+<div class="top3-grid-2">
     <div class="top3-card rank1">
         <div class="medal">🥇</div>
-        <div class="team">🇫🇷 法国</div>
-        <div class="team-prob" style="color: var(--tier1);">37.5%</div>
-        <div class="rank-info">FIFA #3 · 赔率 2.50</div>
+        <div class="team">🇪🇸 西班牙</div>
+        <div class="team-prob" style="color: var(--tier1);">59.1%</div>
+        <div class="rank-info">FIFA #2 · 赔率 1.61 · 37场不败</div>
     </div>
     <div class="top3-card rank2">
         <div class="medal">🥈</div>
-        <div class="team">🇪🇸 西班牙</div>
-        <div class="team-prob" style="color: var(--tier1);">21.9%</div>
-        <div class="rank-info">FIFA #2 · 赔率 4.29</div>
-    </div>
-    <div class="top3-card rank3">
-        <div class="medal">🥉</div>
         <div class="team">🇦🇷 阿根廷</div>
-        <div class="team-prob" style="color: var(--tier1);">20.3%</div>
-        <div class="rank-info">FIFA #1 · 赔率 4.62</div>
-    </div>
-    <div class="top3-card rank4">
-        <div class="medal">4️⃣</div>
-        <div class="team">🏴 England</div>
-        <div class="team-prob" style="color: var(--tier1);">20.3%</div>
-        <div class="rank-info">FIFA #4 · 赔率 4.63</div>
+        <div class="team-prob" style="color: var(--tier1);">40.9%</div>
+        <div class="rank-info">FIFA #1 · 赔率 2.33 · 卫冕冠军</div>
     </div>
 </div>
 
@@ -152,46 +129,46 @@ h1 {
 
 <div class="card">
     <div class="team-row tier1">
-        <span class="rank">#3</span>
-        <span class="name">🇫🇷 法国</span>
-        <span class="prob">37.5%</span>
-        <span class="odds">2.50</span>
-        <span class="change down">3.8% ↓</span>
+        <span class="rank">#2</span>
+        <span class="name">🇪🇸 西班牙</span>
+        <span class="prob">59.1%</span>
+        <span class="odds">1.61</span>
+        <span class="change down">62.5% ↓</span>
         <span class="tier-label">第一梯队</span>
         <div class="bar-wrap"><div class="bar-fill tier1" style="width:100.0%"></div></div>
     </div>
     <div class="team-row tier1">
-        <span class="rank">#2</span>
-        <span class="name">🇪🇸 西班牙</span>
-        <span class="prob">21.9%</span>
-        <span class="odds">4.29</span>
-        <span class="change down">0.9% ↓</span>
-        <span class="tier-label">第一梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier1" style="width:58.4%"></div></div>
-    </div>
-    <div class="team-row tier1">
         <span class="rank">#1</span>
         <span class="name">🇦🇷 阿根廷</span>
-        <span class="prob">20.3%</span>
-        <span class="odds">4.62</span>
-        <span class="change down">16.0% ↓</span>
+        <span class="prob">40.9%</span>
+        <span class="odds">2.33</span>
+        <span class="change down">49.6% ↓</span>
         <span class="tier-label">第一梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier1" style="width:54.1%"></div></div>
-    </div>
-    <div class="team-row tier1">
-        <span class="rank">#4</span>
-        <span class="name">🏴🏴󠁧󠁢󠁥󠁮󠁧󠀇 英格兰</span>
-        <span class="prob">20.3%</span>
-        <span class="odds">4.63</span>
-        <span class="change down">22.8% ↓</span>
-        <span class="tier-label">第一梯队</span>
-        <div class="bar-wrap"><div class="bar-fill tier1" style="width:54.1%"></div></div>
+        <div class="bar-wrap"><div class="bar-fill tier1" style="width:69.2%"></div></div>
     </div>
 </div>
 
 <div class="elim-section">
-<h2>❌ 已淘汰球队（44支） — 最近淘汰：挪威 🇳🇴、瑞士 🇨🇭（QF）</h2>
+<h2>❌ 已淘汰球队（46支） — 最近淘汰：法国 🇫🇷、英格兰 🏴󠁧󠁢󠁥󠁮󠁧󠁿（SF）</h2>
 <div class="card">
+    <div class="team-row tier0 eliminated">
+        <span class="rank">#3</span>
+        <span class="name">法国</span>
+        <span class="prob">0%</span>
+        <span class="odds">—</span>
+        <span class="change">—</span>
+        <span class="tier-label">已淘汰</span>
+        <div class="bar-wrap"><div class="bar-fill tier0" style="width:0.0%"></div></div>
+    </div>
+    <div class="team-row tier0 eliminated">
+        <span class="rank">#4</span>
+        <span class="name">英格兰</span>
+        <span class="prob">0%</span>
+        <span class="odds">—</span>
+        <span class="change">—</span>
+        <span class="tier-label">已淘汰</span>
+        <div class="bar-wrap"><div class="bar-fill tier0" style="width:0.0%"></div></div>
+    </div>
     <div class="team-row tier0 eliminated">
         <span class="rank">#6</span>
         <span class="name">巴西</span>
@@ -592,10 +569,10 @@ h1 {
 </div>
 
 <div class="info-box" style="margin-top:16px;">
-    <strong>🔍 自查结果：</strong>teamsData 共 48 条 ✓（存活 4 + 淘汰 44）；梯队分类与概率一致 ✓（全部 4 队 ≥8% 为第一梯队）；日期已更新为 2026.07.12 ✓。<br>
-    <strong>📊 梯队分布：</strong>第一梯队 4 队 · 第二梯队 0 队 · 第三梯队 0 队 · 第四梯队 0 队 · 第五梯队 0 队 · 已淘汰 44 队 · 合计 48 队。<br>
-    <strong>📅 数据截止：</strong>bet365 + DraftKings + 直播吧综合赔率（2026.07.12 QF 后）。FIFA 排名来源 whereig.com 2026-06-11。OPTA 超级计算机交叉验证：法国 33.81%/西班牙 24.16%/英格兰 21.97%/阿根廷 20.06%。<br>
-    <strong>📝 赔率变动前三：</strong><strong>1.</strong> 英格兰 -22.8% ↓（赔率 6.00→4.63，大幅缩短，QF 险胜挪威后市场信心提升）<strong>2.</strong> 阿根廷 -16.0% ↓（赔率 5.50→4.62，QF 经加时淘汰瑞士后赔率收紧）<strong>3.</strong> 法国 -3.8% ↓（赔率 2.60→2.50，SF 对阵西班牙前景被看好）
+    <strong>🔍 自查结果：</strong>teamsData 共 48 条 ✓（存活 2 + 淘汰 46）；梯队分类与概率一致 ✓（2 队 ≥8% 均为第一梯队）；日期已更新为 2026.07.17 ✓。<br>
+    <strong>📊 梯队分布：</strong>第一梯队 2 队 · 第二梯队 0 队 · 第三梯队 0 队 · 第四梯队 0 队 · 第五梯队 0 队 · 已淘汰 46 队 · 合计 48 队。<br>
+    <strong>📅 数据截止：</strong>FanDuel + Fanatics + DraftKings + BetMGM + OneFootball UK 五源夺冠赔率（2026.07.16 SF 后）。FIFA 排名来源 whereig.com 2026-06-11。交叉验证：OPTA 超级计算机 西班牙 56.31%/阿根廷 43.69%；Polymarket 西班牙 58%/阿根廷 42%；Kalshi 西班牙 58%/阿根廷 42%；The Athletic 西班牙 59%/阿根廷 41%。<br>
+    <strong>📝 赔率变动前三：</strong><strong>1.</strong> 西班牙 -62.5% ↓（赔率 4.29→1.61，SF 2-0 完胜法国后成为夺冠大热）<strong>2.</strong> 阿根廷 -49.6% ↓（赔率 4.62→2.33，SF 绝杀逆转英格兰后赔率大幅收紧）<strong>3.</strong> 法国/英格兰 → 已淘汰（赔率不再追踪）
 </div>
 </div>
 </body>
