@@ -41,6 +41,7 @@ h1 {
 .match-card.played { opacity: 0.6; }
 .match-card.upcoming { border-color: rgba(42,57,141,0.4); }
 .match-card.final { border-color: rgba(230,29,37,0.4); }
+.match-card.third { border-color: rgba(60,172,59,0.3); }
 .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
 .match-title { font-size: 18px; font-weight: 700; }
 .match-meta { font-size: 12px; color: var(--text-dim); }
@@ -71,13 +72,10 @@ h1 {
 .conf-tag.mid { background: rgba(255,169,77,0.15); color: var(--draw); }
 .conf-tag.low { background: rgba(230,29,37,0.15); color: var(--lose); }
 .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-.rest-day { text-align: center; padding: 30px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; }
-.rest-day .icon { font-size: 48px; margin-bottom: 12px; }
-.rest-day .title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-.rest-day .desc { font-size: 14px; color: var(--text-dim); }
 .upcoming-note { background: rgba(42,57,141,0.15); border: 1px solid rgba(42,57,141,0.3); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px; color: var(--text-dim); }
 .advance-box { margin-top: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px 12px; font-size: 12px; }
 .advance-box strong { color: var(--text); }
+.weather-warn { background: rgba(255,169,77,0.10); border: 1px solid rgba(255,169,77,0.3); border-radius: 6px; padding: 8px 12px; margin-top: 8px; font-size: 12px; color: var(--text-dim); }
 @media (max-width: 600px) {
     .teams-display { gap: 8px; }
     .team-box .flag { font-size: 24px; }
@@ -91,20 +89,14 @@ h1 {
 <div class="container">
 <a href="../" class="nav-link">← 返回预测中心</a>
 <h1>2026 世界杯每日胜负预测</h1>
-<div class="subtitle">官方比赛日 2026.07.17（休赛日）· 北京时间更新 2026.07.17 19:00</div>
+<div class="subtitle">官方比赛日 2026.07.18（北美当地周六）· 北京时间更新 2026.07.18 19:00</div>
 <div class="tricolor-bar"></div>
 
 <div class="info-box">
-    <strong>📅 时区说明：</strong>官方比赛日以北美赛地当地日期为准。7月17日（北美当地）为休赛日，无比赛安排。半决赛已于 7/14-7/15（北美当地）全部结束。下一场比赛为三四名决赛：法国 vs 英格兰（BJT 7/19 05:00 Miami），再下一场为决赛：西班牙 vs 阿根廷（BJT 7/20 03:00 New York/New Jersey MetLife Stadium）。<br>
-    <strong>📊 数据来源：</strong>三四名决赛 1X2 赔率来自 FanDuel + FOX Sports + Yahoo Sports + 纳米数据(bet365/明陞) + Toffeeweb 多博彩公司比较（2026.07.17），多源去vig归一化。决赛 1X2 赔率来自 FanDuel + Fanatics + bet365(纳米数据) + betting.net 四源去vig归一化。夺冠赔率来自 FanDuel + Fanatics + DraftKings + BetMGM + OneFootball UK 五源去vig归一化。赛程来自 FIFA 官方赛事页。<br>
-    <strong>📋 数据暂缺，已跳过：</strong>完整伤停名单暂缺；近期10场详细战绩暂缺。历史交锋数据来自纳米数据（西班牙 vs 阿根廷近5场：西班牙3胜2负；法国 vs 英格兰近5场：法国3胜1平1负）。<br>
-    <strong>🏟️ 赛事阶段：</strong>半决赛全部结束 · 7/17 休赛日 · 7/18（北美当地）三四名决赛 · 7/19（北美当地）决赛。
-</div>
-
-<div class="rest-day">
-    <div class="icon">⚽</div>
-    <div class="title">今日休赛 · 决赛倒计时 2 天</div>
-    <div class="desc">半决赛已于北京时间 7/15 和 7/16 凌晨全部结束。下一场比赛为三四名决赛（法国 vs 英格兰，BJT 7/19 05:00），决赛（西班牙 vs 阿根廷，BJT 7/20 03:00）。下方为半决赛赛果及即将到来比赛的预测。</div>
+    <strong>📅 时区说明：</strong>官方比赛日以北美赛地当地日期为准。7月18日（北美当地周六）为三四名决赛日，仅1场比赛。下一官方比赛日 7月19日（北美当地周日）为决赛日。<br>
+    <strong>📊 数据来源：</strong>三四名决赛 1X2 赔率来自 FanDuel（法国 -115/平 +280/英格兰 +280）+ Rotowire/Covers 综合赔率（法国 -112/平 +300/英格兰 +280）+ 中国竞彩（法国 1.70/平 3.80/英格兰 3.60）+ bet365/纳米数据（法国 1.88/平 3.85/英格兰 3.70），四源去vig归一化。季军概率来自 FanDuel To Finish Third（法国 -215/英格兰 +172）。赛程来自 FIFA 官方赛事页 + Rotowire/FanDuel 交叉核验。<br>
+    <strong>📋 数据暂缺，已跳过：</strong>完整伤停名单部分缺失（Saliba 确认手术缺阵5个月，Reece James 疑似肌肉拉伤出战成疑，Henderson 确认缺阵）。法国近10场 8胜2负、英格兰近10场 7胜1平2负，来自竞彩页面。<br>
+    <strong>🏟️ 赛事阶段：</strong>三四名决赛日 · 仅剩最后2场比赛。法国 vs 英格兰争夺季军（BJT 7/19 05:00 Miami），西班牙 vs 阿根廷争夺冠军（BJT 7/20 03:00 MetLife）。
 </div>
 
 <div class="section-title">✅ 半决赛已完赛（2场）</div>
@@ -119,7 +111,7 @@ h1 {
         <div class="vs">0 : 2</div>
         <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">#2</div></div>
     </div>
-    <div class="match-result">法国 0-2 西班牙 · 奥亚萨瓦尔 22' 点球破门 + 波罗 58' 单刀推射锁定胜局 · 法国本届首次落后即完败</div>
+    <div class="match-result">法国 0-2 西班牙 · 奥亚萨瓦尔 22' 点球破门 + 波罗 58' 单刀推射锁定胜局 · 法国本届首次落后即完败 · 西班牙晋级决赛</div>
 </div>
 
 <div class="match-card played">
@@ -132,97 +124,85 @@ h1 {
         <div class="vs">1 : 2</div>
         <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">#1</div></div>
     </div>
-    <div class="match-result">英格兰 1-2 阿根廷 · 戈登 55' 先拔头筹，费尔南德斯 85' 远射扳平（梅西助攻），劳塔罗 90+2' 绝杀（梅西助攻）· 卫冕冠军惊天逆转 ⚡</div>
+    <div class="match-result">英格兰 1-2 阿根廷 · 戈登 55' 先拔头筹，费尔南德斯 85' 远射扳平（梅西助攻），劳塔罗 90+2' 绝杀（梅西助攻）· 卫冕冠军惊天逆转 ⚡ · 阿根廷晋级决赛</div>
 </div>
 
-<div class="section-title">🔮 即将到来（2场）</div>
+<div class="section-title">🔮 今日预测 · 三四名决赛（1场）</div>
 
-<div class="match-card upcoming">
+<div class="match-card upcoming third">
     <div class="match-header">
-        <span class="match-title">Match 103 · 三四名决赛</span>
-        <span class="match-meta">7月18日当地 · Miami Stadium · 17:00 EDT → BJT 7/19 05:00</span>
+        <span class="match-title">🥉 Match 103 · 三四名决赛</span>
+        <span class="match-meta">7月18日当地 · Hard Rock Stadium, Miami · 17:00 EDT → BJT 7/19 05:00 · 距开赛约10小时</span>
     </div>
     <div class="teams-display">
-        <div class="team-box"><div class="flag">🇫🇷</div><div class="tname">法国</div><div class="rank">#3</div></div>
+        <div class="team-box"><div class="flag">🇫🇷</div><div class="tname">法国</div><div class="rank">FIFA #3 · 8胜2负(近10场)</div></div>
         <div class="vs">VS</div>
-        <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">#4</div></div>
+        <div class="team-box"><div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="tname">英格兰</div><div class="rank">FIFA #4 · 7胜1平2负(近10场)</div></div>
     </div>
     <div class="prob-bars">
         <div class="prob-row">
             <span class="prob-label">法国胜</span>
             <div class="prob-bar-wrap"><div class="prob-bar win" style="width:100.0%"></div></div>
-            <span class="prob-value">48.2%</span>
+            <span class="prob-value">50.8%</span>
         </div>
         <div class="prob-row">
             <span class="prob-label">平局</span>
-            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:53.5%"></div></div>
-            <span class="prob-value">25.8%</span>
+            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:47.6%"></div></div>
+            <span class="prob-value">24.2%</span>
         </div>
         <div class="prob-row">
             <span class="prob-label">英格兰胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:54.0%"></div></div>
-            <span class="prob-value">26.0%</span>
+            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:49.2%"></div></div>
+            <span class="prob-value">25.0%</span>
         </div>
     </div>
     <div class="advance-box">
-        <strong>🏆 季军概率：</strong>法国 64.0% | 英格兰 36.0%（含加时/点球按 90 分钟概率折算）
+        <strong>🥉 季军概率（含加时/点球）：</strong>法国 65.0% | 英格兰 35.0%（FanDuel To Finish Third 法国 -215 / 英格兰 +172 折算）
+    </div>
+    <div class="weather-warn">
+        <strong>⚠️ 天气预警：</strong>Miami 预计开球时体感温度约 38°C（100°F），湿度极高，可能有雷暴。高温+湿滑场地可能显著影响比赛节奏和体能分配，需密切关注赛前最新气象数据。
     </div>
     <div class="pick-box">
-        <span class="pick-label conf-mid">推荐：法国胜 / 法国获季军</span>
+        <span class="pick-label conf-mid">推荐：法国季军（中置信度）</span>
         <span class="conf-tag mid">中置信度</span>
-        <div class="pick-detail">法国 FIFA #3 vs 英格兰 #4。两支半决赛失意豪门的荣誉之战。法国本届仅失4球防线稳固，姆巴佩8球领跑金靴争夺；英格兰半决赛惨遭绝杀心理打击更大，且体能消耗更多（SF打满100+分钟）。德尚告别战，法国多休息一天。但季军战 historically 进球多、防守松，英格兰贝林厄姆6球状态火热。1X2赔率源：FanDuel（法-110/平+280/英+280）+ Yahoo Sports（法-101/平+260/英+257）+ bet365/明陞（法1.90/平3.68/英3.53）+ Toffeeweb 5家博彩均值（法1.99/平3.67/英3.65），多源去vig归一化。季军概率交叉验证：FanDuel to-advance 法国-205/英格兰+164（64%/36%）。历史交锋近5场：法国3胜1平1负（含2022世界杯2-1胜）。</div>
+        <div class="pick-detail"><strong>分析：</strong>三四名决赛本质上是"荣誉之战"，双方均可能大幅轮换。法国优势：① FIFA #3 vs #4，纸面实力略优；② 姆巴佩 8球领跑金靴，进球动力充足（季军战进球计入金靴统计）；③ 德尚执教14年告别战，球队情感动力；④ 半决赛后多休息一天；⑤ 近5场交锋法国 3胜1平1负占优。英格兰劣势：① 半决赛绝杀逆转被淘汰心理打击更大、体能消耗更多（SF 打满 100+分钟）；② Reece James 疑似肌肉拉伤出战成疑、Jordan Henderson 确认缺阵、预计 Rice/Saka/Bellingham 等主力将被轮换；③ Harry Kane/贝林厄姆距金靴差2球，追分压力大但轮换可能限制出场时间。法国隐患：William Saliba 确认手术缺阵（预计休战5个月），Lacroix 顶替中卫。三四名决赛历史上进球偏多（近5届场均 3.2球），防线松散的比赛形态利好法国攻击群。1X2赔率源：FanDuel（法 -115/平 +280/英 +280）+ Rotowire/Covers（法 -112/平 +300/英 +280）+ 中国竞彩（法 1.70/平 3.80/英 3.60）+ bet365/纳米数据（法 1.88/平 3.85/英 3.70），四源去vig归一化。季军概率交叉验证：FanDuel 法 -215 (68.3%)/英 +172 (36.8%) → 去vig 65.0%/35.0%；预测市场 Kalshi 法国"yes"合约 64¢。历史交锋近5场法国 3胜1平1负（含 2022 世界杯 2-1 胜）。⚠️ 三四名决赛球队轮换幅度和战意高度不确定，置信度不宜过高。</div>
     </div>
 </div>
 
+<div class="section-title">📅 下一官方比赛日 2026.07.19（北美当地周日）</div>
+
 <div class="match-card final">
     <div class="match-header">
-        <span class="match-title">Match 104 · 决赛 🏆</span>
+        <span class="match-title">🏆 Match 104 · 决赛</span>
         <span class="match-meta">7月19日当地 · MetLife Stadium, East Rutherford NJ · 15:00 EDT → BJT 7/20 03:00</span>
     </div>
     <div class="teams-display">
-        <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">#2</div></div>
+        <div class="team-box"><div class="flag">🇪🇸</div><div class="tname">西班牙</div><div class="rank">FIFA #2 · 7场仅失1球 · 37场不败</div></div>
         <div class="vs">VS</div>
-        <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">#1</div></div>
+        <div class="team-box"><div class="flag">🇦🇷</div><div class="tname">阿根廷</div><div class="rank">FIFA #1 · 7场19球 · 卫冕冠军</div></div>
     </div>
-    <div class="prob-bars">
-        <div class="prob-row">
-            <span class="prob-label">西班牙胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar win" style="width:100.0%"></div></div>
-            <span class="prob-value">41.8%</span>
-        </div>
-        <div class="prob-row">
-            <span class="prob-label">平局</span>
-            <div class="prob-bar-wrap"><div class="prob-bar draw" style="width:76.4%"></div></div>
-            <span class="prob-value">31.9%</span>
-        </div>
-        <div class="prob-row">
-            <span class="prob-label">阿根廷胜</span>
-            <div class="prob-bar-wrap"><div class="prob-bar lose" style="width:62.9%"></div></div>
-            <span class="prob-value">26.3%</span>
-        </div>
-    </div>
-    <div class="advance-box">
-        <strong>🏆 夺冠概率：</strong>西班牙 59.1% | 阿根廷 40.9%（含加时/点球按 90 分钟概率折算）
+    <div class="advance-box" style="margin-top:12px;">
+        <strong>🏆 夺冠概率：</strong>西班牙 59.1% | 阿根廷 40.9%（FanDuel + DraftKings + 163.com/UK + Kalshi 四源冠军期货均值，详见<a href="../champion/" style="color:var(--text-dim);">冠军预测页</a>）<br>
+        <strong>📊 90分钟 1X2 概率（四源均值去vig）：</strong>西班牙胜 41.6% | 平局 31.6% | 阿根廷胜 26.8% · 推荐西班牙胜/夺冠（中置信度）
     </div>
     <div class="pick-box">
-        <span class="pick-label conf-mid">推荐：西班牙胜 / 西班牙夺冠</span>
-        <span class="conf-tag mid">中置信度</span>
-        <div class="pick-detail">西班牙 FIFA #2 vs 阿根廷 #1。矛与盾的终极对决：西班牙37场不败追平历史纪录，本届仅丢1球；阿根廷卫冕冠军，梅西39岁最后一舞，淘汰赛4次逆转晋级。西班牙多休息一天（14年数据显示额外休息日球队13/14次夺冠），控球体系成熟，亚马尔仍未完全爆发但球队已所向披靡。阿根廷防线漏洞百出但梅西贡献10球（进球+助攻）占全队17球的59%。1X2赔率源：FanDuel（西+130/平+190/阿+270）+ Fanatics（西+130/平+200/阿+250）+ bet365（西2.32/平3.15/阿3.73）+ betting.net（西+125/平+195/阿+265），四源去vig归一化。夺冠赔率交叉验证：Polymarket 西58%/阿42%，Kalshi 西58%/阿42%，OPTA 西56.31%/阿43.69%，The Athletic 西59%/阿41%。历史交锋近5场：西班牙3胜2负。⚠️ 西班牙点球大战历史战绩差（5次仅1胜），若拖入点球阿根廷经验优势大。大小球 Under 2.5 被看好（-170）。</div>
+        <span class="pick-label">🏆 完整分析请查看 <a href="../champion/" style="color:var(--text-dim);">冠军预测页</a> 及 7/19 每日预测更新</span>
     </div>
 </div>
 
 <div class="upcoming-note">
-    <strong>📅 赛程预告：</strong><br>
-    · <strong>三四名决赛：</strong>法国 vs 英格兰 · BJT 7月19日 05:00 · Miami Hard Rock Stadium<br>
-    · <strong>决赛 🏆：</strong>西班牙 vs 阿根廷 · BJT 7月20日 03:00 · New York/New Jersey MetLife Stadium
+    <strong>📅 赛事最终日程：</strong><br>
+    · <strong>🏅 已完赛：</strong>半决赛 SF1 法国 0-2 西班牙（BJT 7/15）· SF2 英格兰 1-2 阿根廷（BJT 7/16）<br>
+    · <strong>🥉 三四名决赛：</strong>法国 vs 英格兰 · BJT 7月19日 05:00 · Miami Hard Rock Stadium<br>
+    · <strong>🏆 决赛：</strong>西班牙 vs 阿根廷 · BJT 7月20日 03:00 · New York/New Jersey MetLife Stadium
 </div>
 
 <div class="info-box" style="margin-top:16px;">
-    <strong>🔍 自查结果：</strong>官方比赛日 2026.07.17 休赛日已标注 ✓；SF 2场已完赛标注为跳过预测 ✓；三四名决赛+决赛 2场赛前预测概率已归一化 ✓。<br>
-    <strong>📊 赔率来源：</strong>三四名决赛 FanDuel + Yahoo Sports + bet365/明陞 + Toffeeweb 多源去vig归一化；决赛 FanDuel + Fanatics + bet365 + betting.net 四源去vig归一化。赔率更新于 2026.07.16-17。<br>
-    <strong>📋 最稳推荐 TOP3：</strong>1）决赛 西班牙夺冠（中置信度 59.1%，37场不败+仅丢1球+多休息一天）；2）三四名决赛 法国获季军（中置信度 64.0%，防线稳固+姆巴佩冲金靴+德尚告别战）；3）决赛 西班牙胜（中置信度 41.8%，但平局概率31.9%需警惕加时/点球）。<br>
-    <strong>⚠️ 冷门风险最高：</strong>决赛 西班牙 vs 阿根廷。阿根廷淘汰赛4次逆转晋级，梅西大赛韧性不可低估；西班牙点球大战5次仅1胜，若拖入点球阿根廷经验优势极大。阿根廷作为卫冕冠军+梅西最后一舞的情感动力可能逆转数据差距。<br>
-    <strong>📅 自动生成：</strong>2026.07.17 19:00 BJT。FIFA 排名来源 whereig.com 2026-06-11。赛程来源 FIFA 官方赛事页 + 央广网/网易体育交叉核验。
+    <strong>🔍 自查结果：</strong>官方比赛日 2026.07.18（北美当地周六）三四名决赛日 ✓；SF 2场已完赛标注为跳过预测 ✓；三四名决赛 1场赛前预测概率已归一化 ✓；决赛为下一比赛日 7/19 预览 ✓。<br>
+    <strong>📊 赔率来源：</strong>三四名决赛 FanDuel + Rotowire/Covers + 中国竞彩 + bet365/纳米数据 四源去vig归一化。赔率更新于 2026.07.18。冠军赔率 FanDuel + DraftKings + 163.com/UK + Kalshi 四源。<br>
+    <strong>📋 今日可预测比赛：1场</strong>（三四名决赛 法国 vs 英格兰）。因仅剩2场比赛且三四名决赛轮换/战意高度不确定，最稳推荐与冷门风险分析见上方比赛详情。<br>
+    <strong>⚠️ 临近开赛提醒：</strong>三四名决赛距离开赛约10小时，部分赔率/阵容信息可能快速变化。Saliba 手术缺阵、James 出战成疑等伤停信息已反映在分析中。<br>
+    <strong>📅 自动生成：</strong>2026.07.18 19:00 BJT。FIFA 排名来源 whereig.com 2026-06-11。赛程来源 FIFA 官方赛事页 + Rotowire/FanDuel 交叉核验。天气数据来源 Covers/Rotowire。
 </div>
 </div>
 </body>
